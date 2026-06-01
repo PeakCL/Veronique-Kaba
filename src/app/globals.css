@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+/*
+ * Palette Véronique : violet & bleu (questionnaire cadrage)
+ * Le doré reste en accent « énergie dorée », pas couleur dominante.
+ */
+@theme {
+  --font-display: "Bangers", cursive;
+  --font-body: "Nunito", sans-serif;
+  --font-hand: "Caveat", cursive;
+
+  /* Violet — couleur préférée */
+  --color-aura-50: #f5f3ff;
+  --color-aura-100: #ede9fe;
+  --color-aura-200: #ddd6fe;
+  --color-aura-300: #c4b5fd;
+  --color-aura-400: #a78bfa;
+  --color-aura-500: #8b5cf6;
+  --color-aura-600: #7c3aed;
+  --color-aura-700: #6d28d9;
+  --color-aura-800: #5b21b6;
+  --color-aura-900: #4c1d95;
+
+  /* Bleu — couleur préférée */
+  --color-sky-50: #eff6ff;
+  --color-sky-100: #dbeafe;
+  --color-sky-200: #bfdbfe;
+  --color-sky-300: #93c5fd;
+  --color-sky-400: #60a5fa;
+  --color-sky-500: #3b82f6;
+  --color-sky-600: #2563eb;
+  --color-sky-700: #1d4ed8;
+  --color-sky-800: #1e40af;
+  --color-sky-900: #1e3a8a;
+
+  /* Doré — ACCENT uniquement (étoiles, formation, touches « énergie dorée ») */
+  --color-gold-50: #fffbeb;
+  --color-gold-100: #fef3c7;
+  --color-gold-200: #fde68a;
+  --color-gold-300: #fcd34d;
+  --color-gold-400: #fbbf24;
+  --color-gold-500: #f59e0b;
+  --color-gold-600: #d97706;
+
+  --color-ink: #1e1630;
+  --color-cream: #f8f6ff;
+  --color-panel: #f0eeff;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream text-ink font-[family-name:var(--font-body)] antialiased;
+    background-image:
+      radial-gradient(circle at 15% 15%, rgba(139, 92, 246, 0.14) 0%, transparent 45%),
+      radial-gradient(circle at 85% 12%, rgba(59, 130, 246, 0.12) 0%, transparent 42%),
+      radial-gradient(circle at 50% 90%, rgba(167, 139, 250, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 70% 55%, rgba(251, 191, 36, 0.05) 0%, transparent 40%);
+  }
+
+  ::selection {
+    @apply bg-aura-200 text-ink;
+  }
+}
+
+@layer utilities {
+  .comic-border {
+    border: 3px solid var(--color-ink);
+    box-shadow: 4px 4px 0 var(--color-ink);
+  }
+
+  .comic-border-lg {
+    border: 4px solid var(--color-ink);
+    box-shadow: 6px 6px 0 var(--color-ink);
+  }
+
+  .halftone {
+    background-image: radial-gradient(circle, rgba(30, 22, 48, 0.07) 1px, transparent 1px);
+    background-size: 8px 8px;
+  }
+
+  .energy-glow {
+    filter: drop-shadow(0 0 14px rgba(139, 92, 246, 0.45))
+      drop-shadow(0 0 8px rgba(59, 130, 246, 0.35));
+  }
+
+  .brand-gradient {
+    @apply bg-gradient-to-r from-aura-500 via-aura-400 to-sky-500;
+  }
+
+  /* Petits accents dorés — ne pas utiliser pour fonds ou boutons principaux */
+  .accent-star {
+    @apply text-gold-500;
+  }
+
+  .accent-gold-text {
+    @apply text-gold-600;
+  }
+
+  .text-stroke {
+    -webkit-text-stroke: 2px var(--color-ink);
+    paint-order: stroke fill;
+  }
+}
