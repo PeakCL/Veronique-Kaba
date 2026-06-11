@@ -39,7 +39,7 @@ export function ServicesPreview() {
     <section className="px-4 py-16 md:px-6">
       <div className="mx-auto max-w-6xl">
         <div className="text-center">
-          <h2 className="font-[family-name:var(--font-display)] text-4xl text-ink md:text-5xl">
+          <h2 className="font-[family-name:var(--font-display)] text-4xl font-semibold text-ink md:text-5xl">
             Mes accompagnements
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-ink/70">

@@ -27,8 +27,8 @@ export default function SoinsPage() {
       <PageBanner
         title="Mes soins"
         subtitle={`Magnétisme · Soin énergétique · Coupe de feu — ${sessionInfo.duration}`}
-        imageSrc={images.mainsAmpoule}
-        imageAlt="Mains et lumière dorée — soins énergétiques"
+        imageSrc={images.mainsSoin}
+        imageAlt="Mains enveloppant une sphère d'énergie — soins énergétiques"
       />
 
       <div className="mx-auto max-w-6xl px-4 md:px-6">

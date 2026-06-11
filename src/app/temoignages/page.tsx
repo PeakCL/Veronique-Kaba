@@ -22,8 +22,8 @@ export default function TemoignagesPage() {
       <PageBanner
         title="Témoignages"
         subtitle="Des voix qui ont retrouvé leur éclat ✨"
-        imageSrc={images.energieFond}
-        imageAlt="Énergie dorée — témoignages"
+        imageSrc={images.meditationPapillons}
+        imageAlt="Nature et sérénité — témoignages"
       />
 
       <div className="mx-auto max-w-4xl px-4 md:px-6">

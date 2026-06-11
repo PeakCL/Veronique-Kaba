@@ -16,12 +16,16 @@ export function FloatingBubbles() {
       {bubbles.map((b, i) => (
         <motion.div
           key={i}
-          className={`absolute rounded-full border-2 border-dashed bg-white/10 ${
-            i % 2 === 0 ? "border-aura-400/35" : "border-sky-400/35"
+          className={`absolute rounded-full border border-white/40 bg-white/20 backdrop-blur-[2px] ${
+            i % 3 === 0
+              ? "border-aura-300/30"
+              : i % 3 === 1
+                ? "border-rose-300/30"
+                : "border-gold-300/30"
           }`}
           style={{ width: b.size, height: b.size, left: b.x, top: b.y }}
-          animate={{ y: [0, -20, 0], opacity: [0.3, 0.6, 0.3] }}
-          transition={{ duration: 6 + i, repeat: Infinity, delay: b.delay }}
+          animate={{ y: [0, -14, 0], opacity: [0.2, 0.45, 0.2] }}
+          transition={{ duration: 7 + i, repeat: Infinity, delay: b.delay, ease: "easeInOut" }}
         />
       ))}
     </div>

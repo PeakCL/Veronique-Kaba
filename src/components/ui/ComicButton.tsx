@@ -16,7 +16,7 @@ const variants = {
   aura: "bg-aura-500 hover:bg-aura-400 text-white",
   sky: "bg-sky-500 hover:bg-sky-400 text-white",
   gold: "bg-gold-400 hover:bg-gold-300 text-ink",
-  outline: "bg-white hover:bg-aura-50 text-ink border-aura-200",
+  outline: "bg-white/90 hover:bg-rose-50 text-ink border-aura-200/60",
 };
 
 const sizes = {
@@ -36,7 +36,7 @@ export function ComicButton({
   disabled,
 }: ComicButtonProps) {
   const classes = cn(
-    "inline-flex items-center justify-center gap-2 rounded-full font-bold comic-border transition-transform hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-50 disabled:pointer-events-none",
+    "inline-flex items-center justify-center gap-2 rounded-full font-semibold comic-border transition-all hover:-translate-y-0.5 hover:shadow-md active:translate-y-0 disabled:opacity-50 disabled:pointer-events-none",
     variants[variant],
     sizes[size],
     className,

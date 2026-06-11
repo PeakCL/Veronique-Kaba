@@ -22,9 +22,9 @@ export function AboutSnippet() {
 
         <div className="space-y-4">
           <ComicImage
-            src={images.mainsAmpoule}
-            alt="Mains tenant une lumière dorée — symbole du magnétisme et de l'énergie transmise"
-            aspect="video"
+            src={images.about}
+            alt="Méditation en pleine nature — symbole du magnétisme et de l'énergie transmise"
+            aspect="portrait"
             className="object-center"
           />
           <div className="grid grid-cols-2 gap-4">

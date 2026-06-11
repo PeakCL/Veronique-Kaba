@@ -16,8 +16,8 @@ export default function AproposPage() {
       <PageBanner
         title="À propos de Véronique"
         subtitle={`${site.profession} — depuis ${site.practiceSince}`}
-        imageSrc={images.energieFond}
-        imageAlt="Univers énergétique doré"
+        imageSrc={images.about}
+        imageAlt="Méditation en pleine nature — à propos de Véronique"
       />
 
       <div className="mx-auto max-w-4xl px-4 md:px-6">

@@ -4,10 +4,10 @@ import { site } from "@/lib/content";
 
 export function Footer() {
   return (
-    <footer className="mt-20 border-t-4 border-ink bg-gradient-to-br from-ink via-aura-900 to-sky-900 text-cream">
+    <footer className="mt-20 border-t-4 border-ink bg-ink text-cream">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 md:grid-cols-3 md:px-6">
         <div>
-          <p className="font-[family-name:var(--font-display)] text-2xl text-aura-300">
+          <p className="font-[family-name:var(--font-display)] text-2xl font-medium text-aura-300">
             {site.name}
           </p>
           <p className="mt-2 text-sm text-cream/80">{site.tagline}</p>

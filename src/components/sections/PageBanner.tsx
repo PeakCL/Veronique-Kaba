@@ -25,13 +25,13 @@ export function PageBanner({
     >
       <div className="relative aspect-[21/9] min-h-[200px] md:min-h-[260px]">
         <Image src={imageSrc} alt={imageAlt} fill className="object-cover" sizes="100vw" priority />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink/80 via-ink/55 to-ink/30" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink/65 via-aura-900/40 to-transparent" />
         <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center text-cream">
-          <h1 className="font-[family-name:var(--font-display)] text-4xl drop-shadow-md md:text-6xl">
+          <h1 className="font-[family-name:var(--font-display)] text-4xl font-semibold drop-shadow-sm md:text-5xl">
             {title}
           </h1>
           {subtitle && (
-            <p className="mt-3 max-w-xl font-[family-name:var(--font-hand)] text-xl text-sky-200 md:text-2xl">
+            <p className="mt-3 max-w-xl font-[family-name:var(--font-hand)] text-xl text-gold-200 md:text-2xl">
               {subtitle}
             </p>
           )}

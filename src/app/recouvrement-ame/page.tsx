@@ -17,8 +17,8 @@ export default function RecouvrementAmePage() {
       <PageBanner
         title={soulRetrieval.title}
         subtitle={soulRetrieval.subtitle}
-        imageSrc={images.energieFond}
-        imageAlt="Énergie et lumière — recouvrement d'âme"
+        imageSrc={images.meditationFlamme}
+        imageAlt="Méditation et énergie intérieure — recouvrement d'âme"
       />
 
       <div className="mx-auto max-w-4xl px-4 md:px-6">

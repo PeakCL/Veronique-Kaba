@@ -21,8 +21,8 @@ export default function FormationPage() {
       <PageBanner
         title={formation.title}
         subtitle="Une formation mise en avant — accessible et concrète"
-        imageSrc={images.mainsEnergie}
-        imageAlt="Illustration mains et énergie dorée — formation"
+        imageSrc={images.energieNature}
+        imageAlt="Énergie en pleine nature — formation magnétisme"
       />
 
       <div className="mx-auto max-w-6xl px-4 md:px-6">

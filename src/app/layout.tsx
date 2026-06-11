@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Bangers, Caveat, Nunito } from "next/font/google";
+import { Baloo_2, Caveat, Nunito } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import "./globals.css";
 
-const bangers = Bangers({
-  weight: "400",
+const baloo = Baloo_2({
+  weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
   variable: "--font-display",
 });
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/images/mains-energie.png",
+        url: "/images/mains-orbe-energie.png",
         width: 1200,
         height: 1200,
         alt: "Véronique et l'énergie dorée",
@@ -56,7 +56,7 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body
-        className={`${bangers.variable} ${nunito.variable} ${caveat.variable} min-h-screen flex flex-col`}
+        className={`${baloo.variable} ${nunito.variable} ${caveat.variable} min-h-screen flex flex-col`}
       >
         <Header />
         <main className="flex-1">{children}</main>
