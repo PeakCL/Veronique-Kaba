@@ -12,7 +12,7 @@ export const site = {
   practiceSince: 2015,
   trainedSince: 2012,
   social: {
-    facebook: "https://www.facebook.com/",
+    facebook: "https://www.facebook.com/vero.kaba",
     instagram: "https://www.instagram.com/vero.kaba",
   },
   seoKeywords: ["Magnétiseuse", "magnétisme", "soin énergétique", "Longwy"],
