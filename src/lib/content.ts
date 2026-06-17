@@ -1,22 +1,82 @@
 export const site = {
-  name: "Véronique et l'énergie dorée",
+  name: "Véronique Kaba",
   tagline: "Magnétiseuse & énergéticienne · Coupeuse de feu",
   profession: "Thérapeute magnétiseuse & énergéticienne",
+  /** URL canonique de production (sert de base aux métadonnées et au sitemap) */
+  url: "https://veronique-kaba.fr",
   location: "Longwy et alentours (15 km)",
   locationDetail:
     "Séances en présentiel dans un rayon de 15 km autour de Longwy, et partout à distance (visio).",
   phone: "07 71 17 67 27",
   phoneHref: "tel:+33771176727",
+  phoneInternational: "+33771176727",
+  /** Lien WhatsApp « click-to-chat » (même numéro) */
+  whatsapp: "https://wa.me/33771176727",
   siret: "98027438500015",
   email: "contact@veronique-et-lenergie-doree.fr",
   practiceSince: 2015,
   trainedSince: 2012,
+  /** Données de localisation pour le référencement local (Schema.org / GBP) */
+  geo: {
+    streetAddress: "41 rue du Général Pershing",
+    addressLocality: "Longwy",
+    postalCode: "54400",
+    addressRegion: "Grand Est",
+    addressCountry: "FR",
+    latitude: 49.5217,
+    longitude: 5.7608,
+    /** Rayon de la zone desservie en présentiel (mètres) */
+    serviceRadiusMeters: 15000,
+  },
   social: {
     facebook: "https://www.facebook.com/vero.kaba",
     instagram: "https://www.instagram.com/vero.kaba",
   },
-  seoKeywords: ["Magnétiseuse", "magnétisme", "soin énergétique", "Longwy"],
+  /** Fiche Google (avis publics — toujours à jour) */
+  googleProfile: "https://share.google/uVvgboCH6BQU7t7du",
+  seoKeywords: [
+    "magnétiseuse Longwy",
+    "magnétiseur Longwy",
+    "soin énergétique Longwy",
+    "coupeuse de feu Longwy",
+    "magnétiseur à distance",
+    "énergéticien Longwy",
+  ],
 } as const;
+
+/** Questions fréquentes — alimente la section FAQ et le balisage FAQPage */
+export const faqs = [
+  {
+    question: "Le magnétisme, comment ça fonctionne ?",
+    answer:
+      "Le magnétisme consiste à transmettre de l'énergie pour relancer la circulation énergétique du corps et l'aider à retrouver son équilibre. Il soulage de nombreuses douleurs physiques et tensions émotionnelles. C'est une approche complémentaire qui ne remplace jamais un suivi médical.",
+  },
+  {
+    question: "Un soin énergétique à distance est-il aussi efficace qu'en présentiel ?",
+    answer:
+      "Oui. Le soin à distance (en visio) repose sur les mêmes principes que le présentiel : l'énergie n'est pas limitée par la distance. De nombreuses personnes ressentent les mêmes bienfaits, où qu'elles se trouvent.",
+  },
+  {
+    question: "Combien de séances faut-il prévoir ?",
+    answer:
+      "Cela dépend de votre situation. Certaines personnes ressentent un mieux-être dès la première séance, d'autres ont besoin de plusieurs rendez-vous. Nous en parlons ensemble lors de l'échange préalable.",
+  },
+  {
+    question: "Où se déroulent les séances en présentiel ?",
+    answer:
+      "Les séances en présentiel ont lieu dans un rayon de 15 km autour de Longwy (54400). Pour les personnes plus éloignées, le soin à distance en visio est proposé partout.",
+  },
+  {
+    question: "Combien coûte une séance et combien de temps dure-t-elle ?",
+    answer:
+      "Une séance de soin coûte 60 € et dure environ 40 minutes, en présentiel ou en visio. La formation Magnétisme 2.0 est à 70 € pour une demi-journée.",
+  },
+  {
+    question: "Le magnétisme remplace-t-il un traitement médical ?",
+    answer:
+      "Non. Les soins énergétiques complètent un suivi médical mais ne remplacent jamais un avis ou un traitement professionnel de santé. La démarche dialogue avec la médecine conventionnelle.",
+  },
+] as const;
 
 /** Infos communes à toutes les séances de soin */
 export const sessionInfo = {
@@ -175,20 +235,22 @@ export const services = [
   },
 ] as const;
 
+/**
+ * Témoignages réels uniquement.
+ * - Les 2 premiers : retours authentiques transmis par les clientes (par SMS).
+ * - Avis Google : reliés via `googleReviewsUrl` plutôt que recopiés (voir page Témoignages/Accueil).
+ */
 export const testimonials = [
   {
-    name: "Marie L.",
-    text: "Après quelques séances, mes douleurs chroniques se sont apaisées. Véronique a une présence douce et professionnelle — je me suis sentie en confiance pour parler de ma santé.",
+    name: "Jessica",
+    context: "Recouvrement d'âme",
+    text: "Merci à Véronique pour ce soin. J'ai été transporté au son du tambour et de sa voix puis un allègement physique et émotionnel qui m'a fait le plus grand bien. Je la recommande pour toutes les âmes qui ont besoin d'apaisement (entre autres).",
     stars: 5,
   },
   {
-    name: "Thomas B.",
-    text: "Sportif, j'avais du mal à reprendre après une entorse. Les séances m'ont aidé autant sur le plan physique que mental. La formation m'a aussi donné des clés pour pratiquer seul.",
-    stars: 5,
-  },
-  {
-    name: "Sophie M.",
-    text: "Un vrai coup de boost énergétique. Je repars apaisée à chaque fois, même à distance. Les explications simples (batterie, évier…) m'ont tout de suite rassurée.",
+    name: "Kadya",
+    context: "Soin à distance (Sénégal)",
+    text: "Je fais appel à Véronique pour des soins à distance car je vis au Sénégal. J'avais mal à l'épaule et j'ai été agréablement surprise par l'efficacité du traitement et la qualité d'écoute de Véro. Grâce à son suivi j'ai pu observer de réels changements malgré la distance. Je recommande vivement.",
     stars: 5,
   },
 ] as const;

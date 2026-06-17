@@ -1,16 +1,18 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Quote } from "lucide-react";
-import { testimonials } from "@/lib/content";
+import { Quote, Star } from "lucide-react";
+import { testimonials, site } from "@/lib/content";
 import { Bubble } from "@/components/ui/Bubble";
-import { ComicButton } from "@/components/ui/ComicButton";
 
 const bubbleVariants = ["warm", "gold", "aura"] as const;
 
 export function TestimonialsStrip() {
   return (
-    <section className="section-blush mx-2 rounded-3xl px-4 py-14 md:mx-4 md:px-6">
+    <section
+      id="temoignages"
+      className="section-blush mx-2 scroll-mt-24 rounded-3xl px-4 py-14 md:mx-4 md:px-6"
+    >
       <div className="mx-auto max-w-6xl">
         <p className="text-center font-[family-name:var(--font-hand)] text-3xl text-aura-600 md:text-4xl">
           Ce qu&apos;ils vivent après une séance…
@@ -37,20 +39,31 @@ export function TestimonialsStrip() {
                   {t.text}
                 </p>
                 <div className="mt-4 flex items-center gap-2">
-                  <span className="text-gold-400" aria-label={`${t.stars} étoiles`}>
+                  <span className="text-gold-400" aria-label={`${t.stars} étoiles sur 5`}>
                     {"★".repeat(t.stars)}
                   </span>
-                  <span className="text-sm font-semibold text-aura-600">— {t.name}</span>
+                  <span className="text-sm font-semibold text-aura-600">
+                    — {t.name}
+                    {"context" in t && t.context ? (
+                      <span className="font-normal text-ink/55"> · {t.context}</span>
+                    ) : null}
+                  </span>
                 </div>
               </Bubble>
             </motion.div>
           ))}
         </div>
 
-        <div className="mt-8 text-center">
-          <ComicButton href="/temoignages" variant="outline" size="sm">
-            Voir tous les témoignages
-          </ComicButton>
+        <div className="mt-10 text-center">
+          <a
+            href={site.googleProfile}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-white/90 px-5 py-2.5 text-sm font-semibold text-ink comic-border transition-all hover:-translate-y-0.5 hover:bg-rose-50 hover:shadow-md"
+          >
+            <Star className="h-4 w-4 text-gold-500" aria-hidden />
+            Voir tous nos avis Google
+          </a>
         </div>
       </div>
     </section>

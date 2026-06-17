@@ -88,16 +88,18 @@ export function ContactForm() {
           <Send className="h-4 w-4" />
           {status === "loading" ? "Envoi…" : "Envoyer le formulaire"}
         </ComicButton>
-        {status === "ok" && (
-          <p className="text-center text-sm font-bold text-green-700">
-            Message envoyé ! Véronique vous répondra très vite ✨
-          </p>
-        )}
-        {status === "error" && (
-          <p className="text-center text-sm font-bold text-red-600">
-            Erreur d&apos;envoi — appelez le 07 71 17 67 27
-          </p>
-        )}
+        <div aria-live="polite" role="status">
+          {status === "ok" && (
+            <p className="text-center text-sm font-bold text-green-700">
+              Message envoyé ! Véronique vous répondra très vite ✨
+            </p>
+          )}
+          {status === "error" && (
+            <p className="text-center text-sm font-bold text-red-600">
+              Erreur d&apos;envoi — appelez le 07 71 17 67 27
+            </p>
+          )}
+        </div>
       </form>
     </Bubble>
   );

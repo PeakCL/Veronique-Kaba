@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { getBlur } from "@/lib/blur";
 
 type PageBannerProps = {
   title: string;
@@ -16,6 +17,8 @@ export function PageBanner({
   imageAlt,
   className,
 }: PageBannerProps) {
+  const blurDataURL = getBlur(imageSrc);
+
   return (
     <div
       className={cn(
@@ -23,8 +26,20 @@ export function PageBanner({
         className,
       )}
     >
-      <div className="relative aspect-[21/9] min-h-[200px] md:min-h-[260px]">
-        <Image src={imageSrc} alt={imageAlt} fill className="object-cover" sizes="100vw" priority />
+      <div
+        className="relative aspect-[21/9] min-h-[200px] md:min-h-[260px]"
+        style={{ background: "linear-gradient(135deg, #3a2a3f 0%, #2a1f2e 100%)" }}
+      >
+        <Image
+          src={imageSrc}
+          alt={imageAlt}
+          fill
+          className="object-cover"
+          sizes="(min-width: 1280px) 1216px, 100vw"
+          quality={70}
+          priority
+          {...(blurDataURL ? { placeholder: "blur" as const, blurDataURL } : {})}
+        />
         <div className="absolute inset-0 bg-gradient-to-r from-ink/65 via-aura-900/40 to-transparent" />
         <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center text-cream">
           <h1 className="font-[family-name:var(--font-display)] text-4xl font-semibold drop-shadow-sm md:text-5xl">

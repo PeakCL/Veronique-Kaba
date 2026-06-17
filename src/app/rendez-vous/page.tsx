@@ -5,7 +5,10 @@ import { ComicButton } from "@/components/ui/ComicButton";
 import { CalendlyEmbed } from "@/components/booking/CalendlyEmbed";
 
 export const metadata: Metadata = {
-  title: "Prendre rendez-vous",
+  title: "Prendre rendez-vous — Soin de magnétisme à Longwy ou en visio",
+  description:
+    "Réservez votre séance de magnétisme ou de soin énergétique avec Véronique, en présentiel à Longwy ou à distance en visio. Séance de 40 min, 60 €.",
+  alternates: { canonical: "/rendez-vous" },
 };
 
 export default function RendezVousPage() {

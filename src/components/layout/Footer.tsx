@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Facebook, Instagram, Phone, MapPin } from "lucide-react";
+import { Facebook, Instagram, Phone, MapPin, MessageCircle } from "lucide-react";
 import { site } from "@/lib/content";
 
 export function Footer() {
@@ -62,6 +62,15 @@ export function Footer() {
             <Phone className="h-4 w-4" />
             {site.phone}
           </a>
+          <a
+            href={site.whatsapp}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-2 flex items-center gap-2 text-sm hover:text-sky-200"
+          >
+            <MessageCircle className="h-4 w-4" />
+            WhatsApp
+          </a>
           <div className="mt-4 flex gap-3">
             <a
               href={site.social.facebook}
@@ -86,7 +95,14 @@ export function Footer() {
       </div>
 
       <div className="border-t border-aura-700/30 py-4 text-center text-xs text-cream/40">
-        © {new Date().getFullYear()} {site.name} — Magnétiseuse & énergéticienne · Longwy
+        <p>
+          © {new Date().getFullYear()} {site.name} — Magnétiseuse & énergéticienne · Longwy
+        </p>
+        <p className="mt-1">
+          <Link href="/mentions-legales" className="hover:text-sky-200">
+            Mentions légales
+          </Link>
+        </p>
       </div>
     </footer>
   );

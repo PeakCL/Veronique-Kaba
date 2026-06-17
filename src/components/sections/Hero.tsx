@@ -59,9 +59,9 @@ export function Hero() {
             variants={item}
             className="mt-6 font-[family-name:var(--font-display)] text-4xl font-semibold leading-snug text-ink md:text-6xl"
           >
-            {site.tagline.split("·")[0].trim()}
+            Magnétiseuse &amp; énergéticienne à Longwy
             <span className="mt-1 block font-[family-name:var(--font-hand)] text-4xl font-normal text-aura-600 md:text-5xl">
-              apaiser corps & esprit
+              apaiser corps &amp; esprit
             </span>
           </motion.h1>
 

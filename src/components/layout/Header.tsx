@@ -13,7 +13,7 @@ const nav = [
   { href: "/recouvrement-ame", label: "Recouvrement d'âme" },
   { href: "/formation", label: "Formation", highlight: true },
   { href: "/apropos", label: "À propos" },
-  { href: "/temoignages", label: "Témoignages" },
+  { href: "/#temoignages", label: "Témoignages" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -59,13 +59,16 @@ export function Header() {
           type="button"
           className="rounded-full p-2 comic-border lg:hidden"
           onClick={() => setOpen(!open)}
-          aria-label="Menu"
+          aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
+          aria-expanded={open}
+          aria-controls="menu-mobile"
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
       </div>
 
       <div
+        id="menu-mobile"
         className={cn(
           "overflow-hidden bg-panel lg:hidden",
           open ? "max-h-[32rem] border-t border-ink/10" : "max-h-0",

@@ -6,11 +6,14 @@ import { ComicButton } from "@/components/ui/ComicButton";
 import { PageBanner } from "@/components/sections/PageBanner";
 import { FormationLogin } from "@/components/formation/FormationLogin";
 import { PayPalPay } from "@/components/payment/PayPalPayLazy";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { courseJsonLd, breadcrumbJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Formation Magnétisme 2.0",
+  title: "Formation magnétisme à Longwy & à distance — Magnétisme 2.0",
   description:
-    "Apprenez à ressentir votre magnétisme et à pratiquer des soins énergétiques. Formation accessible, en présentiel ou à distance.",
+    "Apprenez à ressentir votre magnétisme et à pratiquer un soin énergétique. Formation accessible (70 €, ½ journée), en présentiel à Longwy ou à distance.",
+  alternates: { canonical: "/formation" },
 };
 
 const bookableFormation = services.find((s) => s.id === "formation")!;
@@ -18,6 +21,15 @@ const bookableFormation = services.find((s) => s.id === "formation")!;
 export default function FormationPage() {
   return (
     <div className="pb-12 pt-4 md:pt-6">
+      <JsonLd
+        data={[
+          courseJsonLd(),
+          breadcrumbJsonLd([
+            { name: "Accueil", path: "/" },
+            { name: "Formation Magnétisme 2.0", path: "/formation" },
+          ]),
+        ]}
+      />
       <PageBanner
         title={formation.title}
         subtitle="Une formation mise en avant — accessible et concrète"

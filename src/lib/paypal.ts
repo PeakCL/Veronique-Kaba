@@ -78,7 +78,7 @@ export async function createPayPalOrder(params: {
         },
       ],
       application_context: {
-        brand_name: "Véronique et l'énergie dorée",
+        brand_name: "Véronique Kaba",
         locale: "fr-FR",
         landing_page: "NO_PREFERENCE",
         user_action: "PAY_NOW",

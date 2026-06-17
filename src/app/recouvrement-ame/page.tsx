@@ -6,9 +6,10 @@ import { ComicButton } from "@/components/ui/ComicButton";
 import { PageBanner } from "@/components/sections/PageBanner";
 
 export const metadata: Metadata = {
-  title: "Recouvrement d'âme",
+  title: "Recouvrement d'âme au tambour — Longwy & à distance",
   description:
-    "Soin de recouvrement d'âme au tambour — accompagnement profond et apaisant, en présentiel ou à distance.",
+    "Soin de recouvrement d'âme accompagné au tambour : un accompagnement profond et apaisant après un choc, une fatigue intense ou une période de tension. Présentiel ou à distance.",
+  alternates: { canonical: "/recouvrement-ame" },
 };
 
 export default function RecouvrementAmePage() {

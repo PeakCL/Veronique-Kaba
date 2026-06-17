@@ -6,8 +6,9 @@ import { ComicButton } from "@/components/ui/ComicButton";
 import { PageBanner } from "@/components/sections/PageBanner";
 
 export const metadata: Metadata = {
-  title: "À propos",
-  description: `Parcours de Véronique — ${site.profession}. Depuis ${site.practiceSince}, à Longwy et à distance.`,
+  title: "À propos de Véronique — Magnétiseuse à Longwy",
+  description: `Parcours de Véronique, ${site.profession.toLowerCase()} à Longwy depuis ${site.practiceSince}. Une approche bienveillante, professionnelle, en dialogue avec la médecine conventionnelle.`,
+  alternates: { canonical: "/apropos" },
 };
 
 export default function AproposPage() {

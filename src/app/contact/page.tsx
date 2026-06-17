@@ -1,20 +1,30 @@
 import type { Metadata } from "next";
 import { site } from "@/lib/content";
+import { images } from "@/lib/images";
 import { Bubble } from "@/components/ui/Bubble";
+import { PageBanner } from "@/components/sections/PageBanner";
 import { ContactForm } from "@/components/contact/ContactForm";
-import { Facebook, Instagram, MapPin, Phone } from "lucide-react";
+import { Facebook, Instagram, MapPin, Phone, MessageCircle } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Contact",
+  title: "Contact — Magnétiseuse à Longwy",
+  description:
+    "Contactez Véronique, magnétiseuse et énergéticienne à Longwy. Séances en présentiel (15 km autour de Longwy) ou à distance en visio. Téléphone : 07 71 17 67 27.",
+  alternates: { canonical: "/contact" },
 };
 
 export default function ContactPage() {
   return (
-    <div className="px-4 py-12 md:px-6">
-      <div className="mx-auto max-w-6xl">
-        <h1 className="text-center font-[family-name:var(--font-display)] text-5xl">Contact</h1>
+    <div className="pb-12 pt-4 md:pt-6">
+      <PageBanner
+        title="Contact"
+        subtitle="Une question, une prise de rendez-vous ? Écrivez-moi avec bienveillance ✨"
+        imageSrc={images.meditationPapillons}
+        imageAlt="Nature et sérénité — contacter Véronique, magnétiseuse à Longwy"
+      />
 
-        <div className="mt-12 grid gap-10 lg:grid-cols-2">
+      <div className="mx-auto max-w-6xl px-4 md:px-6">
+        <div className="grid gap-10 lg:grid-cols-2">
           <ContactForm />
 
           <div className="space-y-6">
@@ -24,6 +34,17 @@ export default function ContactPage() {
                 <Phone className="h-4 w-4 text-aura-600" />
                 <a href={site.phoneHref} className="hover:underline">
                   {site.phone}
+                </a>
+              </p>
+              <p className="mt-2 flex items-center gap-2">
+                <MessageCircle className="h-4 w-4 text-green-600" />
+                <a
+                  href={site.whatsapp}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold hover:underline"
+                >
+                  Écrire sur WhatsApp
                 </a>
               </p>
               <p className="mt-2 flex items-start gap-2 text-sm">
@@ -43,7 +64,7 @@ export default function ContactPage() {
                   className="flex items-center gap-2 font-semibold hover:text-aura-700"
                 >
                   <Facebook className="h-5 w-5" />
-                  Véronique et l&apos;énergie dorée
+                  Véronique Kaba
                 </a>
                 <a
                   href={site.social.instagram}

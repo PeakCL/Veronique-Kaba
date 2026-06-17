@@ -3,6 +3,7 @@ import {
   careMetaphors,
   careTypes,
   clientele,
+  faqs,
   sessionInfo,
   services,
   site,
@@ -12,11 +13,14 @@ import { Bubble } from "@/components/ui/Bubble";
 import { ComicButton } from "@/components/ui/ComicButton";
 import { PageBanner } from "@/components/sections/PageBanner";
 import { PayPalPay } from "@/components/payment/PayPalPayLazy";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { serviceJsonLd, faqPageJsonLd, breadcrumbJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Soins — Magnétisme, énergie & coupe de feu",
+  title: "Soins de magnétisme à Longwy & à distance",
   description:
-    "Séances personnalisées en magnétisme, soin énergétique et coupe de feu. 40 min, 60 €. Présentiel (15 km Longwy) ou à distance.",
+    "Séances personnalisées de magnétisme, soin énergétique et coupe de feu à Longwy ou en visio. Soulager douleurs, stress et fatigue — 40 min, 60 €.",
+  alternates: { canonical: "/soins" },
 };
 
 const bookableSoin = services.find((s) => s.id === "soin")!;
@@ -24,6 +28,16 @@ const bookableSoin = services.find((s) => s.id === "soin")!;
 export default function SoinsPage() {
   return (
     <div className="pb-12 pt-4 md:pt-6">
+      <JsonLd
+        data={[
+          serviceJsonLd(),
+          faqPageJsonLd(),
+          breadcrumbJsonLd([
+            { name: "Accueil", path: "/" },
+            { name: "Soins", path: "/soins" },
+          ]),
+        ]}
+      />
       <PageBanner
         title="Mes soins"
         subtitle={`Magnétisme · Soin énergétique · Coupe de feu — ${sessionInfo.duration}`}
@@ -46,21 +60,25 @@ export default function SoinsPage() {
           <p className="mt-4 text-xs italic text-ink/60">{sessionInfo.disclaimer}</p>
         </Bubble>
 
-        <div className="space-y-10">
+        <div className="grid gap-6 md:grid-cols-3">
           {careTypes.map((care, i) => (
             <Bubble
               key={care.id}
-              variant={i % 2 === 0 ? "white" : "aura"}
-              tail={i % 2 === 0 ? "bottom-left" : "bottom-right"}
+              variant={i === 1 ? "aura" : "white"}
+              tail="none"
+              animate={false}
+              className="group flex h-full flex-col text-center transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-xl focus-within:-translate-y-2 focus-within:shadow-xl motion-reduce:transition-none motion-reduce:hover:translate-y-0"
             >
-              <span className="text-5xl">{care.emoji}</span>
-              <h2 className="mt-2 font-[family-name:var(--font-display)] text-3xl">{care.title}</h2>
-              <p className="mt-3 text-ink/80">{care.description}</p>
+              <span className="mx-auto inline-block text-5xl transition-transform duration-300 group-hover:scale-110 motion-reduce:transition-none">
+                {care.emoji}
+              </span>
+              <h2 className="mt-2 font-[family-name:var(--font-display)] text-2xl">{care.title}</h2>
+              <p className="mt-3 text-sm text-ink/80">{care.description}</p>
               <p className="mt-4 text-sm font-bold text-ink/70">Souvent consulté pour :</p>
-              <ul className="mt-2 space-y-2">
+              <ul className="mt-2 space-y-2 text-left">
                 {care.forWho.map((item) => (
                   <li key={item} className="flex items-start gap-2 text-sm">
-                    <span className="text-aura-500">◆</span>
+                    <span className="mt-0.5 text-aura-500" aria-hidden>◆</span>
                     {item}
                   </li>
                 ))}
@@ -98,7 +116,29 @@ export default function SoinsPage() {
           </div>
         </div>
 
-        <p className="mt-8 text-center text-sm text-ink/60">
+        <section className="mt-16" aria-labelledby="faq-titre">
+          <h2
+            id="faq-titre"
+            className="text-center font-[family-name:var(--font-display)] text-3xl"
+          >
+            Questions fréquentes
+          </h2>
+          <div className="mt-8 space-y-4">
+            {faqs.map((f) => (
+              <details
+                key={f.question}
+                className="group rounded-2xl bg-white/60 p-5 comic-border"
+              >
+                <summary className="cursor-pointer list-none font-[family-name:var(--font-display)] text-lg font-medium text-ink marker:content-none">
+                  {f.question}
+                </summary>
+                <p className="mt-3 text-sm leading-relaxed text-ink/75">{f.answer}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+
+        <p className="mt-12 text-center text-sm text-ink/60">
           Vous cherchez le{" "}
           <a href="/recouvrement-ame" className="font-semibold text-aura-600 underline">
             recouvrement d&apos;âme au tambour
