@@ -24,11 +24,11 @@ const tailClasses = {
 };
 
 const variants = {
-  white: { "--bubble-bg": "#ffffff", bg: "bg-white" },
-  gold: { "--bubble-bg": "#fef4e0", bg: "bg-gold-100" },
+  white: { "--bubble-bg": "#fffdf6", bg: "bg-[#fffdf6]" },
+  gold: { "--bubble-bg": "#fef3d8", bg: "bg-gold-100" },
   aura: { "--bubble-bg": "#f0eaf8", bg: "bg-aura-100" },
-  sky: { "--bubble-bg": "#e8f1f9", bg: "bg-sky-100" },
-  warm: { "--bubble-bg": "#fdf5f3", bg: "bg-rose-50" },
+  sky:  { "--bubble-bg": "#e8f1f9", bg: "bg-sky-100" },
+  warm: { "--bubble-bg": "#fdf0ec", bg: "bg-rose-50" },
 };
 
 export function Bubble({

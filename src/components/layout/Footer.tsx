@@ -4,7 +4,22 @@ import { site } from "@/lib/content";
 
 export function Footer() {
   return (
-    <footer className="mt-20 border-t-4 border-ink bg-ink text-cream">
+    <footer
+      className="mt-20 border-t-4 border-gold-600/30 text-cream"
+      style={{
+        background:
+          "radial-gradient(ellipse at 50% 0%, rgba(240,190,90,0.10) 0%, transparent 55%), linear-gradient(160deg, #2a1f2e 0%, #1e1530 50%, #160d22 100%)",
+      }}
+    >
+      <div className="border-b border-aura-700/40 px-4 py-8 text-center">
+        <p className="font-[family-name:var(--font-hand)] text-3xl text-gold-300">
+          Prendre soin de vous, c&apos;est ma mission. ✨
+        </p>
+        <p className="mt-2 text-sm text-cream/60">
+          N&apos;hésitez pas à me contacter — toujours avec bienveillance.
+        </p>
+      </div>
+
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 md:grid-cols-3 md:px-6">
         <div>
           <p className="font-[family-name:var(--font-display)] text-2xl font-medium text-aura-300">
@@ -70,7 +85,7 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-cream/20 py-4 text-center text-xs text-cream/50">
+      <div className="border-t border-aura-700/30 py-4 text-center text-xs text-cream/40">
         © {new Date().getFullYear()} {site.name} — Magnétiseuse & énergéticienne · Longwy
       </div>
     </footer>

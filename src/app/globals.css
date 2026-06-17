@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 /*
- * Palette cocooning — chaleureuse, douce, bulle de soin
- * Violet & bleu adoucis, crème chaude, doré en accent bienveillant
+ * Palette "Soin au coin du feu"
+ * Ambré chaud, miel, rose blush — chaleur de mains qui soignent
  */
 @theme {
   --font-display: "Baloo 2", cursive;
@@ -34,25 +34,26 @@
   --color-sky-900: #283f58;
 
   /* Rose chaleureux */
-  --color-rose-50: #fdf5f3;
-  --color-rose-100: #f9e8e4;
-  --color-rose-200: #f2d0c8;
-  --color-rose-300: #e5b0a4;
-  --color-rose-400: #d49082;
-  --color-rose-500: #c07468;
+  --color-rose-50: #fdf0ec;
+  --color-rose-100: #f9e4dd;
+  --color-rose-200: #f2cfc5;
+  --color-rose-300: #e5ada0;
+  --color-rose-400: #d4887a;
+  --color-rose-500: #bf6d60;
 
-  /* Doré — accent « énergie dorée » */
-  --color-gold-50: #fffbf5;
-  --color-gold-100: #fef4e0;
-  --color-gold-200: #fde8bc;
-  --color-gold-300: #f9d48a;
-  --color-gold-400: #f0be5a;
-  --color-gold-500: #e5a832;
-  --color-gold-600: #c98d1f;
+  /* Doré — énergie dorée, lumière ambre */
+  --color-gold-50: #fffbf2;
+  --color-gold-100: #fef3d8;
+  --color-gold-200: #fde4ac;
+  --color-gold-300: #f9ce78;
+  --color-gold-400: #f0b84a;
+  --color-gold-500: #e09e28;
+  --color-gold-600: #c48318;
 
-  --color-ink: #4a3f47;
-  --color-cream: #fdf8f3;
-  --color-panel: #faf3eb;
+  /* Crème ambrée — fond principal plus chaud */
+  --color-ink: #3d3038;
+  --color-cream: #fef5e8;
+  --color-panel: #f9eedb;
 }
 
 @layer base {
@@ -62,31 +63,50 @@
 
   body {
     @apply bg-cream text-ink font-[family-name:var(--font-body)] antialiased;
+    /* Lumière ambre au lever du soleil — chaleur émanant des coins */
     background-image:
-      radial-gradient(circle at 12% 18%, rgba(181, 154, 212, 0.12) 0%, transparent 48%),
-      radial-gradient(circle at 88% 10%, rgba(122, 175, 214, 0.1) 0%, transparent 42%),
-      radial-gradient(circle at 50% 92%, rgba(240, 190, 90, 0.08) 0%, transparent 50%),
-      radial-gradient(circle at 72% 55%, rgba(212, 144, 130, 0.06) 0%, transparent 40%);
+      radial-gradient(ellipse at 16% 8%,  rgba(240, 190, 90, 0.24) 0%, transparent 54%),
+      radial-gradient(ellipse at 84% 6%,  rgba(212, 144, 130, 0.18) 0%, transparent 46%),
+      radial-gradient(ellipse at 52% 94%, rgba(181, 154, 212, 0.20) 0%, transparent 56%),
+      radial-gradient(ellipse at 80% 54%, rgba(240, 190, 90, 0.13) 0%, transparent 44%),
+      radial-gradient(ellipse at 20% 64%, rgba(212, 144, 130, 0.14) 0%, transparent 42%);
   }
 
   ::selection {
-    @apply bg-aura-200 text-ink;
+    background: rgba(240, 190, 90, 0.28);
+    color: var(--color-ink);
   }
 }
 
 @layer utilities {
+  /* Bordures avec teinte chaude dorée — plus bienveillantes que le gris */
   .comic-border {
-    border: 2px solid color-mix(in srgb, var(--color-ink) 14%, transparent);
+    border: 2px solid rgba(212, 144, 130, 0.22);
     box-shadow:
-      0 4px 18px rgba(74, 63, 71, 0.07),
-      0 1px 4px rgba(74, 63, 71, 0.04);
+      0 4px 20px rgba(240, 190, 90, 0.10),
+      0 1px 6px rgba(212, 144, 130, 0.10);
   }
 
   .comic-border-lg {
-    border: 2px solid color-mix(in srgb, var(--color-ink) 16%, transparent);
+    border: 2px solid rgba(212, 144, 130, 0.24);
     box-shadow:
-      0 8px 28px rgba(74, 63, 71, 0.09),
-      0 2px 8px rgba(74, 63, 71, 0.05);
+      0 8px 34px rgba(240, 190, 90, 0.14),
+      0 2px 10px rgba(212, 144, 130, 0.12);
+  }
+
+  /* Section ambrée — miel chaud */
+  .section-amber {
+    background: linear-gradient(155deg, #fef3dc 0%, #fef8ec 55%, #fff9f0 100%);
+  }
+
+  /* Section blush — rose doux */
+  .section-blush {
+    background: linear-gradient(155deg, #fdf0ec 0%, #fdf6f3 55%, #fef9f7 100%);
+  }
+
+  /* Ancienne classe conservée pour compatibilité */
+  .warm-section {
+    background: linear-gradient(155deg, #fef3dc 0%, #fef8ec 55%, #fff9f0 100%);
   }
 
   .halftone {
@@ -95,12 +115,12 @@
   }
 
   .energy-glow {
-    filter: drop-shadow(0 0 12px rgba(240, 190, 90, 0.35))
-      drop-shadow(0 0 6px rgba(181, 154, 212, 0.25));
+    filter: drop-shadow(0 0 14px rgba(240, 190, 90, 0.40))
+      drop-shadow(0 0 6px rgba(181, 154, 212, 0.28));
   }
 
   .brand-gradient {
-    @apply bg-gradient-to-br from-aura-400 via-rose-200 to-gold-300;
+    @apply bg-gradient-to-br from-aura-400 via-rose-300 to-gold-300;
   }
 
   .accent-star {

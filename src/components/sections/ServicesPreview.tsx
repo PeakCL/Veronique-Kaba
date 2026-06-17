@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { formation, sessionInfo, soulRetrieval } from "@/lib/content";
 import { Bubble } from "@/components/ui/Bubble";
@@ -13,6 +16,7 @@ const highlights = [
     badge: `${sessionInfo.price} € · ${sessionInfo.duration}`,
     variant: "aura" as const,
     tail: "bottom-left" as const,
+    glow: "rgba(181,154,212,0.18)",
   },
   {
     href: "/recouvrement-ame",
@@ -22,6 +26,7 @@ const highlights = [
     badge: "Nouveau",
     variant: "sky" as const,
     tail: "none" as const,
+    glow: "rgba(122,175,214,0.18)",
   },
   {
     href: "/formation",
@@ -31,14 +36,31 @@ const highlights = [
     badge: `${formation.price} € · ${formation.duration}`,
     variant: "gold" as const,
     tail: "bottom-right" as const,
+    glow: "rgba(240,190,90,0.22)",
   },
 ];
 
+const sectionVariants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.13, delayChildren: 0.1 } },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 32 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const } },
+};
+
 export function ServicesPreview() {
   return (
-    <section className="px-4 py-16 md:px-6">
+    <section className="section-amber mx-2 rounded-3xl px-4 py-16 md:mx-4 md:px-6">
       <div className="mx-auto max-w-6xl">
-        <div className="text-center">
+        <motion.div
+          className="text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
           <h2 className="font-[family-name:var(--font-display)] text-4xl font-semibold text-ink md:text-5xl">
             Mes accompagnements
           </h2>
@@ -46,40 +68,72 @@ export function ServicesPreview() {
             Des soins sur mesure, une formation pour apprendre à magnétiser, et le recouvrement
             d&apos;âme au tambour.
           </p>
-        </div>
+          <p className="mx-auto mt-4 max-w-lg font-[family-name:var(--font-hand)] text-2xl text-aura-600">
+            Chaque accompagnement part de ce que vous vivez, aujourd&apos;hui.
+          </p>
+        </motion.div>
 
-        <div className="mt-12 grid gap-8 md:grid-cols-3">
+        <motion.div
+          className="mt-12 grid gap-8 md:grid-cols-3"
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-60px" }}
+        >
           {highlights.map((item) => (
-            <Bubble
+            <motion.div
               key={item.href}
-              variant={item.variant}
-              tail={item.tail}
-              className="flex flex-col"
+              variants={cardVariants}
+              whileHover={{
+                y: -10,
+                scale: 1.02,
+                boxShadow: `0 20px 50px ${item.glow}, 0 4px 12px rgba(0,0,0,0.06)`,
+              }}
+              transition={{ type: "spring", stiffness: 280, damping: 22 }}
+              className="flex"
+              style={{ borderRadius: "2rem" }}
             >
-              <span className="text-4xl">{item.emoji}</span>
-              <h3 className="mt-3 font-[family-name:var(--font-display)] text-2xl">{item.title}</h3>
-              <p className="mt-2 flex-1 text-sm text-ink/75">{item.description}</p>
-              <span
-                className={`mt-4 inline-block w-fit rounded-full px-3 py-1 text-xs font-bold comic-border ${
-                  item.variant === "gold"
-                    ? "bg-gold-100 text-gold-700"
-                    : "bg-white/80"
-                }`}
+              <Bubble
+                variant={item.variant}
+                tail={item.tail}
+                animate={false}
+                className="flex flex-1 flex-col"
               >
-                {item.badge}
-              </span>
-              <ComicButton href={item.href} variant="outline" size="sm" className="mt-4 w-fit">
-                En savoir plus
-              </ComicButton>
-            </Bubble>
+                <motion.span
+                  className="text-4xl"
+                  whileHover={{ scale: 1.2, rotate: [0, -10, 10, 0] }}
+                  transition={{ duration: 0.4 }}
+                >
+                  {item.emoji}
+                </motion.span>
+                <h3 className="mt-3 font-[family-name:var(--font-display)] text-2xl">{item.title}</h3>
+                <p className="mt-2 flex-1 text-sm text-ink/75">{item.description}</p>
+                <span
+                  className={`mt-4 inline-block w-fit rounded-full px-3 py-1 text-xs font-bold comic-border ${
+                    item.variant === "gold" ? "bg-gold-100 text-gold-700" : "bg-white/80"
+                  }`}
+                >
+                  {item.badge}
+                </span>
+                <ComicButton href={item.href} variant="outline" size="sm" className="mt-4 w-fit">
+                  En savoir plus
+                </ComicButton>
+              </Bubble>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        <div className="mt-10 flex justify-center gap-4">
+        <motion.div
+          className="mt-10 flex justify-center gap-4"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+        >
           <ComicButton href="/rendez-vous">
             Prendre rendez-vous <ArrowRight className="h-4 w-4" />
           </ComicButton>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

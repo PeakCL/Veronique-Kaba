@@ -36,9 +36,9 @@ export function AboutSnippet() {
             ].map((stat) => (
               <div
                 key={stat.label}
-                className="rounded-2xl bg-white p-5 text-center comic-border-lg transition-transform hover:-translate-y-1"
+                className="rounded-2xl bg-rose-50/70 p-5 text-center comic-border-lg transition-all hover:-translate-y-1 hover:bg-gold-50"
               >
-                <p className="font-[family-name:var(--font-display)] text-3xl text-aura-600">
+                <p className="font-[family-name:var(--font-display)] text-3xl text-gold-600">
                   {stat.n}
                 </p>
                 <p className="mt-1 text-sm font-semibold text-ink/70">{stat.label}</p>
