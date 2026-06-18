@@ -1,13 +1,22 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Heart } from "lucide-react";
 import { ComicButton } from "@/components/ui/ComicButton";
+import { images } from "@/lib/images";
 
 export function WarmCTA() {
   return (
     <section className="relative overflow-hidden px-4 py-20 md:px-6">
       <div className="pointer-events-none absolute inset-0" aria-hidden>
+        <Image
+          src={images.foretLumiere}
+          alt=""
+          fill
+          className="object-cover object-center opacity-[0.12]"
+          sizes="100vw"
+        />
         <div className="absolute inset-0 bg-gradient-to-br from-rose-50 via-gold-50 to-aura-50" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_70%_at_55%_40%,rgba(240,190,90,0.18)_0%,transparent_70%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_60%_at_20%_70%,rgba(181,154,212,0.15)_0%,transparent_65%)]" />

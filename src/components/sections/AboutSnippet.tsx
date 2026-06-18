@@ -22,8 +22,8 @@ export function AboutSnippet() {
 
         <div className="space-y-4">
           <ComicImage
-            src={images.about}
-            alt="Méditation en pleine nature — symbole du magnétisme et de l'énergie transmise"
+            src={images.aboutSnippet}
+            alt="Méditation en pleine nature — énergie dorée en cœur, symbole de bienveillance"
             aspect="portrait"
             className="object-center"
           />

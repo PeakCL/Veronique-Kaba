@@ -4,12 +4,52 @@ import { images } from "@/lib/images";
 import { Bubble } from "@/components/ui/Bubble";
 import { ComicButton } from "@/components/ui/ComicButton";
 import { PageBanner } from "@/components/sections/PageBanner";
+import { AboutCards } from "@/components/sections/AboutCards";
 
 export const metadata: Metadata = {
   title: "À propos de Véronique — Magnétiseuse à Longwy",
   description: `Parcours de Véronique, ${site.profession.toLowerCase()} à Longwy depuis ${site.practiceSince}. Une approche bienveillante, professionnelle, en dialogue avec la médecine conventionnelle.`,
   alternates: { canonical: "/apropos" },
 };
+
+const cards = [
+  {
+    title: about.values[0].title,
+    text: about.values[0].text,
+    emoji: "👂",
+    variant: "aura" as const,
+  },
+  {
+    title: about.values[1].title,
+    text: about.values[1].text,
+    emoji: "💚",
+    variant: "white" as const,
+  },
+  {
+    title: about.values[2].title,
+    text: about.values[2].text,
+    emoji: "⚡",
+    variant: "gold" as const,
+  },
+  {
+    title: "Un cadre professionnel",
+    text: about.professionalTone,
+    emoji: "🤝",
+    variant: "white" as const,
+  },
+  {
+    title: "Éducatrice de cœur",
+    text: about.formerEducator,
+    emoji: "🌱",
+    variant: "sky" as const,
+  },
+  {
+    title: "Toujours en évolution",
+    text: about.searcher,
+    emoji: "🔍",
+    variant: "aura" as const,
+  },
+];
 
 export default function AproposPage() {
   return (
@@ -18,7 +58,7 @@ export default function AproposPage() {
         title="À propos de Véronique"
         subtitle={`${site.profession} — depuis ${site.practiceSince}`}
         imageSrc={images.about}
-        imageAlt="Méditation en pleine nature — à propos de Véronique"
+        imageAlt="Deux arbres anciens sous le soleil — force et enracinement"
       />
 
       <div className="mx-auto max-w-4xl px-4 md:px-6">
@@ -28,32 +68,30 @@ export default function AproposPage() {
           <p className="mt-4 leading-relaxed text-ink/80">{about.approach}</p>
         </Bubble>
 
-        <div className="mt-8 space-y-6">
-          {about.values.map((v, i) => (
-            <Bubble
-              key={v.title}
-              variant={i % 2 === 0 ? "white" : "aura"}
-              tail={i % 2 === 0 ? "bottom-right" : "bottom-left"}
-            >
-              <h2 className="font-[family-name:var(--font-display)] text-2xl">{v.title}</h2>
-              <p className="mt-3 leading-relaxed text-ink/80">{v.text}</p>
-            </Bubble>
-          ))}
-        </div>
+        <AboutCards cards={cards} />
 
-        <Bubble variant="white" className="mt-8" tail="bottom-left">
-          <h2 className="font-[family-name:var(--font-display)] text-2xl">Un cadre professionnel</h2>
-          <p className="mt-3 leading-relaxed text-ink/80">{about.professionalTone}</p>
-          <p className="mt-4 leading-relaxed text-ink/80">{about.formerEducator}</p>
-        </Bubble>
+        <p className="mt-6 text-center text-xs italic text-ink/50">{about.notMedium}</p>
 
-        <Bubble variant="sky" className="mt-8" tail="bottom-right">
-          <h2 className="font-[family-name:var(--font-display)] text-2xl">Toujours en évolution</h2>
-          <p className="mt-3 leading-relaxed text-ink/80">{about.searcher}</p>
-          <p className="mt-4 text-sm text-ink/70">{about.notMedium}</p>
-        </Bubble>
+        {/* Citation — philosophie d'accompagnement */}
+        <blockquote className="mt-10 rounded-3xl bg-gradient-to-br from-aura-50 to-gold-50/60 px-8 py-8 comic-border-lg text-center">
+          <p className="font-[family-name:var(--font-display)] text-2xl font-semibold text-aura-700">
+            Mon accompagnement
+          </p>
+          <p className="mt-4 font-[family-name:var(--font-hand)] text-xl leading-relaxed text-ink/80">
+            J&apos;accompagne des espaces où le corps, les émotions et le système nerveux peuvent
+            relâcher ce qui est retenu.
+          </p>
+          <p className="mt-3 font-[family-name:var(--font-hand)] text-xl leading-relaxed text-ink/70">
+            Dans l&apos;écoute fine de ce qui est déjà là.
+            <br />Ce qui demande à circuler.
+            <br />Ce qui a été figé.
+          </p>
+          <footer className="mt-5 font-[family-name:var(--font-hand)] text-lg text-aura-600">
+            — Véronique ✨
+          </footer>
+        </blockquote>
 
-        <div className="mt-12 text-center">
+        <div className="mt-10 text-center">
           <ComicButton href="/rendez-vous" size="lg">
             Prendre rendez-vous
           </ComicButton>

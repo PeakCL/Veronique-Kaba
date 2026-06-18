@@ -119,15 +119,15 @@ export function Hero() {
             <div className="relative aspect-[4/5] overflow-hidden rounded-2xl comic-border">
               <Image
                 src={images.mainsEnergie}
-                alt="Mains enveloppant une sphère d'énergie dorée — illustration de soin énergétique"
+                alt="Rayons de soleil à travers les bouleaux — lumière et énergie naturelle"
                 fill
-                className="object-cover"
+                className="object-cover object-center"
                 priority
                 sizes="(max-width: 1024px) 100vw, 480px"
               />
             </div>
             <p className="mt-3 text-center font-[family-name:var(--font-display)] text-2xl font-medium text-ink">
-              Énergie dorée
+              Énergie & nature
             </p>
             <p className="text-center font-[family-name:var(--font-hand)] text-xl text-ink/65">
               Soins · Formation 2.0 · Recouvrement d&apos;âme

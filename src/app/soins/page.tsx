@@ -9,6 +9,7 @@ import {
   site,
 } from "@/lib/content";
 import { images } from "@/lib/images";
+import Image from "next/image";
 import { Bubble } from "@/components/ui/Bubble";
 import { ComicButton } from "@/components/ui/ComicButton";
 import { PageBanner } from "@/components/sections/PageBanner";
@@ -42,7 +43,7 @@ export default function SoinsPage() {
         title="Mes soins"
         subtitle={`Magnétisme · Soin énergétique · Coupe de feu — ${sessionInfo.duration}`}
         imageSrc={images.mainsSoin}
-        imageAlt="Mains enveloppant une sphère d'énergie — soins énergétiques"
+        imageAlt="Soin énergétique — mains posées avec bienveillance"
       />
 
       <div className="mx-auto max-w-6xl px-4 md:px-6">
@@ -59,6 +60,22 @@ export default function SoinsPage() {
           <p className="mt-4 text-sm text-ink/70">{site.locationDetail}</p>
           <p className="mt-4 text-xs italic text-ink/60">{sessionInfo.disclaimer}</p>
         </Bubble>
+
+        {/* Image séance énergétique */}
+        <div className="relative mb-10 overflow-hidden rounded-3xl comic-border-lg aspect-[21/9] min-h-[180px]">
+          <Image
+            src={images.soinEnergie}
+            alt="Séance de soin énergétique — personne allongée recevant un soin avec chakras activés"
+            fill
+            className="object-cover object-center"
+            sizes="(min-width: 1280px) 1216px, 100vw"
+            quality={75}
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-ink/50 via-aura-900/20 to-transparent" />
+          <p className="absolute bottom-4 left-6 font-[family-name:var(--font-hand)] text-xl text-cream/90">
+            Lâcher prise. Se laisser traverser. Retrouver la fluidité.
+          </p>
+        </div>
 
         <div className="grid gap-6 md:grid-cols-3">
           {careTypes.map((care, i) => (
