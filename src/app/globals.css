@@ -135,4 +135,45 @@
     -webkit-text-stroke: 1.5px var(--color-ink);
     paint-order: stroke fill;
   }
+
+  /* ── Univers BD Véronique ──────────────────────────────────────────── */
+
+  /* Illustration flottante sans cadre — fond transparent requis */
+  .vero-bd {
+    filter:
+      drop-shadow(0 8px 32px rgba(240, 190, 90, 0.28))
+      drop-shadow(0 2px 8px rgba(212, 144, 130, 0.16));
+  }
+
+  /* Halo doré derrière l'avatar — dégradé radial au sol */
+  .vero-halo {
+    background: radial-gradient(
+      ellipse 80% 50% at 50% 100%,
+      rgba(240, 190, 90, 0.35) 0%,
+      rgba(240, 190, 90, 0.10) 55%,
+      transparent 80%
+    );
+  }
+
+  /* Halftone BD plus visible pour les sections sombres */
+  .halftone-gold {
+    background-image: radial-gradient(circle, rgba(212, 172, 52, 0.10) 1px, transparent 1px);
+    background-size: 12px 12px;
+  }
+
+  /* Energie dorée intense — pour les éléments en avant */
+  .energy-glow-strong {
+    filter:
+      drop-shadow(0 0 20px rgba(240, 190, 90, 0.55))
+      drop-shadow(0 0 50px rgba(240, 190, 90, 0.25))
+      drop-shadow(0 0 6px rgba(181, 154, 212, 0.20));
+  }
+
+  /* Rayons BD — arrière-plan SVG doré */
+  .bd-rays {
+    background-image: repeating-conic-gradient(
+      rgba(240, 190, 90, 0.06) 0deg 10deg,
+      transparent 10deg 20deg
+    );
+  }
 }

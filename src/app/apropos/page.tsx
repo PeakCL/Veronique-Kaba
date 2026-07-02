@@ -5,6 +5,7 @@ import { Bubble } from "@/components/ui/Bubble";
 import { ComicButton } from "@/components/ui/ComicButton";
 import { PageBanner } from "@/components/sections/PageBanner";
 import { AboutCards } from "@/components/sections/AboutCards";
+import { VeroAvatar } from "@/components/ui/VeroAvatar";
 
 export const metadata: Metadata = {
   title: "À propos de Véronique — Magnétiseuse à Longwy",
@@ -62,11 +63,18 @@ export default function AproposPage() {
       />
 
       <div className="mx-auto max-w-4xl px-4 md:px-6">
-        <Bubble variant="aura" tail="bottom-left">
-          <h2 className="font-[family-name:var(--font-display)] text-2xl">Mon parcours</h2>
-          <p className="mt-4 leading-relaxed text-ink/80">{about.journey}</p>
-          <p className="mt-4 leading-relaxed text-ink/80">{about.approach}</p>
-        </Bubble>
+
+        {/* ── Avatar BD + texte parcours ── */}
+        <div className="grid items-end gap-8 lg:grid-cols-[1fr_auto]">
+          <Bubble variant="aura" tail="bottom-left">
+            <h2 className="font-[family-name:var(--font-display)] text-2xl">Mon parcours</h2>
+            <p className="mt-4 leading-relaxed text-ink/80">{about.journey}</p>
+            <p className="mt-4 leading-relaxed text-ink/80">{about.approach}</p>
+          </Bubble>
+
+          {/* Pose "réfléchit" — buste, regard en l'air */}
+          <VeroAvatar pose="reflechit" size="md" className="hidden lg:flex" />
+        </div>
 
         <AboutCards cards={cards} />
 

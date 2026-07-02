@@ -1,3 +1,20 @@
+/**
+ * Illustrations BD de Véronique — 5 poses, fond transparent
+ * Fichiers à placer dans public/images/ avec ces noms exacts :
+ *   vero-salut.png        → plein corps, main levée, sourire
+ *   vero-confiante.png    → buste, bras croisés, sourire
+ *   vero-reflechit.png    → buste, menton dans la main, regard en l'air
+ *   vero-meditation.png   → plein corps, posture lotus
+ *   vero-debout.png       → plein corps, debout, pensif
+ */
+export const veroAvatars = {
+  salut:      "/images/vero-salut.png",
+  confiante:  "/images/vero-confiante.png",
+  reflechit:  "/images/vero-reflechit.png",
+  meditation: "/images/vero-meditation.png",
+  debout:     "/images/vero-debout.png",
+} as const;
+
 export const images = {
   /** Fond hero — deux arbres anciens, lumière soleil entre eux */
   heroFond: "/images/arbres-soleil.jpg",
