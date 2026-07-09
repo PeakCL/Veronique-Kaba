@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Heart } from "lucide-react";
 import { ComicButton } from "@/components/ui/ComicButton";
+import { VeroAvatar } from "@/components/ui/VeroAvatar";
 import { images } from "@/lib/images";
 
 export function WarmCTA() {
@@ -29,6 +30,9 @@ export function WarmCTA() {
         viewport={{ once: true, margin: "-60px" }}
         transition={{ duration: 0.75, ease: "easeOut" }}
       >
+        {/* Pose "ouverture" — bras ouverts, joie face à la nature */}
+        <VeroAvatar pose="ouverture" size="md" className="mb-2" />
+
         <motion.div
           animate={{ scale: [1, 1.08, 1] }}
           transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}

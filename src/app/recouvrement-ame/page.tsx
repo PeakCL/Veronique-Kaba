@@ -3,6 +3,7 @@ import { soulRetrieval } from "@/lib/content";
 import { images } from "@/lib/images";
 import { Bubble } from "@/components/ui/Bubble";
 import { ComicButton } from "@/components/ui/ComicButton";
+import { VeroAvatar } from "@/components/ui/VeroAvatar";
 import { PageBanner } from "@/components/sections/PageBanner";
 
 export const metadata: Metadata = {
@@ -23,19 +24,24 @@ export default function RecouvrementAmePage() {
       />
 
       <div className="mx-auto max-w-4xl px-4 md:px-6">
-        <Bubble variant="aura" tail="bottom-left">
-          <span className="text-5xl">{soulRetrieval.emoji}</span>
-          <p className="mt-4 text-lg leading-relaxed text-ink/80">{soulRetrieval.description}</p>
-          <ul className="mt-6 space-y-3">
-            {soulRetrieval.points.map((point) => (
-              <li key={point} className="flex items-start gap-2 text-sm">
-                <span className="accent-star">★</span>
-                {point}
-              </li>
-            ))}
-          </ul>
-          <p className="mt-6 text-sm italic text-ink/60">{soulRetrieval.note}</p>
-        </Bubble>
+        <div className="grid items-center gap-8 lg:grid-cols-[1fr_auto]">
+          <Bubble variant="aura" tail="bottom-left">
+            <span className="text-5xl">{soulRetrieval.emoji}</span>
+            <p className="mt-4 text-lg leading-relaxed text-ink/80">{soulRetrieval.description}</p>
+            <ul className="mt-6 space-y-3">
+              {soulRetrieval.points.map((point) => (
+                <li key={point} className="flex items-start gap-2 text-sm">
+                  <span className="accent-star">★</span>
+                  {point}
+                </li>
+              ))}
+            </ul>
+            <p className="mt-6 text-sm italic text-ink/60">{soulRetrieval.note}</p>
+          </Bubble>
+
+          {/* Pose "pensive" — regard levé, contemplation */}
+          <VeroAvatar pose="pensive" size="md" className="hidden lg:flex" />
+        </div>
 
         <Bubble variant="white" className="mt-8" tail="bottom-right">
           <p className="text-sm text-ink/75">

@@ -12,6 +12,7 @@ import { images } from "@/lib/images";
 import Image from "next/image";
 import { Bubble } from "@/components/ui/Bubble";
 import { ComicButton } from "@/components/ui/ComicButton";
+import { VeroAvatar } from "@/components/ui/VeroAvatar";
 import { PageBanner } from "@/components/sections/PageBanner";
 import { PayPalPay } from "@/components/payment/PayPalPayLazy";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -47,19 +48,24 @@ export default function SoinsPage() {
       />
 
       <div className="mx-auto max-w-6xl px-4 md:px-6">
-        <Bubble variant="sky" tail="bottom-left" className="mb-10">
-          <h2 className="font-[family-name:var(--font-display)] text-2xl">Comment se déroule une séance ?</h2>
-          <ul className="mt-4 space-y-2 text-ink/80">
-            {sessionInfo.flow.map((step) => (
-              <li key={step} className="flex items-start gap-2">
-                <span className="accent-star">★</span>
-                {step}
-              </li>
-            ))}
-          </ul>
-          <p className="mt-4 text-sm text-ink/70">{site.locationDetail}</p>
-          <p className="mt-4 text-xs italic text-ink/60">{sessionInfo.disclaimer}</p>
-        </Bubble>
+        <div className="mb-10 grid items-center gap-8 lg:grid-cols-[1fr_auto]">
+          <Bubble variant="sky" tail="bottom-left">
+            <h2 className="font-[family-name:var(--font-display)] text-2xl">Comment se déroule une séance ?</h2>
+            <ul className="mt-4 space-y-2 text-ink/80">
+              {sessionInfo.flow.map((step) => (
+                <li key={step} className="flex items-start gap-2">
+                  <span className="accent-star">★</span>
+                  {step}
+                </li>
+              ))}
+            </ul>
+            <p className="mt-4 text-sm text-ink/70">{site.locationDetail}</p>
+            <p className="mt-4 text-xs italic text-ink/60">{sessionInfo.disclaimer}</p>
+          </Bubble>
+
+          {/* Pose "énergie dorée" — méditation, lumière rayonnant du cœur */}
+          <VeroAvatar pose="meditationEnergie" size="lg" className="hidden lg:flex" priority />
+        </div>
 
         {/* Image séance énergétique */}
         <div className="relative mb-10 overflow-hidden rounded-3xl comic-border-lg aspect-[21/9] min-h-[180px]">

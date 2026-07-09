@@ -25,6 +25,9 @@ const poseMeta: Record<Pose, { alt: string; width: number; height: number; aspec
   reflechit:  { alt: "Véronique en réflexion, menton dans la main",  width: 360, height: 400, aspect: "aspect-[360/400]" },
   meditation: { alt: "Véronique en méditation, posture lotus",        width: 440, height: 500, aspect: "aspect-[440/500]" },
   debout:     { alt: "Véronique debout, pensif",                      width: 340, height: 560, aspect: "aspect-[340/560]" },
+  meditationEnergie: { alt: "Véronique en méditation, énergie dorée rayonnant du cœur", width: 790, height: 870, aspect: "aspect-[790/870]" },
+  ouverture:  { alt: "Véronique bras ouverts face à la nature au coucher du soleil", width: 1008, height: 870, aspect: "aspect-[1008/870]" },
+  pensive:    { alt: "Véronique pensive, le regard levé",              width: 814, height: 884, aspect: "aspect-[814/884]" },
 };
 
 const sizes = {

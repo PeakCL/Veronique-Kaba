@@ -6,13 +6,19 @@
  *   vero-reflechit.png    → buste, menton dans la main, regard en l'air
  *   vero-meditation.png   → plein corps, posture lotus
  *   vero-debout.png       → plein corps, debout, pensif
+ *   vero-meditation-energie.png → lotus, énergie dorée au cœur + halo géométrie sacrée
+ *   vero-ouverture-nature.png   → bras ouverts, vallée au coucher de soleil, joie
+ *   vero-pensive.png            → buste, regard levé, contemplation
  */
 export const veroAvatars = {
-  salut:      "/images/vero-salut.png",
-  confiante:  "/images/vero-confiante.png",
-  reflechit:  "/images/vero-reflechit.png",
-  meditation: "/images/vero-meditation.png",
-  debout:     "/images/vero-debout.png",
+  salut:             "/images/vero-salut.png",
+  confiante:         "/images/vero-confiante.png",
+  reflechit:         "/images/vero-reflechit.png",
+  meditation:        "/images/vero-meditation.png",
+  debout:            "/images/vero-debout.png",
+  meditationEnergie: "/images/vero-meditation-energie.png",
+  ouverture:         "/images/vero-ouverture-nature.png",
+  pensive:           "/images/vero-pensive.png",
 } as const;
 
 export const images = {
