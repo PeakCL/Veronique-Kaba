@@ -20,16 +20,41 @@ Ouvrir [http://localhost:3000](http://localhost:3000)
 | `PAYPAL_CLIENT_ID` | Client ID PayPal (serveur) |
 | `PAYPAL_CLIENT_SECRET` | Secret PayPal (serveur uniquement) |
 | `NEXT_PUBLIC_PAYPAL_CLIENT_ID` | Client ID public (boutons PayPal) |
-| `NEXT_PUBLIC_SITE_URL` | URL du site (ex. `https://www.veronique-et-lenergie-doree.fr`) |
+| `NEXT_PUBLIC_SITE_URL` | URL du site (prod : `https://veronique-kaba.fr`) |
 | `NEXT_PUBLIC_CALENDLY_URL` | Lien Calendly pour prise de RDV |
 | `FORMATION_ACCESS_PASSWORD` | Mot de passe espace formation élèves |
+
+## Formulaire de contact — Netlify Forms
+
+Le formulaire `/contact` passe par **Netlify Forms**. Aucune variable
+d'environnement, aucun service tiers, aucune boîte mail sur le domaine.
+
+Le robot de build de Netlify détecte les formulaires en analysant le HTML
+statique. Les pages Next.js étant rendues par le runtime Next, la structure du
+formulaire est déclarée dans `public/__forms.html` (servi tel quel), et
+`ContactForm.tsx` y envoie la soumission avec le champ `form-name=contact`.
+
+**Si vous modifiez les champs du formulaire, modifiez les deux fichiers** — les
+`name` doivent correspondre, sinon Netlify rejette la soumission.
+
+Relever les messages : **Netlify > Forms > `contact`**.
+Être notifiée : **Netlify > Forms > Form notifications > Add notification >
+Email notification**, vers `Eyaelle54350@gmail.com`.
+
+Protection anti-spam : pot de miel sur le champ `website`
+(`data-netlify-honeypot`). Pour ajouter reCAPTCHA, voir la doc Netlify.
+
+> **En local, le formulaire échoue — c'est normal.** Netlify Forms n'existe que
+> sur un site déployé : `npm run dev` et `npm run start` renvoient un 405 sur le
+> POST, et le formulaire affiche son message d'erreur. Pour tester réellement,
+> il faut un déploiement Netlify (une preview de branche suffit).
 
 ## Pages
 
 - **/** — Accueil
 - **/soins** — Prestations, tarifs, paiement PayPal
-- **/philosophie** — Approche & valeurs
-- **/temoignages** — Retours clients
+- **/philosophie** — redirection 308 vers `/apropos`
+- **/temoignages** — redirection 308 vers `/#temoignages`
 - **/formation** — Présentation + inscription
 - **/formation/espace** — Contenu protégé (cookie)
 - **/rendez-vous** — Calendly embed

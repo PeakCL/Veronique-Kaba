@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { breadcrumbJsonLd } from "@/lib/seo";
 import { site } from "@/lib/content";
 import { images } from "@/lib/images";
 import { Bubble } from "@/components/ui/Bubble";
 import { PageBanner } from "@/components/sections/PageBanner";
 import { ContactForm } from "@/components/contact/ContactForm";
-import { Facebook, Instagram, MapPin, Phone, MessageCircle } from "lucide-react";
+import { Facebook, Instagram, Mail, MapPin, Phone, MessageCircle } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Contact — Magnétiseuse à Longwy",
@@ -16,6 +18,12 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <div className="pb-12 pt-4 md:pt-6">
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Accueil", path: "/" },
+          { name: "Contact", path: "/contact" },
+        ])}
+      />
       <PageBanner
         title="Contact"
         subtitle="Une question, une prise de rendez-vous ? Écrivez-moi avec bienveillance ✨"
@@ -45,6 +53,12 @@ export default function ContactPage() {
                   className="font-semibold hover:underline"
                 >
                   Écrire sur WhatsApp
+                </a>
+              </p>
+              <p className="mt-2 flex items-center gap-2">
+                <Mail className="h-4 w-4 shrink-0 text-aura-600" />
+                <a href={`mailto:${site.email}`} className="break-all hover:underline">
+                  {site.email}
                 </a>
               </p>
               <p className="mt-2 flex items-start gap-2 text-sm">

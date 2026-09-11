@@ -13,7 +13,8 @@ export const site = {
   /** Lien WhatsApp « click-to-chat » (même numéro) */
   whatsapp: "https://wa.me/33771176727",
   siret: "98027438500015",
-  email: "contact@veronique-et-lenergie-doree.fr",
+  /** Adresse réellement relevée par Véronique (boîte Gmail active). */
+  email: "Eyaelle54350@gmail.com",
   practiceSince: 2015,
   trainedSince: 2012,
   /** Données de localisation pour le référencement local (Schema.org / GBP) */
@@ -33,7 +34,7 @@ export const site = {
     instagram: "https://www.instagram.com/vero.kaba",
   },
   /** Fiche Google (avis publics — toujours à jour) */
-  googleProfile: "https://share.google/uVvgboCH6BQU7t7du",
+  googleProfile: "https://www.google.com/search?kgmid=/g/11q4yzvyhn",
   seoKeywords: [
     "magnétiseuse Longwy",
     "magnétiseur Longwy",
@@ -185,6 +186,19 @@ export const soulRetrieval = {
     "Idéal si vous vous sentez « incomplet·e », épuisé·e ou déconnecté·e de vous-même",
   ],
   note: "Tarif et durée selon votre besoin — échangeons lors d'un premier contact.",
+  /** Déroulé d'une séance — structure la page en sections H2 (SEO + lisibilité) */
+  flow: [
+    "Un premier échange, par téléphone ou en visio, pour comprendre votre situation et répondre à vos questions. Rien ne commence avant que vous vous sentiez à l'aise.",
+    "Le soin lui-même, en position assise ou allongée, accompagné au tambour. Vous n'avez rien à faire : vous vous laissez porter.",
+    "Un temps d'échange après la séance, pour mettre des mots sur ce que vous avez ressenti et envisager la suite si besoin.",
+  ],
+  /** À qui ce soin s'adresse */
+  forWhom: [
+    "Après un choc, un deuil ou une rupture qui a laissé une trace durable",
+    "En cas de fatigue profonde qui ne cède pas au repos",
+    "Quand vous vous sentez « à côté de vous-même », déconnecté·e de vos élans",
+    "Après une longue période de tension ou de suradaptation",
+  ],
 } as const;
 
 export const formation = {
@@ -202,7 +216,104 @@ export const formation = {
     "Possibilité de pratiquer en groupe avec un·e collègue formateur·rice",
   ],
   quote: "Tout le monde peut magnétiser — il suffit d'apprendre à ressentir !",
+
+  /** Accroche affichée sous le titre de la page */
+  promise:
+    "En une demi-journée, repartez avec un ressenti concret entre vos mains et un protocole de soin complet que vous saurez dérouler seul·e.",
+
+  /** Public visé — lève l'auto-exclusion (« ce n'est pas pour moi ») */
+  forWhom: [
+    {
+      emoji: "🌱",
+      title: "Vous partez de zéro",
+      text: "Aucun prérequis, aucune expérience demandée. La formation commence par le tout premier ressenti dans les paumes.",
+    },
+    {
+      emoji: "💫",
+      title: "Vous ressentez déjà « quelque chose »",
+      text: "Des mains qui chauffent, des intuitions physiques : vous voulez comprendre ce qui se passe et en faire quelque chose de structuré.",
+    },
+    {
+      emoji: "🤲",
+      title: "Vous accompagnez déjà des personnes",
+      text: "Soignant·e, masseur·se, thérapeute : ajoutez une corde énergétique à votre pratique existante.",
+    },
+    {
+      emoji: "🏡",
+      title: "Vous voulez soulager vos proches",
+      text: "Apprendre pour votre entourage — un enfant, un conjoint, un parent — sans viser une activité professionnelle.",
+    },
+  ],
+
+  /** Ce qu'on sait faire à la fin — le vrai argument de conversion */
+  outcomes: [
+    "Percevoir votre magnétisme dans vos mains et savoir le relancer quand il s'estompe",
+    "Repérer les centres bio-énergétiques et faire un scan avant d'intervenir",
+    "Dérouler une séance complète du début à la fin, avec une fermeture énergétique propre",
+    "Vous protéger et vous nettoyer après un soin — l'hygiène de pratique qu'on oublie souvent d'enseigner",
+    "Savoir ce que vous ne devez pas faire : les limites, les cas à renvoyer vers un médecin",
+  ],
+
+  /** Déroulé — rassure sur le format */
+  flow: [
+    {
+      title: "Un échange avant de vous inscrire",
+      text: "On se parle d'abord, pour vérifier que la formation correspond à ce que vous cherchez. Personne ne s'inscrit à l'aveugle.",
+    },
+    {
+      title: "La demi-journée de formation",
+      text: "Théorie courte, pratique longue. Vous manipulez dès les premières minutes — le ressenti s'apprend par l'expérience, pas par les diapositives.",
+    },
+    {
+      title: "L'espace membre, ensuite",
+      text: "Les chapitres restent accessibles après la formation pour réviser à votre rythme, autant de fois que vous le souhaitez.",
+    },
+  ],
+
+  /** Pourquoi avec Véronique — signaux E-E-A-T */
+  why: [
+    "Formée en 2012, en exercice depuis 2015 — la formation sort d'une pratique quotidienne, pas d'un manuel",
+    "Éducatrice de métier : transmettre est mon premier savoir-faire",
+    "Des mots simples, jamais de jargon mystérieux ni de promesses magiques",
+    "Une pratique qui dialogue avec la médecine conventionnelle et connaît ses limites",
+  ],
+
+  prerequisites: "Aucun prérequis. Ni diplôme, ni expérience, ni « don » préalable.",
 } as const;
+
+/** FAQ de la page Formation — alimente aussi le balisage FAQPage */
+export const formationFaqs = [
+  {
+    question: "Faut-il avoir un don pour apprendre le magnétisme ?",
+    answer:
+      "Non. Le magnétisme n'est pas un don réservé à quelques-uns : c'est une capacité que chacun possède et qu'il s'agit d'apprendre à ressentir, puis à diriger. La formation commence justement par ce premier ressenti dans les paumes.",
+  },
+  {
+    question: "La formation se fait-elle à distance ou en présentiel ?",
+    answer:
+      "Les deux. En présentiel dans un rayon de 15 km autour de Longwy, ou à distance en visio. Le format à distance fonctionne bien : les exercices de ressenti se pratiquent sur vous-même, guidé·e en direct.",
+  },
+  {
+    question: "Combien de temps dure la formation et combien coûte-t-elle ?",
+    answer:
+      "Une demi-journée, pour 70 €. L'accès à l'espace membre est inclus et reste disponible après la formation pour réviser les chapitres à votre rythme.",
+  },
+  {
+    question: "Puis-je exercer professionnellement après cette formation ?",
+    answer:
+      "Cette formation vous donne les bases pour pratiquer un soin en confiance, d'abord pour vous et vos proches. En faire une activité professionnelle demande de la pratique, du recul et des démarches administratives : nous pouvons en parler lors de l'échange préalable.",
+  },
+  {
+    question: "Peut-on se former à plusieurs ?",
+    answer:
+      "Oui. Les sessions en groupe sont possibles, parfois animées en duo avec un·e collègue formateur·rice. Contactez-moi pour organiser une session dédiée.",
+  },
+  {
+    question: "Le magnétisme remplace-t-il un traitement médical ?",
+    answer:
+      "Non, jamais — et c'est un point que la formation aborde explicitement. Le magnétisme est une approche complémentaire : savoir reconnaître les situations qui relèvent d'un médecin fait partie de ce qui est enseigné.",
+  },
+] as const;
 
 /** Services réservables en ligne (PayPal) */
 export const services = [

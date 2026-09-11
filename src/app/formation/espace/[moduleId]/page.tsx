@@ -4,6 +4,11 @@ import { hasFormationAccess } from "@/lib/auth";
 import { formationModules } from "@/lib/content";
 import { Bubble } from "@/components/ui/Bubble";
 
+export const metadata = {
+  title: "Module de formation",
+  robots: { index: false, follow: false },
+};
+
 export default async function ModulePage({
   params,
 }: {

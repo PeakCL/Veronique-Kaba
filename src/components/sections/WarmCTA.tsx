@@ -16,6 +16,8 @@ export function WarmCTA() {
           alt=""
           fill
           className="object-cover object-center opacity-[0.12]"
+          // Décor à 12 % d'opacité — qualité basse, poids divisé.
+          quality={35}
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-br from-rose-50 via-gold-50 to-aura-50" />

@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { breadcrumbJsonLd } from "@/lib/seo";
 import { about, site } from "@/lib/content";
 import { images } from "@/lib/images";
 import { Bubble } from "@/components/ui/Bubble";
@@ -55,6 +57,12 @@ const cards = [
 export default function AproposPage() {
   return (
     <div className="pb-12 pt-4 md:pt-6">
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Accueil", path: "/" },
+          { name: "À propos", path: "/apropos" },
+        ])}
+      />
       <PageBanner
         title="À propos de Véronique"
         subtitle={`${site.profession} — depuis ${site.practiceSince}`}

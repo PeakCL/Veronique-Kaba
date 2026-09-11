@@ -2,6 +2,12 @@ import { CheckCircle } from "lucide-react";
 import { Bubble } from "@/components/ui/Bubble";
 import { ComicButton } from "@/components/ui/ComicButton";
 
+export const metadata = {
+  title: "Paiement confirmé",
+  robots: { index: false, follow: false },
+  alternates: { canonical: "/paiement/succes" },
+};
+
 export default async function PaiementSuccesPage({
   searchParams,
 }: {

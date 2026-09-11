@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description:
     "Mentions légales du site de Véronique Kaba — magnétiseuse et énergéticienne à Longwy.",
   alternates: { canonical: "/mentions-legales" },
-  robots: { index: false, follow: true },
+  robots: { index: true, follow: true },
 };
 
 export default function MentionsLegalesPage() {
@@ -25,7 +25,10 @@ export default function MentionsLegalesPage() {
               <br />
               Téléphone : {site.phone}
               <br />
-              E-mail : {site.email}
+              E-mail :{" "}
+              <a href={`mailto:${site.email}`} className="hover:underline">
+                {site.email}
+              </a>
               <br />
               {site.locationDetail}
             </p>
