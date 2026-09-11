@@ -6,7 +6,7 @@ import { images } from "@/lib/images";
 import { Bubble } from "@/components/ui/Bubble";
 import { PageBanner } from "@/components/sections/PageBanner";
 import { ContactForm } from "@/components/contact/ContactForm";
-import { Facebook, Instagram, Mail, MapPin, Phone, MessageCircle } from "lucide-react";
+import { Clock, Facebook, Instagram, Mail, MapPin, Phone, MessageCircle } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Contact — Magnétiseuse à Longwy",
@@ -14,6 +14,22 @@ export const metadata: Metadata = {
     "Contactez Véronique, magnétiseuse et énergéticienne à Longwy. Séances en présentiel (15 km autour de Longwy) ou à distance en visio. Téléphone : 07 71 17 67 27.",
   alternates: { canonical: "/contact" },
 };
+
+/** Libellés français des jours, pour afficher les horaires de la fiche Google. */
+const JOURS_FR: Record<string, string> = {
+  Monday: "lundi",
+  Tuesday: "mardi",
+  Wednesday: "mercredi",
+  Thursday: "jeudi",
+  Friday: "vendredi",
+  Saturday: "samedi",
+  Sunday: "dimanche",
+};
+
+const plageJours = (days: readonly string[]) =>
+  days.length > 1
+    ? `${JOURS_FR[days[0]]} – ${JOURS_FR[days[days.length - 1]]}`
+    : JOURS_FR[days[0]];
 
 export default function ContactPage() {
   return (
@@ -65,7 +81,28 @@ export default function ContactPage() {
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-aura-600" />
                 <span>{site.locationDetail}</span>
               </p>
-              <p className="mt-2 text-xs text-ink/60">SIRET {site.siret}</p>
+              <div className="mt-4 border-t border-ink/10 pt-3">
+                <p className="flex items-center gap-2 text-sm font-bold">
+                  <Clock className="h-4 w-4 text-aura-600" />
+                  Horaires
+                </p>
+                <dl className="mt-2 space-y-1 text-sm">
+                  {site.openingHours.map((h) => (
+                    <div key={h.days.join()} className="flex justify-between gap-4">
+                      <dt className="text-ink/70">{plageJours(h.days)}</dt>
+                      <dd className="tabular-nums">
+                        {h.opens} – {h.closes}
+                      </dd>
+                    </div>
+                  ))}
+                  <div className="flex justify-between gap-4">
+                    <dt className="text-ink/70">dimanche</dt>
+                    <dd className="text-ink/60">fermé</dd>
+                  </div>
+                </dl>
+              </div>
+
+              <p className="mt-4 text-xs text-ink/60">SIRET {site.siret}</p>
             </Bubble>
 
             <Bubble variant="aura" tail="bottom-left">

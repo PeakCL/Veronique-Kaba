@@ -33,6 +33,17 @@ export const site = {
     facebook: "https://www.facebook.com/vero.kaba",
     instagram: "https://www.instagram.com/vero.kaba",
   },
+  /**
+   * Horaires réels, relevés sur la fiche Google Business Profile le 11/09/2026.
+   * Doivent rester identiques à ceux de la fiche : une divergence site/fiche est
+   * un signal négatif pour le référencement local.
+   */
+  openingHours: [
+    { days: ["Monday", "Tuesday", "Wednesday", "Thursday"], opens: "09:00", closes: "18:00" },
+    { days: ["Friday"], opens: "09:00", closes: "16:30" },
+    { days: ["Saturday"], opens: "10:00", closes: "16:00" },
+    // Dimanche fermé — un jour non déclaré est interprété comme fermé.
+  ],
   /** Fiche Google (avis publics — toujours à jour) */
   googleProfile: "https://www.google.com/search?kgmid=/g/11q4yzvyhn",
   seoKeywords: [

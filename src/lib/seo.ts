@@ -43,17 +43,12 @@ export function localBusinessJsonLd() {
     knowsLanguage: "fr-FR",
     // La fiche Google est le lien qui relie le site à l'entité du pack local.
     sameAs: [site.social.facebook, site.social.instagram, site.googleProfile],
-    hasMap: site.googleProfile,
-    // TODO — renseigner les horaires réels puis décommenter. Ne jamais déclarer
-    // d'horaires inexacts : ils remontent dans Google et doivent coller à la fiche GBP.
-    // openingHoursSpecification: [
-    //   {
-    //     "@type": "OpeningHoursSpecification",
-    //     dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-    //     opens: "09:00",
-    //     closes: "18:00",
-    //   },
-    // ],
+    openingHoursSpecification: site.openingHours.map((h) => ({
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: [...h.days],
+      opens: h.opens,
+      closes: h.closes,
+    })),
     founder: { "@id": PERSON_ID },
     address: {
       "@type": "PostalAddress",
