@@ -14,6 +14,8 @@ export function ContactForm() {
     const form = e.currentTarget;
     const data = new FormData(form);
 
+    // Pot de miel : un bot remplit tous les champs, un humain ne voit pas celui-ci.
+    // On simule un succès pour ne pas lui signaler qu'il a été détecté.
     if (data.get("website")) {
       setStatus("ok");
       form.reset();
@@ -21,16 +23,21 @@ export function ContactForm() {
     }
 
     try {
-      const res = await fetch("/api/contact", {
+      // Netlify Forms : la soumission part vers /__forms.html, un fichier statique
+      // de `public/` où le formulaire est déclaré (le robot de build de Netlify ne
+      // peut pas détecter un formulaire rendu par le runtime Next).
+      // Le champ `form-name` indique à Netlify quel formulaire est concerné.
+      const res = await fetch("/__forms.html", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: data.get("name"),
-          email: data.get("email"),
-          message: data.get("message"),
-        }),
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({
+          "form-name": "contact",
+          name: String(data.get("name") ?? ""),
+          email: String(data.get("email") ?? ""),
+          message: String(data.get("message") ?? ""),
+        }).toString(),
       });
-      if (!res.ok) throw new Error();
+      if (!res.ok) throw new Error(`Netlify Forms: ${res.status}`);
       setStatus("ok");
       form.reset();
     } catch {
@@ -40,7 +47,16 @@ export function ContactForm() {
 
   return (
     <Bubble variant="white" tail="bottom-left">
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form
+        name="contact"
+        method="POST"
+        action="/__forms.html"
+        data-netlify="true"
+        data-netlify-honeypot="website"
+        onSubmit={handleSubmit}
+        className="space-y-4"
+      >
+        <input type="hidden" name="form-name" value="contact" />
         <div>
           <label htmlFor="name" className="block text-sm font-bold">
             Nom *

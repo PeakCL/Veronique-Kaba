@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Définition des formulaires Netlify</title>
+    <meta name="robots" content="noindex, nofollow" />
+  </head>
+  <body>
+    <!--
+      Ce fichier n'est jamais affiché aux visiteurs.
+
+      Netlify détecte les formulaires en analysant le HTML *statique* au moment du
+      build. Les pages Next.js (App Router) sont rendues par le runtime Next, pas
+      servies comme du HTML statique : le robot de Netlify n'y voit donc aucun
+      formulaire. La méthode recommandée est de déclarer ici la structure du
+      formulaire, dans un fichier de `public/` servi tel quel, puis d'y envoyer la
+      soumission depuis React.
+
+      Les `name` ci-dessous doivent correspondre exactement à ceux envoyés par
+      src/components/contact/ContactForm.tsx.
+    -->
+    <form name="contact" data-netlify="true" data-netlify-honeypot="website" hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <textarea name="message"></textarea>
+      <input type="text" name="website" />
+    </form>
+  </body>
+</html>
