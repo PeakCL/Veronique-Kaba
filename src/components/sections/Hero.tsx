@@ -40,7 +40,10 @@ export function Hero() {
           alt=""
           fill
           className="object-cover opacity-[0.14]"
-          priority
+          // Décor rendu à 14 % d'opacité : jamais l'élément LCP.
+          // Pas de `priority` (il concurrençait le préchargement de l'illustration),
+          // et une qualité basse suffit — la différence est invisible sous le dégradé.
+          quality={35}
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-gold-50/70 via-cream/80 to-cream" />

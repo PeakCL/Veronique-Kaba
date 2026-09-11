@@ -1,4 +1,12 @@
-import { site, faqs, testimonials, careTypes, sessionInfo, formation } from "@/lib/content";
+import {
+  site,
+  faqs,
+  formationFaqs,
+  testimonials,
+  careTypes,
+  sessionInfo,
+  formation,
+} from "@/lib/content";
 
 /** URL canonique de production */
 export const siteUrl = site.url;
@@ -33,7 +41,19 @@ export function localBusinessJsonLd() {
     priceRange: "€€",
     currenciesAccepted: "EUR",
     knowsLanguage: "fr-FR",
-    sameAs: [site.social.facebook, site.social.instagram],
+    // La fiche Google est le lien qui relie le site à l'entité du pack local.
+    sameAs: [site.social.facebook, site.social.instagram, site.googleProfile],
+    hasMap: site.googleProfile,
+    // TODO — renseigner les horaires réels puis décommenter. Ne jamais déclarer
+    // d'horaires inexacts : ils remontent dans Google et doivent coller à la fiche GBP.
+    // openingHoursSpecification: [
+    //   {
+    //     "@type": "OpeningHoursSpecification",
+    //     dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    //     opens: "09:00",
+    //     closes: "18:00",
+    //   },
+    // ],
     founder: { "@id": PERSON_ID },
     address: {
       "@type": "PostalAddress",
@@ -141,19 +161,52 @@ export function courseJsonLd() {
     "@type": "Course",
     name: formation.title,
     description: formation.description,
+    url: abs("/formation"),
+    inLanguage: "fr-FR",
     provider: { "@id": ORG_ID, "@type": "Organization", name: site.name },
+    // `teaches` et `coursePrerequisites` alimentent les résultats enrichis « Course »
+    // et aident les moteurs de réponse à résumer la formation correctement.
+    teaches: [...formation.outcomes],
+    coursePrerequisites: formation.prerequisites,
+    educationalLevel: "Débutant",
     offers: {
       "@type": "Offer",
       price: formation.price,
       priceCurrency: "EUR",
       url: abs("/formation"),
       availability: "https://schema.org/InStock",
+      category: "Paid",
     },
     hasCourseInstance: {
       "@type": "CourseInstance",
       courseMode: ["online", "onsite"],
       courseWorkload: "PT4H",
+      inLanguage: "fr-FR",
+      location: {
+        "@type": "Place",
+        name: site.geo.addressLocality,
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: site.geo.addressLocality,
+          postalCode: site.geo.postalCode,
+          addressRegion: site.geo.addressRegion,
+          addressCountry: site.geo.addressCountry,
+        },
+      },
     },
+  };
+}
+
+/** FAQ propre à la page Formation. */
+export function formationFaqPageJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: formationFaqs.map((f) => ({
+      "@type": "Question",
+      name: f.question,
+      acceptedAnswer: { "@type": "Answer", text: f.answer },
+    })),
   };
 }
 

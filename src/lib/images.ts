@@ -22,8 +22,8 @@ export const veroAvatars = {
 } as const;
 
 export const images = {
-  /** Fond hero — deux arbres anciens, lumière soleil entre eux */
-  heroFond: "/images/arbres-soleil.jpg",
+  /** Fond hero — texture décorative allégée (rendue à 14 % d'opacité) */
+  heroFond: "/images/texture-arbres.jpg",
   /** Illustration principale hero — rayons soleil à travers bouleaux (portrait) */
   mainsEnergie: "/images/foret-rayons-bouleaux.jpg",
   /** Page soins — soin énergétique réel, mains posées sur genoux */
@@ -52,8 +52,8 @@ export const images = {
   meditationSoleilCascade: "/images/meditation-soleil-cascade.jpg",
   /** Nature — femme méditant avec papillons et boules de feu */
   meditationNatureEnergie: "/images/meditation-nature-energie.jpg",
-  /** WarmCTA fond — silhouette homme dans forêt dorée */
-  foretLumiere: "/images/foret-lumiere-homme.jpg",
+  /** WarmCTA fond — texture décorative allégée (rendue à 12 % d'opacité) */
+  foretLumiere: "/images/texture-foret-lumiere.jpg",
   /** Nature — forêt automne lumière dorée tamisée */
   foretAutomne: "/images/foret-automne-brume.jpg",
   /** Nature — forêt hiver rayons soleil dorés */
@@ -61,6 +61,6 @@ export const images = {
   /** À propos banner large — libellule méditation énergie colorée */
   meditationLibellule: "/images/meditation-libellule.jpg",
   /** Alias rétrocompatibles */
-  energieFond: "/images/arbres-soleil.jpg",
+  energieFond: "/images/texture-arbres.jpg",
   mainsAmpoule: "/images/foret-rayons-bouleaux.jpg",
 } as const;

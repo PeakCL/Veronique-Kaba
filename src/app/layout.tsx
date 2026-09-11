@@ -37,7 +37,6 @@ export const metadata: Metadata = {
   },
   description:
     "Magnétiseuse et énergéticienne à Longwy depuis 2015. Soins personnalisés (40 min, 60 €) pour soulager douleurs, stress et fatigue, coupe de feu, recouvrement d'âme et formation. Présentiel (15 km autour de Longwy) ou à distance en visio.",
-  keywords: [...site.seoKeywords],
   alternates: {
     canonical: "/",
   },
@@ -51,9 +50,12 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/images/mains-energie-doree.webp",
+        // Format 1200 x 630 : ratio attendu par X/Twitter et LinkedIn.
+        // (l'ancienne image était carrée et déclarée 1200x1200 alors qu'elle
+        // faisait 1024x1024 — dimensions fausses, aperçu rogné)
+        url: "/images/og-partage.webp",
         width: 1200,
-        height: 1200,
+        height: 630,
         alt: "Véronique Kaba — magnétiseuse à Longwy",
       },
     ],
@@ -63,7 +65,7 @@ export const metadata: Metadata = {
     title: "Magnétiseuse à Longwy — Magnétisme & soins énergétiques",
     description:
       "Soins énergétiques, magnétisme, coupe de feu et recouvrement d'âme à Longwy et à distance.",
-    images: ["/images/mains-energie-doree.webp"],
+    images: ["/images/og-partage.webp"],
   },
   robots: {
     index: true,

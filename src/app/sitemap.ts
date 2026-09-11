@@ -16,10 +16,13 @@ const routes: { path: string; priority: number; changeFrequency: MetadataRoute.S
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
+  // Pas de `lastModified` : la date de build, identique pour toutes les URL, n'apporte
+  // aucune information à Google — un lastmod non fiable est ignoré. Mieux vaut l'omettre
+  // que de déclarer une date fausse.
   return routes.map((r) => ({
-    url: new URL(r.path, base).toString(),
-    lastModified: now,
+    // `replace` : la racine devient « https://domaine.fr » (sans slash final),
+    // exactement la forme servie dans la balise canonical.
+    url: new URL(r.path, base).toString().replace(/\/$/, ""),
     changeFrequency: r.changeFrequency,
     priority: r.priority,
   }));

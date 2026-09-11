@@ -31,7 +31,7 @@ export function FormationLogin() {
     <Bubble variant="white" tail="bottom-left">
       <div className="flex items-center gap-2">
         <Lock className="h-5 w-5 text-aura-500" />
-        <h2 className="font-bold">Accès espace membre</h2>
+        <p className="font-bold">Accès espace membre</p>
       </div>
       <form onSubmit={handleSubmit} className="mt-4 space-y-4">
         <input

@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { breadcrumbJsonLd } from "@/lib/seo";
 import { sessionInfo, site } from "@/lib/content";
 import { Bubble } from "@/components/ui/Bubble";
 import { ComicButton } from "@/components/ui/ComicButton";
@@ -14,6 +16,12 @@ export const metadata: Metadata = {
 export default function RendezVousPage() {
   return (
     <div className="px-4 py-12 md:px-6">
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Accueil", path: "/" },
+          { name: "Prendre rendez-vous", path: "/rendez-vous" },
+        ])}
+      />
       <div className="mx-auto max-w-4xl">
         <Bubble variant="aura" className="text-center mb-10" tail="none">
           <h1 className="font-[family-name:var(--font-display)] text-5xl">

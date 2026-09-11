@@ -20,7 +20,7 @@ Ouvrir [http://localhost:3000](http://localhost:3000)
 | `PAYPAL_CLIENT_ID` | Client ID PayPal (serveur) |
 | `PAYPAL_CLIENT_SECRET` | Secret PayPal (serveur uniquement) |
 | `NEXT_PUBLIC_PAYPAL_CLIENT_ID` | Client ID public (boutons PayPal) |
-| `NEXT_PUBLIC_SITE_URL` | URL du site (ex. `https://www.veronique-et-lenergie-doree.fr`) |
+| `NEXT_PUBLIC_SITE_URL` | URL du site (prod : `https://veronique-kaba.fr`) |
 | `NEXT_PUBLIC_CALENDLY_URL` | Lien Calendly pour prise de RDV |
 | `FORMATION_ACCESS_PASSWORD` | Mot de passe espace formation élèves |
 
@@ -28,8 +28,8 @@ Ouvrir [http://localhost:3000](http://localhost:3000)
 
 - **/** — Accueil
 - **/soins** — Prestations, tarifs, paiement PayPal
-- **/philosophie** — Approche & valeurs
-- **/temoignages** — Retours clients
+- **/philosophie** — redirection 308 vers `/apropos`
+- **/temoignages** — redirection 308 vers `/#temoignages`
 - **/formation** — Présentation + inscription
 - **/formation/espace** — Contenu protégé (cookie)
 - **/rendez-vous** — Calendly embed

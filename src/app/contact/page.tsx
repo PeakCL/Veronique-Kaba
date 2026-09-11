@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { breadcrumbJsonLd } from "@/lib/seo";
 import { site } from "@/lib/content";
 import { images } from "@/lib/images";
 import { Bubble } from "@/components/ui/Bubble";
@@ -16,6 +18,12 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <div className="pb-12 pt-4 md:pt-6">
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Accueil", path: "/" },
+          { name: "Contact", path: "/contact" },
+        ])}
+      />
       <PageBanner
         title="Contact"
         subtitle="Une question, une prise de rendez-vous ? Écrivez-moi avec bienveillance ✨"
