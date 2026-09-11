@@ -24,7 +24,7 @@ Tout le trafic SEO gagné aujourd'hui se perd sur ces deux points.
 
 | # | Problème | Impact | Effort |
 |---|---|---|---|
-| 1 | `/rendez-vous` affiche « Configurez `NEXT_PUBLIC_CALENDLY_URL` … » | **Critique** | 10 min |
+| 1 | `/rendez-vous` affiche « Configurez `NEXT_PUBLIC_CALENDLY_URL` … » | **Critique** | ~~10 min~~ **corrigé** |
 | 2 | E-mail de contact sur un domaine mort (`veronique-et-lenergie-doree.fr`) | **Critique** | ~~30 min~~ **corrigé** |
 | 3 | `/philosophie` redirige en **307 temporaire** au lieu de 308 permanent | Élevé | 2 min |
 | 4 | Fond décoratif de 863 Ko chargé en `priority` sur desktop | Élevé | 15 min |
@@ -64,9 +64,10 @@ Corrigés dans le code (build vérifié, `tsc` et `next lint` au vert) :
 
 Ces points ne peuvent pas être corrigés depuis le dépôt&nbsp;:
 
-1. **Définir `NEXT_PUBLIC_CALENDLY_URL` sur Netlify** — sans elle, `/rendez-vous` affiche le
-   repli (désormais présentable) au lieu de l'agenda. *Le correctif de code rend la page
-   acceptable ; il ne remplace pas le calendrier.*
+1. ~~Définir `NEXT_PUBLIC_CALENDLY_URL`~~ — **abandonné** : Véronique n'a pas de compte
+   Calendly. La page `/rendez-vous` a été refondue autour de ses canaux réels (téléphone,
+   WhatsApp, formulaire de demande) et la dépendance Calendly a été retirée du code.
+   Un agenda en ligne reste ajoutable plus tard si le volume le justifie.
 2. ~~Créer une boîte sur le domaine~~ — **résolu autrement** : le site publie désormais
    `Eyaelle54350@gmail.com`, la boîte que Véronique relève réellement. Aucun enregistrement
    MX n'est nécessaire, et le point bloquant est levé sans dépendre du DNS.

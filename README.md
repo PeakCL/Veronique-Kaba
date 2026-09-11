@@ -21,7 +21,6 @@ Ouvrir [http://localhost:3000](http://localhost:3000)
 | `PAYPAL_CLIENT_SECRET` | Secret PayPal (serveur uniquement) |
 | `NEXT_PUBLIC_PAYPAL_CLIENT_ID` | Client ID public (boutons PayPal) |
 | `NEXT_PUBLIC_SITE_URL` | URL du site (prod : `https://veronique-kaba.fr`) |
-| `NEXT_PUBLIC_CALENDLY_URL` | Lien Calendly pour prise de RDV |
 | `FORMATION_ACCESS_PASSWORD` | Mot de passe espace formation élèves |
 
 ## Formulaire de contact — Netlify Forms
@@ -37,7 +36,10 @@ formulaire est déclarée dans `public/__forms.html` (servi tel quel), et
 **Si vous modifiez les champs du formulaire, modifiez les deux fichiers** — les
 `name` doivent correspondre, sinon Netlify rejette la soumission.
 
-Relever les messages : **Netlify > Forms > `contact`**.
+Deux formulaires sont déclarés : **`contact`** (page Contact) et
+**`rendez-vous`** (page Prendre rendez-vous).
+
+Relever les messages : **Netlify > Forms**.
 Être notifiée : **Netlify > Forms > Form notifications > Add notification >
 Email notification**, vers `Eyaelle54350@gmail.com`.
 
@@ -57,7 +59,7 @@ Protection anti-spam : pot de miel sur le champ `website`
 - **/temoignages** — redirection 308 vers `/#temoignages`
 - **/formation** — Présentation + inscription
 - **/formation/espace** — Contenu protégé (cookie)
-- **/rendez-vous** — Calendly embed
+- **/rendez-vous** — demande de RDV (téléphone, WhatsApp, formulaire Netlify)
 - **/contact** — Formulaire + réseaux
 
 ## Paiement PayPal
