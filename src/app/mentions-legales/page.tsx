@@ -25,7 +25,10 @@ export default function MentionsLegalesPage() {
               <br />
               Téléphone : {site.phone}
               <br />
-              E-mail : {site.email}
+              E-mail :{" "}
+              <a href={`mailto:${site.email}`} className="hover:underline">
+                {site.email}
+              </a>
               <br />
               {site.locationDetail}
             </p>

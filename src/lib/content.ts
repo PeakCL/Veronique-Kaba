@@ -13,7 +13,8 @@ export const site = {
   /** Lien WhatsApp « click-to-chat » (même numéro) */
   whatsapp: "https://wa.me/33771176727",
   siret: "98027438500015",
-  email: "contact@veronique-kaba.fr",
+  /** Adresse réellement relevée par Véronique (boîte Gmail active). */
+  email: "Eyaelle54350@gmail.com",
   practiceSince: 2015,
   trainedSince: 2012,
   /** Données de localisation pour le référencement local (Schema.org / GBP) */

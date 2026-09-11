@@ -6,7 +6,7 @@ import { images } from "@/lib/images";
 import { Bubble } from "@/components/ui/Bubble";
 import { PageBanner } from "@/components/sections/PageBanner";
 import { ContactForm } from "@/components/contact/ContactForm";
-import { Facebook, Instagram, MapPin, Phone, MessageCircle } from "lucide-react";
+import { Facebook, Instagram, Mail, MapPin, Phone, MessageCircle } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Contact — Magnétiseuse à Longwy",
@@ -53,6 +53,12 @@ export default function ContactPage() {
                   className="font-semibold hover:underline"
                 >
                   Écrire sur WhatsApp
+                </a>
+              </p>
+              <p className="mt-2 flex items-center gap-2">
+                <Mail className="h-4 w-4 shrink-0 text-aura-600" />
+                <a href={`mailto:${site.email}`} className="break-all hover:underline">
+                  {site.email}
                 </a>
               </p>
               <p className="mt-2 flex items-start gap-2 text-sm">

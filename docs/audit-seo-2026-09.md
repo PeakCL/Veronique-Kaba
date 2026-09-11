@@ -25,7 +25,7 @@ Tout le trafic SEO gagné aujourd'hui se perd sur ces deux points.
 | # | Problème | Impact | Effort |
 |---|---|---|---|
 | 1 | `/rendez-vous` affiche « Configurez `NEXT_PUBLIC_CALENDLY_URL` … » | **Critique** | 10 min |
-| 2 | E-mail de contact sur un domaine mort (`veronique-et-lenergie-doree.fr`) | **Critique** | 30 min |
+| 2 | E-mail de contact sur un domaine mort (`veronique-et-lenergie-doree.fr`) | **Critique** | ~~30 min~~ **corrigé** |
 | 3 | `/philosophie` redirige en **307 temporaire** au lieu de 308 permanent | Élevé | 2 min |
 | 4 | Fond décoratif de 863 Ko chargé en `priority` sur desktop | Élevé | 15 min |
 | 5 | Fiche Google Business Profile absente du `sameAs` Schema.org | Élevé | 20 min |
@@ -43,7 +43,7 @@ Corrigés dans le code (build vérifié, `tsc` et `next lint` au vert) :
 | # | Correctif | Vérification |
 |---|---|---|
 | 1.1 | Repli de `/rendez-vous` réécrit — plus aucune mention technique | aucune occurrence de `.env` / `NEXT_PUBLIC_*` dans le HTML servi |
-| 1.2 | `site.email` → `contact@veronique-kaba.fr` | propagé sur Contact, Mentions légales et JSON-LD |
+| 1.2 | `site.email` → `Eyaelle54350@gmail.com` (boîte active de Véronique) | propagé sur Contact, Mentions légales et JSON-LD |
 | 2.1 | `/philosophie` → `permanentRedirect` | **308** (était 307) |
 | 2.2 | `noindex` sur `/paiement/succes` et `/formation/espace/[moduleId]` + canonical propre | `noindex, nofollow` |
 | 2.3 | Mentions légales réindexées | `index, follow` |
@@ -67,16 +67,18 @@ Ces points ne peuvent pas être corrigés depuis le dépôt&nbsp;:
 1. **Définir `NEXT_PUBLIC_CALENDLY_URL` sur Netlify** — sans elle, `/rendez-vous` affiche le
    repli (désormais présentable) au lieu de l'agenda. *Le correctif de code rend la page
    acceptable ; il ne remplace pas le calendrier.*
-2. **Créer la boîte `contact@veronique-kaba.fr`** (MX + SPF/DKIM/DMARC) — le code pointe
-   désormais vers cette adresse, **mais elle n'existe pas encore**. Tant qu'elle n'est pas
-   créée, les e-mails continuent d'échouer.
-3. **Mettre à jour `CONTACT_EMAIL` sur Netlify** — destinataire du formulaire de contact.
-4. **Renseigner les horaires réels** dans `localBusinessJsonLd()` (gabarit commenté en place).
-5. **Récupérer l'URL canonique de la fiche Google** depuis le tableau de bord GBP
+2. ~~Créer une boîte sur le domaine~~ — **résolu autrement** : le site publie désormais
+   `Eyaelle54350@gmail.com`, la boîte que Véronique relève réellement. Aucun enregistrement
+   MX n'est nécessaire, et le point bloquant est levé sans dépendre du DNS.
+3. **Activer la notification Netlify Forms** — Netlify > Forms > Form notifications >
+   Add notification > Email notification, vers `Eyaelle54350@gmail.com`. Sans elle, les
+   messages s'empilent dans le tableau de bord sans prévenir personne.
+5. **Renseigner les horaires réels** dans `localBusinessJsonLd()` (gabarit commenté en place).
+6. **Récupérer l'URL canonique de la fiche Google** depuis le tableau de bord GBP
    (`https://www.google.com/maps/place/?q=place_id:…`) — le lien actuel, nettoyé, reste un lien
    de recherche.
-6. **Fiche Google Business Profile, Search Console, annuaires, avis** — voir §6.
-7. **Supprimer `avatar-véro.png` et `véro-avatar.png`** à la racine (3 Mo chacun, non suivis par
+7. **Fiche Google Business Profile, Search Console, annuaires, avis** — voir §6.
+8. **Supprimer `avatar-véro.png` et `véro-avatar.png`** à la racine (3 Mo chacun, non suivis par
    git donc non récupérables — laissés en place volontairement).
 
 ---
@@ -160,24 +162,24 @@ n'est hébergée sur le domaine actif.
 *Bonne nouvelle au passage :* le risque de contenu dupliqué signalé en juin est éteint —
 l'ancien domaine ne résout plus du tout.
 
-**Correctif :**
-
-1. Créer une adresse sur le domaine actif — `contact@veronique-kaba.fr` — via l'hébergeur
-   DNS (les NS sont chez NS1/Netlify) ou un service tiers (Google Workspace, Infomaniak,
-   Zoho Mail). Ajouter les enregistrements **MX**, puis **SPF/DKIM/DMARC** pour la délivrabilité.
-2. Mettre à jour `src/lib/content.ts` :
+**Correctif appliqué :** le site publie désormais l'adresse que Véronique relève réellement,
+une boîte Gmail active — `Eyaelle54350@gmail.com`. Dans `src/lib/content.ts` :
 
 ```ts
-email: "contact@veronique-kaba.fr",
+email: "Eyaelle54350@gmail.com",
 ```
 
-   Ce seul changement propage la correction sur la page Contact, les Mentions légales et le
-   JSON-LD — les trois lisent `site.email`.
-3. Mettre à jour `CONTACT_EMAIL` dans les variables d'environnement Netlify (destinataire du
-   formulaire de contact — à vérifier : si elle vaut encore l'ancienne adresse, **le formulaire
-   de contact ne délivre rien non plus**).
-4. Corriger l'exemple dans `.env.example` et l'URL dans le tableau du `README.md`
-   (ligne 23, qui mentionne encore `www.veronique-et-lenergie-doree.fr`).
+Ce seul changement propage la correction sur la page Contact, les Mentions légales et le
+JSON-LD — les trois lisent `site.email`.
+
+Créer une adresse sur le domaine (`contact@veronique-kaba.fr` + MX + SPF/DKIM/DMARC) reste
+possible plus tard, pour l'image de marque : une adresse au domaine inspire davantage
+confiance qu'une adresse Gmail sur un site professionnel. Ce n'est plus un bloquant.
+
+**Note :** l'adresse est publiée en clair sur la page Contact, dans les Mentions légales et
+dans le JSON-LD — elle sera collectée par des robots à spam. C'est le prix d'une mention
+légale conforme (le droit français impose un moyen de contact), et une boîte Gmail filtre
+correctement le spam. À surveiller malgré tout.
 
 > **Sécurité :** un domaine expiré peut être racheté par un tiers, qui recevrait alors les
 > e-mails destinés à cette adresse. Traiter en priorité. Si le domaine a une valeur de marque,
@@ -463,8 +465,8 @@ Ces chantiers de l'audit précédent n'ont pas été traités et restent les plu
 ### Cette semaine — bloquants
 
 1. Définir `NEXT_PUBLIC_CALENDLY_URL` sur Netlify + rendre le repli présentable · **10 min**
-2. Créer `contact@veronique-kaba.fr` (MX + SPF/DKIM/DMARC), mettre à jour `site.email` et
-   `CONTACT_EMAIL`, vérifier que le formulaire de contact délivre bien · **30 min**
+2. ~~Créer une boîte mail~~ — fait autrement : `site.email` pointe vers
+   `Eyaelle54350@gmail.com`. Reste à activer la notification Netlify Forms · **5 min**
 3. `/philosophie` → `permanentRedirect` · **2 min**
 4. `priority` retiré + `quality={35}` sur les fonds décoratifs · **15 min**
 5. `googleProfile` ajouté au `sameAs` + `hasMap` du `LocalBusiness` · **20 min**

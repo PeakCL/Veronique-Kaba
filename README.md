@@ -39,7 +39,7 @@ formulaire est déclarée dans `public/__forms.html` (servi tel quel), et
 
 Relever les messages : **Netlify > Forms > `contact`**.
 Être notifiée : **Netlify > Forms > Form notifications > Add notification >
-Email notification** (l'adresse peut être n'importe laquelle).
+Email notification**, vers `Eyaelle54350@gmail.com`.
 
 Protection anti-spam : pot de miel sur le champ `website`
 (`data-netlify-honeypot`). Pour ajouter reCAPTCHA, voir la doc Netlify.
