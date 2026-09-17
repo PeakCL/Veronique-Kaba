@@ -35,13 +35,9 @@ export function WarmCTA() {
         {/* Pose "ouverture" — bras ouverts, joie face à la nature */}
         <VeroAvatar pose="ouverture" size="md" className="mb-2" />
 
-        <motion.div
-          animate={{ scale: [1, 1.08, 1] }}
-          transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
-          className="mb-5 inline-block"
-        >
+        <div className="mb-5 inline-block">
           <Heart className="mx-auto h-10 w-10 text-rose-300" fill="currentColor" fillOpacity={0.3} />
-        </motion.div>
+        </div>
 
         <h2 className="font-[family-name:var(--font-hand)] text-4xl leading-snug text-ink md:text-5xl">
           Vous méritez de vous sentir bien<br />dans votre corps.

@@ -3,6 +3,7 @@ import { Baloo_2, Caveat, Nunito } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { MobileCTABar } from "@/components/layout/MobileCTABar";
+import { MotionProvider } from "@/components/layout/MotionProvider";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { localBusinessJsonLd, personJsonLd, websiteJsonLd } from "@/lib/seo";
 import { site } from "@/lib/content";
@@ -86,12 +87,14 @@ export default function RootLayout({
         className={`${baloo.variable} ${nunito.variable} ${caveat.variable} min-h-screen flex flex-col`}
       >
         <JsonLd data={[localBusinessJsonLd(), personJsonLd(), websiteJsonLd()]} />
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
-        {/* Réserve la hauteur de la barre CTA fixe (mobile) pour ne rien masquer */}
-        <div className="h-24 lg:hidden" aria-hidden />
-        <MobileCTABar />
+        <MotionProvider>
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+          {/* Réserve la hauteur de la barre CTA fixe (mobile) pour ne rien masquer */}
+          <div className="h-24 lg:hidden" aria-hidden />
+          <MobileCTABar />
+        </MotionProvider>
       </body>
     </html>
   );

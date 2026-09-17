@@ -106,12 +106,7 @@ export function Hero() {
             transition={{ delay: 1.4, duration: 0.6 }}
           >
             <span className="text-xs font-medium tracking-widest uppercase">Découvrir</span>
-            <motion.div
-              animate={{ y: [0, 7, 0] }}
-              transition={{ duration: 1.9, repeat: Infinity, ease: "easeInOut" }}
-            >
-              <ChevronDown className="h-5 w-5" />
-            </motion.div>
+            <ChevronDown className="h-5 w-5" />
           </motion.div>
         </motion.div>
 
@@ -178,18 +173,14 @@ export function Hero() {
 
           {/* ── L'illustration BD de Véronique — pose salut (main levée) ── */}
           <div className="relative z-10">
-            {/* Bulle dialogue — flottante au-dessus */}
-            <motion.div
-              className="absolute -right-4 -top-8 z-20 rotate-2 md:-right-8"
-              animate={{ rotate: [2, 5, 2] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-            >
+            {/* Bulle dialogue */}
+            <div className="absolute -right-4 -top-8 z-20 rotate-2 md:-right-8">
               <Bubble variant="warm" tail="bottom-right" className="max-w-[200px] !p-3 text-center">
                 <p className="font-[family-name:var(--font-hand)] text-xl text-ink/85">
                   Bienvenue, je suis Véronique ✨
                 </p>
               </Bubble>
-            </motion.div>
+            </div>
 
             {/* L'illustration principale — sans cadre, fond transparent */}
             <Image
@@ -202,17 +193,13 @@ export function Hero() {
             />
 
             {/* Bulle gold bas-gauche */}
-            <motion.div
-              className="absolute -bottom-4 -left-6 z-20 -rotate-2"
-              animate={{ y: [0, -6, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            >
+            <div className="absolute -bottom-4 -left-6 z-20 -rotate-2">
               <Bubble variant="gold" tail="top-left" className="!p-3">
                 <p className="text-sm font-medium text-ink/80">
                   Depuis {site.practiceSince} avec bienveillance
                 </p>
               </Bubble>
-            </motion.div>
+            </div>
           </div>
         </motion.div>
       </div>
@@ -225,12 +212,7 @@ export function Hero() {
         transition={{ delay: 1.6, duration: 0.6 }}
       >
         <span className="text-xs font-medium tracking-widest uppercase">Découvrir</span>
-        <motion.div
-          animate={{ y: [0, 7, 0] }}
-          transition={{ duration: 1.9, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <ChevronDown className="h-5 w-5" />
-        </motion.div>
+        <ChevronDown className="h-5 w-5" />
       </motion.div>
     </section>
   );
