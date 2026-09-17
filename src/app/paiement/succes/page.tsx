@@ -14,7 +14,7 @@ export default async function PaiementSuccesPage({
   searchParams: Promise<{ service?: string; provider?: string }>;
 }) {
   const { service, provider } = await searchParams;
-  const isFormation = service === "formation";
+  const isFormation = Boolean(service?.startsWith("formation"));
   const viaPayPal = provider === "paypal";
 
   return (

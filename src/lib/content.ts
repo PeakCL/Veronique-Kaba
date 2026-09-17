@@ -81,7 +81,7 @@ export const faqs = [
   {
     question: "Combien coûte une séance et combien de temps dure-t-elle ?",
     answer:
-      "Une séance de soin coûte 60 € et dure environ 40 minutes, en présentiel ou en visio. La formation Magnétisme 2.0 est à 70 € pour une demi-journée.",
+      "Une séance de soin coûte 60 € et dure environ 40 minutes, en présentiel ou en visio. La formation existe en deux niveaux : le Niveau 1 est un format court de 2 h, le Niveau 2 (plus long) est en préparation.",
   },
   {
     question: "Le magnétisme remplace-t-il un traitement médical ?",
@@ -212,58 +212,11 @@ export const soulRetrieval = {
   ],
 } as const;
 
-export const formation = {
-  title: "Formation Magnétisme 2.0",
-  emoji: "📚",
-  price: 70,
-  duration: "½ journée",
-  mode: "À distance ou en présentiel — parfois en duo avec un·e collègue pour les groupes",
-  description:
-    "Découvrez votre capacité à magnétiser et à pratiquer un soin énergétique. Apprenez à ressentir votre magnétisme et vos centres bio-énergétiques, avec des explications claires et accessibles — pas de jargon mystérieux.",
-  details: [
-    "Techniques énergétiques & magnétisme moderne, ancré dans le quotidien",
-    "Confiance pour démarrer un soin en solo",
-    "Accès à l'espace membre après inscription",
-    "Possibilité de pratiquer en groupe avec un·e collègue formateur·rice",
-  ],
+/**
+ * Éléments communs aux deux niveaux de formation (affichés une fois sur la page).
+ */
+export const formationShared = {
   quote: "Tout le monde peut magnétiser — il suffit d'apprendre à ressentir !",
-
-  /** Accroche affichée sous le titre de la page */
-  promise:
-    "En une demi-journée, repartez avec un ressenti concret entre vos mains et un protocole de soin complet que vous saurez dérouler seul·e.",
-
-  /** Public visé — lève l'auto-exclusion (« ce n'est pas pour moi ») */
-  forWhom: [
-    {
-      emoji: "🌱",
-      title: "Vous partez de zéro",
-      text: "Aucun prérequis, aucune expérience demandée. La formation commence par le tout premier ressenti dans les paumes.",
-    },
-    {
-      emoji: "💫",
-      title: "Vous ressentez déjà « quelque chose »",
-      text: "Des mains qui chauffent, des intuitions physiques : vous voulez comprendre ce qui se passe et en faire quelque chose de structuré.",
-    },
-    {
-      emoji: "🤲",
-      title: "Vous accompagnez déjà des personnes",
-      text: "Soignant·e, masseur·se, thérapeute : ajoutez une corde énergétique à votre pratique existante.",
-    },
-    {
-      emoji: "🏡",
-      title: "Vous voulez soulager vos proches",
-      text: "Apprendre pour votre entourage — un enfant, un conjoint, un parent — sans viser une activité professionnelle.",
-    },
-  ],
-
-  /** Ce qu'on sait faire à la fin — le vrai argument de conversion */
-  outcomes: [
-    "Percevoir votre magnétisme dans vos mains et savoir le relancer quand il s'estompe",
-    "Repérer les centres bio-énergétiques et faire un scan avant d'intervenir",
-    "Dérouler une séance complète du début à la fin, avec une fermeture énergétique propre",
-    "Vous protéger et vous nettoyer après un soin — l'hygiène de pratique qu'on oublie souvent d'enseigner",
-    "Savoir ce que vous ne devez pas faire : les limites, les cas à renvoyer vers un médecin",
-  ],
 
   /** Déroulé — rassure sur le format */
   flow: [
@@ -272,12 +225,12 @@ export const formation = {
       text: "On se parle d'abord, pour vérifier que la formation correspond à ce que vous cherchez. Personne ne s'inscrit à l'aveugle.",
     },
     {
-      title: "La demi-journée de formation",
+      title: "La formation, en visio ou en présentiel",
       text: "Théorie courte, pratique longue. Vous manipulez dès les premières minutes — le ressenti s'apprend par l'expérience, pas par les diapositives.",
     },
     {
       title: "L'espace membre, ensuite",
-      text: "Les chapitres restent accessibles après la formation pour réviser à votre rythme, autant de fois que vous le souhaitez.",
+      text: "Vos vidéos restent accessibles dans l'espace membre : de courtes vidéos qui s'enchaînent pour revoir la formation à votre rythme, autant de fois que vous le souhaitez.",
     },
   ],
 
@@ -288,9 +241,131 @@ export const formation = {
     "Des mots simples, jamais de jargon mystérieux ni de promesses magiques",
     "Une pratique qui dialogue avec la médecine conventionnelle et connaît ses limites",
   ],
-
-  prerequisites: "Aucun prérequis. Ni diplôme, ni expérience, ni « don » préalable.",
 } as const;
+
+/**
+ * Deux niveaux de formation. Chaque niveau a son propre mot de passe d'accès
+ * (variable d'env `passwordEnv`) et sa propre liste de leçons vidéo.
+ *
+ * Les leçons sont de courtes vidéos qui s'enchaînent : `video: null` affiche un
+ * état « bientôt disponible » tant que Véronique n'a pas fourni la vidéo.
+ * Chaque vidéo accepte 3 formats — { type: "youtube" | "vimeo" | "mp4", src }.
+ *   - youtube : `src` = identifiant de la vidéo (ex "dQw4w9WgXcQ")
+ *   - vimeo   : `src` = identifiant numérique (ex "76979871")
+ *   - mp4     : `src` = URL du fichier (ex "/videos/lecon-1.mp4")
+ *
+ * ⚠️ Prix et durées à confirmer par Véronique (placeholders).
+ */
+export const formations = [
+  {
+    id: "niveau-1",
+    level: 1,
+    title: "Magnétisme — Niveau 1",
+    shortTitle: "Niveau 1",
+    emoji: "🌱",
+    price: 70, // À CONFIRMER — ancien tarif ½ journée, désormais format 2 h
+    duration: "2 h",
+    format: "En visio ou en présentiel (15 km autour de Longwy)",
+    tagline: "Réveiller et ressentir son magnétisme",
+    passwordEnv: "FORMATION_N1_PASSWORD",
+    serviceId: "formation-niveau-1",
+    stripePriceEnv: "STRIPE_PRICE_FORMATION_N1",
+    promise:
+      "En 2 heures, repartez avec un ressenti concret entre vos mains et les bases d'un soin que vous saurez dérouler seul·e.",
+    description:
+      "Découvrez votre capacité à magnétiser et à pratiquer un soin énergétique. Apprenez à ressentir votre magnétisme et vos centres bio-énergétiques, avec des explications claires et accessibles — pas de jargon mystérieux.",
+    details: [
+      "Techniques énergétiques & magnétisme moderne, ancré dans le quotidien",
+      "Confiance pour démarrer un soin en solo",
+      "Accès à l'espace membre (vidéos) après inscription",
+      "Format court de 2 h — en visio ou en présentiel",
+    ],
+    prerequisites: "Aucun prérequis. Ni diplôme, ni expérience, ni « don » préalable.",
+    forWhom: [
+      {
+        emoji: "🌱",
+        title: "Vous partez de zéro",
+        text: "Aucun prérequis, aucune expérience demandée. La formation commence par le tout premier ressenti dans les paumes.",
+      },
+      {
+        emoji: "💫",
+        title: "Vous ressentez déjà « quelque chose »",
+        text: "Des mains qui chauffent, des intuitions physiques : vous voulez comprendre ce qui se passe et en faire quelque chose de structuré.",
+      },
+      {
+        emoji: "🤲",
+        title: "Vous accompagnez déjà des personnes",
+        text: "Soignant·e, masseur·se, thérapeute : ajoutez une corde énergétique à votre pratique existante.",
+      },
+      {
+        emoji: "🏡",
+        title: "Vous voulez soulager vos proches",
+        text: "Apprendre pour votre entourage — un enfant, un conjoint, un parent — sans viser une activité professionnelle.",
+      },
+    ],
+    outcomes: [
+      "Percevoir votre magnétisme dans vos mains et savoir le relancer quand il s'estompe",
+      "Repérer les centres bio-énergétiques et faire un scan avant d'intervenir",
+      "Dérouler une séance complète du début à la fin, avec une fermeture énergétique propre",
+      "Vous protéger et vous nettoyer après un soin — l'hygiène de pratique qu'on oublie souvent d'enseigner",
+      "Savoir ce que vous ne devez pas faire : les limites, les cas à renvoyer vers un médecin",
+    ],
+    /** Leçons vidéo — remplies par Véronique (video: null = à venir) */
+    lessons: [
+      { id: "n1-01", title: "Bienvenue & ce que vous allez apprendre", duration: "à venir", summary: "Tour d'horizon de la formation et de l'état d'esprit.", video: null },
+      { id: "n1-02", title: "Réveiller le ressenti dans les paumes", duration: "à venir", summary: "Premiers exercices pour percevoir la chaleur et les picotements.", video: null },
+      { id: "n1-03", title: "Les centres bio-énergétiques", duration: "à venir", summary: "Repérer les centres et faire un scan avant un soin.", video: null },
+      { id: "n1-04", title: "Dérouler une séance complète", duration: "à venir", summary: "Structure d'un soin, de l'ouverture à la fermeture énergétique.", video: null },
+      { id: "n1-05", title: "Se protéger & se nettoyer", duration: "à venir", summary: "L'hygiène de pratique après un soin.", video: null },
+    ],
+  },
+  {
+    id: "niveau-2",
+    level: 2,
+    title: "Magnétisme — Niveau 2",
+    shortTitle: "Niveau 2",
+    emoji: "🔥",
+    price: 0, // À DÉFINIR par Véronique
+    duration: "Format long — durée à définir",
+    format: "En visio ou en présentiel",
+    tagline: "Approfondir sa pratique et gagner en autonomie",
+    passwordEnv: "FORMATION_N2_PASSWORD",
+    serviceId: "formation-niveau-2",
+    stripePriceEnv: "STRIPE_PRICE_FORMATION_N2",
+    promise:
+      "Pour celles et ceux qui ont validé le Niveau 1 et veulent aller plus loin dans la pratique.",
+    description:
+      "Le programme détaillé du Niveau 2 est en préparation. Il approfondit les techniques du Niveau 1, avec des protocoles plus avancés et davantage de pratique guidée. Contactez Véronique pour être informé·e de son ouverture.",
+    details: [
+      "Approfondissement des protocoles de soin",
+      "Pratique guidée plus poussée",
+      "Accès à l'espace membre (vidéos) dédié",
+    ],
+    prerequisites: "Avoir suivi le Niveau 1 (ou une pratique équivalente).",
+    forWhom: [
+      {
+        emoji: "🚀",
+        title: "Vous avez suivi le Niveau 1",
+        text: "Vous maîtrisez les bases et voulez structurer une pratique plus régulière.",
+      },
+      {
+        emoji: "🤲",
+        title: "Vous pratiquez déjà",
+        text: "Vous cherchez à approfondir vos protocoles et gagner en assurance.",
+      },
+    ],
+    outcomes: [
+      "Programme détaillé à venir",
+    ],
+    lessons: [],
+  },
+] as const;
+
+/**
+ * Alias de compatibilité : le Niveau 1 reste la formation « principale »
+ * pour le référencement et les composants existants.
+ */
+export const formation = formations[0];
 
 /** FAQ de la page Formation — alimente aussi le balisage FAQPage */
 export const formationFaqs = [
@@ -307,7 +382,7 @@ export const formationFaqs = [
   {
     question: "Combien de temps dure la formation et combien coûte-t-elle ?",
     answer:
-      "Une demi-journée, pour 70 €. L'accès à l'espace membre est inclus et reste disponible après la formation pour réviser les chapitres à votre rythme.",
+      "Le Niveau 1 est un format court de 2 h. L'accès à l'espace membre est inclus : de courtes vidéos qui s'enchaînent, disponibles après la formation pour réviser à votre rythme. Le Niveau 2, plus long, est en préparation.",
   },
   {
     question: "Puis-je exercer professionnellement après cette formation ?",
@@ -345,15 +420,26 @@ export const services = [
     stripePriceEnv: "STRIPE_PRICE_SOIN",
   },
   {
-    id: "formation",
-    title: formation.title,
-    emoji: formation.emoji,
-    price: formation.price,
-    duration: formation.duration,
-    mode: formation.mode,
-    description: formation.description,
-    details: formation.details,
-    stripePriceEnv: "STRIPE_PRICE_FORMATION",
+    id: formations[0].serviceId,
+    title: formations[0].title,
+    emoji: formations[0].emoji,
+    price: formations[0].price,
+    duration: formations[0].duration,
+    mode: formations[0].format,
+    description: formations[0].description,
+    details: formations[0].details,
+    stripePriceEnv: formations[0].stripePriceEnv,
+  },
+  {
+    id: formations[1].serviceId,
+    title: formations[1].title,
+    emoji: formations[1].emoji,
+    price: formations[1].price,
+    duration: formations[1].duration,
+    mode: formations[1].format,
+    description: formations[1].description,
+    details: formations[1].details,
+    stripePriceEnv: formations[1].stripePriceEnv,
   },
 ] as const;
 
@@ -377,33 +463,18 @@ export const testimonials = [
   },
 ] as const;
 
-export const formationModules = [
-  {
-    id: "module-1",
-    title: "Chapitre 1 — Réveiller son magnétisme",
-    duration: "25 min",
-    locked: false,
-    summary: "Percevoir la chaleur dans les paumes, premiers exercices de ressenti.",
-  },
-  {
-    id: "module-2",
-    title: "Chapitre 2 — Les centres bio-énergétiques",
-    duration: "30 min",
-    locked: true,
-    summary: "Cartographie des centres, protocole de scan avant soin.",
-  },
-  {
-    id: "module-3",
-    title: "Chapitre 3 — Protocole de soin 2.0",
-    duration: "35 min",
-    locked: true,
-    summary: "Structure d'une séance complète, fermeture énergétique, hygiène de pratique.",
-  },
-  {
-    id: "module-4",
-    title: "Bonus — Alignement & confiance",
-    duration: "20 min",
-    locked: true,
-    summary: "Rituels quotidiens, erreurs fréquentes, trucs & astuces de Véronique.",
-  },
-] as const;
+/** Source vidéo d'une leçon (3 formats supportés). */
+export type LessonVideo =
+  | { type: "youtube"; src: string }
+  | { type: "vimeo"; src: string }
+  | { type: "mp4"; src: string };
+
+/** Type d'une leçon vidéo d'un niveau de formation. */
+export type FormationLesson = {
+  id: string;
+  title: string;
+  duration: string;
+  summary: string;
+  video: LessonVideo | null;
+};
+export type Formation = (typeof formations)[number];

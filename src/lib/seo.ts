@@ -5,7 +5,7 @@ import {
   testimonials,
   careTypes,
   sessionInfo,
-  formation,
+  formations,
 } from "@/lib/content";
 
 /** URL canonique de production */
@@ -149,33 +149,36 @@ export function serviceJsonLd() {
   };
 }
 
-/** Formation Magnétisme 2.0 — type Course. */
+/** Formations magnétisme — un objet Course par niveau. */
 export function courseJsonLd() {
-  return {
+  return formations.map((f) => ({
     "@context": "https://schema.org",
     "@type": "Course",
-    name: formation.title,
-    description: formation.description,
+    name: f.title,
+    description: f.description,
     url: abs("/formation"),
     inLanguage: "fr-FR",
     provider: { "@id": ORG_ID, "@type": "Organization", name: site.name },
-    // `teaches` et `coursePrerequisites` alimentent les résultats enrichis « Course »
-    // et aident les moteurs de réponse à résumer la formation correctement.
-    teaches: [...formation.outcomes],
-    coursePrerequisites: formation.prerequisites,
-    educationalLevel: "Débutant",
-    offers: {
-      "@type": "Offer",
-      price: formation.price,
-      priceCurrency: "EUR",
-      url: abs("/formation"),
-      availability: "https://schema.org/InStock",
-      category: "Paid",
-    },
+    // `teaches` et `coursePrerequisites` alimentent les résultats enrichis « Course ».
+    teaches: [...f.outcomes],
+    coursePrerequisites: f.prerequisites,
+    educationalLevel: f.level === 1 ? "Débutant" : "Intermédiaire",
+    // Offre uniquement si le tarif est fixé (le Niveau 2 est à définir).
+    ...(f.price > 0
+      ? {
+          offers: {
+            "@type": "Offer",
+            price: f.price,
+            priceCurrency: "EUR",
+            url: abs("/formation"),
+            availability: "https://schema.org/InStock",
+            category: "Paid",
+          },
+        }
+      : {}),
     hasCourseInstance: {
       "@type": "CourseInstance",
       courseMode: ["online", "onsite"],
-      courseWorkload: "PT4H",
       inLanguage: "fr-FR",
       location: {
         "@type": "Place",
@@ -189,7 +192,7 @@ export function courseJsonLd() {
         },
       },
     },
-  };
+  }));
 }
 
 /** FAQ propre à la page Formation. */

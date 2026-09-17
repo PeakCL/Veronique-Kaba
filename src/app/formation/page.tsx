@@ -1,5 +1,12 @@
 import type { Metadata } from "next";
-import { formation, formationFaqs, formationModules, services, site } from "@/lib/content";
+import Link from "next/link";
+import {
+  formations,
+  formationShared,
+  formationFaqs,
+  site,
+  type Formation,
+} from "@/lib/content";
 import { images } from "@/lib/images";
 import { Bubble } from "@/components/ui/Bubble";
 import { ComicButton } from "@/components/ui/ComicButton";
@@ -11,50 +18,76 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { courseJsonLd, formationFaqPageJsonLd, breadcrumbJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Formation magnétisme à Longwy & à distance — Magnétisme 2.0",
+  title: "Formations magnétisme à Longwy & à distance — Niveau 1 & 2",
   description:
-    "Apprenez à ressentir votre magnétisme et à dérouler un soin énergétique complet. Formation d'une demi-journée à 70 €, sans prérequis, en présentiel à Longwy ou à distance en visio.",
+    "Apprenez à ressentir votre magnétisme et à dérouler un soin énergétique. Formation Niveau 1 (format court de 2 h) et Niveau 2 à venir — en présentiel à Longwy ou à distance en visio.",
   alternates: { canonical: "/formation" },
 };
 
-const bookableFormation = services.find((s) => s.id === "formation")!;
+const niveau1 = formations[0];
 
-/** Encart tarif + paiement — repris en haut et en bas de page. */
-function OffreCard() {
+/** Carte tarif + paiement pour un niveau. */
+function OffreCard({ level, highlight = false }: { level: Formation; highlight?: boolean }) {
+  const bookable = level.price > 0;
   return (
-    <Bubble variant="gold" className="ring-2 ring-gold-300/50" tail="bottom-left">
-      <p className="font-[family-name:var(--font-hand)] text-xl">
-        «&nbsp;{formation.quote}&nbsp;»
+    <Bubble
+      variant="gold"
+      className={highlight ? "ring-2 ring-gold-300/50" : ""}
+      tail="bottom-left"
+    >
+      <p className="text-sm font-bold text-aura-700">
+        {level.emoji} {level.title}
+      </p>
+      <p className="mt-1 font-[family-name:var(--font-hand)] text-lg text-ink/80">
+        {level.tagline}
       </p>
 
-      <div className="mt-5 flex flex-wrap items-baseline gap-3">
-        <span className="font-[family-name:var(--font-display)] text-5xl text-aura-600">
-          {formation.price} €
-        </span>
-        <span className="text-sm text-ink/70">· {formation.duration}</span>
+      <div className="mt-4 flex flex-wrap items-baseline gap-3">
+        {bookable ? (
+          <>
+            <span className="font-[family-name:var(--font-display)] text-5xl text-aura-600">
+              {level.price} €
+            </span>
+            <span className="text-sm text-ink/70">· {level.duration}</span>
+          </>
+        ) : (
+          <span className="font-[family-name:var(--font-display)] text-3xl text-aura-600">
+            Bientôt disponible
+          </span>
+        )}
       </div>
 
       <ul className="mt-5 space-y-2 text-sm">
-        {formation.details.map((d) => (
+        {level.details.map((d) => (
           <li key={d} className="flex gap-2">
             <span>⚡</span> {d}
           </li>
         ))}
       </ul>
 
-      <p className="mt-4 text-sm text-ink/70">{formation.mode}</p>
+      <p className="mt-4 text-sm text-ink/70">{level.format}</p>
 
       <div className="mt-6 flex flex-col gap-2 sm:flex-row">
-        <PayPalPay serviceId="formation" amount={bookableFormation.price} />
-        <ComicButton href="/rendez-vous" variant="outline">
-          <span className="whitespace-nowrap">Réserver une date</span>
-        </ComicButton>
+        {bookable ? (
+          <>
+            <PayPalPay serviceId={level.serviceId} amount={level.price} />
+            <ComicButton href="/rendez-vous" variant="outline">
+              <span className="whitespace-nowrap">Réserver une date</span>
+            </ComicButton>
+          </>
+        ) : (
+          <ComicButton href="/contact" className="w-full">
+            Être informé·e de l&apos;ouverture
+          </ComicButton>
+        )}
       </div>
 
-      <p className="mt-4 text-xs text-ink/60">
-        Un échange préalable est prévu avant toute inscription — on vérifie ensemble que la
-        formation vous correspond.
-      </p>
+      {bookable && (
+        <p className="mt-4 text-xs text-ink/60">
+          Un échange préalable est prévu avant toute inscription — on vérifie ensemble que la
+          formation vous correspond.
+        </p>
+      )}
     </Bubble>
   );
 }
@@ -64,48 +97,52 @@ export default function FormationPage() {
     <div className="pb-12 pt-4 md:pt-6">
       <JsonLd
         data={[
-          courseJsonLd(),
+          ...courseJsonLd(),
           formationFaqPageJsonLd(),
           breadcrumbJsonLd([
             { name: "Accueil", path: "/" },
-            { name: "Formation Magnétisme 2.0", path: "/formation" },
+            { name: "Formations magnétisme", path: "/formation" },
           ]),
         ]}
       />
 
       <PageBanner
-        title={formation.title}
-        subtitle="Apprendre à magnétiser — en une demi-journée, sans prérequis"
+        title="Formations magnétisme"
+        subtitle="Deux niveaux pour apprendre à magnétiser — sans prérequis"
         imageSrc={images.energieNature}
         imageAlt="Énergie en pleine nature — formation magnétisme à Longwy"
       />
 
       <div className="mx-auto max-w-6xl px-4 md:px-6">
-        {/* ── Promesse + offre ── */}
+        {/* ── Intro + les deux offres ── */}
         <div className="grid gap-10 lg:grid-cols-2">
           <div>
-            <p className="text-lg leading-relaxed text-ink/80">{formation.promise}</p>
-            <p className="mt-4 leading-relaxed text-ink/75">{formation.description}</p>
+            <p className="text-lg leading-relaxed text-ink/80">{niveau1.promise}</p>
+            <p className="mt-4 leading-relaxed text-ink/75">{niveau1.description}</p>
 
             <Bubble variant="aura" className="mt-6" tail="bottom-left">
               <p className="text-sm leading-relaxed text-ink/80">
-                <strong>{formation.prerequisites}</strong> Si vous vous demandez si « ça marchera
-                pour vous », c&apos;est précisément la question à laquelle la première heure
-                répond — en pratique, pas en théorie.
+                <strong>La formation existe en deux niveaux.</strong> Le{" "}
+                <strong>Niveau 1</strong> est un format court de 2 h pour poser les bases ; le{" "}
+                <strong>Niveau 2</strong>, plus complet, approfondit la pratique (ouverture à
+                venir).
               </p>
             </Bubble>
           </div>
 
-          <OffreCard />
+          <div className="grid gap-6">
+            <OffreCard level={formations[0]} highlight />
+            <OffreCard level={formations[1]} />
+          </div>
         </div>
 
         {/* ── À qui ça s'adresse ── */}
         <section className="mt-16">
           <h2 className="font-[family-name:var(--font-display)] text-3xl">
-            À qui s&apos;adresse cette formation&nbsp;?
+            À qui s&apos;adresse le Niveau 1&nbsp;?
           </h2>
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
-            {formation.forWhom.map((p, i) => (
+            {niveau1.forWhom.map((p, i) => (
               <Bubble
                 key={p.title}
                 variant={i % 2 === 0 ? "white" : "sky"}
@@ -123,12 +160,12 @@ export default function FormationPage() {
         {/* ── Résultats ── */}
         <section className="mt-16">
           <h2 className="font-[family-name:var(--font-display)] text-3xl">
-            Ce que vous saurez faire à la fin
+            Ce que vous saurez faire après le Niveau 1
           </h2>
           <div className="mt-6 grid items-center gap-8 lg:grid-cols-[1fr_auto]">
             <Bubble variant="gold" tail="bottom-left">
               <ul className="space-y-3">
-                {formation.outcomes.map((o) => (
+                {niveau1.outcomes.map((o) => (
                   <li key={o} className="flex items-start gap-2 text-sm leading-relaxed">
                     <span className="accent-star">★</span>
                     {o}
@@ -140,23 +177,25 @@ export default function FormationPage() {
           </div>
         </section>
 
-        {/* ── Programme ── */}
+        {/* ── Programme (vidéos de l'espace membre) ── */}
         <section className="mt-16">
-          <h2 className="font-[family-name:var(--font-display)] text-3xl">Le programme</h2>
+          <h2 className="font-[family-name:var(--font-display)] text-3xl">Le programme du Niveau 1</h2>
           <p className="mt-3 text-ink/70">
-            Quatre chapitres, accessibles dans l&apos;espace membre après la formation.
+            De courtes vidéos qui s&apos;enchaînent, accessibles dans l&apos;espace membre après
+            l&apos;inscription — à revoir autant de fois que vous le souhaitez.
           </p>
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
-            {formationModules.map((m) => (
+            {niveau1.lessons.map((lesson, i) => (
               <div
-                key={m.id}
+                key={lesson.id}
                 className="flex items-start gap-4 rounded-2xl bg-white p-5 comic-border"
               >
-                <span className="text-2xl">📖</span>
+                <span className="font-[family-name:var(--font-hand)] text-2xl text-aura-600">
+                  {i + 1}
+                </span>
                 <div>
-                  <h3 className="font-bold">{m.title}</h3>
-                  <p className="text-xs text-ink/60">{m.duration}</p>
-                  <p className="mt-1 text-sm leading-relaxed text-ink/75">{m.summary}</p>
+                  <h3 className="font-bold">{lesson.title}</h3>
+                  <p className="mt-1 text-sm leading-relaxed text-ink/75">{lesson.summary}</p>
                 </div>
               </div>
             ))}
@@ -169,7 +208,7 @@ export default function FormationPage() {
             Comment ça se passe&nbsp;?
           </h2>
           <div className="mt-6 grid gap-4 md:grid-cols-3">
-            {formation.flow.map((step, i) => (
+            {formationShared.flow.map((step, i) => (
               <Bubble key={step.title} variant={i === 1 ? "aura" : "white"} tail="none">
                 <p className="font-[family-name:var(--font-hand)] text-3xl text-aura-600">
                   {i + 1}
@@ -188,7 +227,7 @@ export default function FormationPage() {
           </h2>
           <Bubble variant="white" className="mt-6" tail="bottom-right">
             <ul className="space-y-3">
-              {formation.why.map((w) => (
+              {formationShared.why.map((w) => (
                 <li key={w} className="flex items-start gap-2 text-sm leading-relaxed">
                   <span className="accent-star">★</span>
                   {w}
@@ -221,25 +260,32 @@ export default function FormationPage() {
           </div>
         </section>
 
-        {/* ── Rappel offre ── */}
+        {/* ── Inscription + accès membre ── */}
         <section className="mt-16">
           <h2 className="font-[family-name:var(--font-display)] text-3xl">
             S&apos;inscrire à la formation
           </h2>
           <div className="mt-6 grid gap-8 lg:grid-cols-2">
-            <div id="inscription" className="scroll-mt-24">
-              <OffreCard />
+            <div id="inscription" className="scroll-mt-24 space-y-6">
+              <OffreCard level={formations[0]} highlight />
+              <OffreCard level={formations[1]} />
             </div>
             <div>
               <h3 className="font-[family-name:var(--font-display)] text-2xl">
                 Déjà inscrit·e&nbsp;?
               </h3>
               <p className="mt-2 text-sm text-ink/70">
-                Accédez à votre espace membre avec le mot de passe reçu par e-mail.
+                Accédez à votre espace membre avec le mot de passe reçu par e-mail pour votre
+                niveau.
               </p>
               <div className="mt-4">
                 <FormationLogin />
               </div>
+              <p className="mt-3 text-xs text-ink/55">
+                <Link href="/formation/espace" className="text-aura-600 underline">
+                  Déjà connecté·e ? Aller à mon espace →
+                </Link>
+              </p>
             </div>
           </div>
         </section>
