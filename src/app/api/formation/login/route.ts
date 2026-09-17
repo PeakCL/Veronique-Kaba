@@ -11,7 +11,12 @@ import {
 const DEV_FALLBACK: Record<string, string> = {
   FORMATION_N1_PASSWORD: "niveau-1-doree",
   FORMATION_N2_PASSWORD: "niveau-2-doree",
+  FORMATION_ADMIN_PASSWORD: "admin-doree",
 };
+
+/** Mot de passe admin (Véronique + gestion) : débloque tous les niveaux. */
+const adminPassword = () =>
+  process.env.FORMATION_ADMIN_PASSWORD ?? DEV_FALLBACK.FORMATION_ADMIN_PASSWORD;
 
 export async function POST(req: NextRequest) {
   const body = await req.json().catch(() => ({}));
@@ -29,15 +34,19 @@ export async function POST(req: NextRequest) {
     );
   }
 
+  // Le mot de passe admin ouvre tous les niveaux (prévisualisation) ; sinon on
+  // vérifie le mot de passe du niveau choisi.
+  const isAdmin = Boolean(password) && password === adminPassword();
   const expected = process.env[level.passwordEnv] ?? DEV_FALLBACK[level.passwordEnv];
-  if (!password || password !== expected) {
+  if (!isAdmin && (!password || password !== expected)) {
     return NextResponse.json({ error: "Mot de passe incorrect" }, { status: 401 });
   }
 
   // Fusionne avec une éventuelle session existante : on garde les niveaux déjà
   // débloqués et on ajoute celui-ci ; l'identité est mise à jour à la volée.
   const existing = decodeSession(req.cookies.get(FORMATION_COOKIE)?.value);
-  const levels = Array.from(new Set([...(existing?.levels ?? []), level.id]));
+  const granted = isAdmin ? formations.map((f) => f.id) : [level.id];
+  const levels = Array.from(new Set([...(existing?.levels ?? []), ...granted]));
 
   const session: FormationSession = {
     firstName: String(firstName).trim().slice(0, 80),
