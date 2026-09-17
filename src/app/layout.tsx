@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Baloo_2, Caveat, Nunito } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { MobileCTABar } from "@/components/layout/MobileCTABar";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { localBusinessJsonLd, personJsonLd, websiteJsonLd } from "@/lib/seo";
 import { site } from "@/lib/content";
@@ -88,6 +89,9 @@ export default function RootLayout({
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        {/* Réserve la hauteur de la barre CTA fixe (mobile) pour ne rien masquer */}
+        <div className="h-24 lg:hidden" aria-hidden />
+        <MobileCTABar />
       </body>
     </html>
   );

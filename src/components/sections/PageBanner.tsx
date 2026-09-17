@@ -27,7 +27,7 @@ export function PageBanner({
       )}
     >
       <div
-        className="relative aspect-[21/9] min-h-[200px] md:min-h-[260px]"
+        className="relative h-[220px] w-full md:h-[300px] lg:h-[340px]"
         style={{ background: "linear-gradient(135deg, #3a2a3f 0%, #2a1f2e 100%)" }}
       >
         <Image
