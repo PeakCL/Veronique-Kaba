@@ -5,6 +5,7 @@ import { breadcrumbJsonLd } from "@/lib/seo";
 import { sessionInfo, site } from "@/lib/content";
 import { Bubble } from "@/components/ui/Bubble";
 import { BookingForm } from "@/components/booking/BookingForm";
+import { OnlineScheduler } from "@/components/booking/OnlineScheduler";
 
 export const metadata: Metadata = {
   title: "Prendre rendez-vous — Soin de magnétisme à Longwy ou en visio",
@@ -87,6 +88,11 @@ export default function RendezVousPage() {
               Pratique pour poser une question avant de vous décider.
             </p>
           </Bubble>
+        </div>
+
+        {/* ── Agenda en ligne (si configuré) ── */}
+        <div className="mt-10">
+          <OnlineScheduler />
         </div>
 
         {/* ── Demande de rendez-vous ── */}

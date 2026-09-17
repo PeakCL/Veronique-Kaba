@@ -5,6 +5,7 @@ import { CitationStrip } from "@/components/sections/CitationStrip";
 import { TestimonialsStrip } from "@/components/sections/TestimonialsStrip";
 import { WarmCTA } from "@/components/sections/WarmCTA";
 import { SocialStrip } from "@/components/sections/SocialStrip";
+import { FacebookFeed } from "@/components/sections/FacebookFeed";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { reviewsJsonLd } from "@/lib/seo";
 
@@ -18,6 +19,7 @@ export default function HomePage() {
       <CitationStrip />
       <TestimonialsStrip />
       <WarmCTA />
+      <FacebookFeed />
       <SocialStrip />
     </>
   );
