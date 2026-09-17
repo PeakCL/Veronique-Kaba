@@ -312,7 +312,7 @@ export const formations = [
     ],
     /** Leçons vidéo — remplies par Véronique (video: null = à venir) */
     lessons: [
-      { id: "n1-01", title: "Bienvenue & ce que vous allez apprendre", duration: "à venir", summary: "Tour d'horizon de la formation et de l'état d'esprit.", video: null },
+      { id: "n1-01", title: "Bienvenue & ce que vous allez apprendre", duration: "à venir", summary: "Tour d'horizon de la formation et de l'état d'esprit.", video: { type: "mp4", src: "/videos/bienvenue.mp4" } },
       { id: "n1-02", title: "Réveiller le ressenti dans les paumes", duration: "à venir", summary: "Premiers exercices pour percevoir la chaleur et les picotements.", video: null },
       { id: "n1-03", title: "Les centres bio-énergétiques", duration: "à venir", summary: "Repérer les centres et faire un scan avant un soin.", video: null },
       { id: "n1-04", title: "Dérouler une séance complète", duration: "à venir", summary: "Structure d'un soin, de l'ouverture à la fermeture énergétique.", video: null },
