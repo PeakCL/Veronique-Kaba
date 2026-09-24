@@ -59,7 +59,7 @@ export function TestimonialsStrip() {
             href={site.googleProfile}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 rounded-full bg-white/90 px-5 py-2.5 text-sm font-semibold text-ink comic-border transition-all hover:-translate-y-0.5 hover:bg-rose-50 hover:shadow-md"
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-ink comic-pop hover:bg-gold-50"
           >
             <Star className="h-4 w-4 text-gold-500" aria-hidden />
             Voir tous nos avis Google

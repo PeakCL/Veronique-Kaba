@@ -54,6 +54,9 @@
   --color-ink: #3d3038;
   --color-cream: #fef5e8;
   --color-panel: #f9eedb;
+
+  /* Encre BD — contour franc des cases et bulles */
+  --color-outline: #2a2028;
 }
 
 @layer base {
@@ -76,42 +79,81 @@
     background: rgba(240, 190, 90, 0.28);
     color: var(--color-ink);
   }
+
+  /* Focus clavier visible — contour d'encre BD */
+  :focus-visible {
+    outline: 2.5px solid var(--color-outline);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
 }
 
 @layer utilities {
-  /* Bordures avec teinte chaude dorée — plus bienveillantes que le gris */
+  /* ── Cases BD ── contour d'encre franc + ombre décalée nette (effet sticker) */
   .comic-border {
-    border: 2px solid rgba(212, 144, 130, 0.22);
-    box-shadow:
-      0 4px 20px rgba(240, 190, 90, 0.10),
-      0 1px 6px rgba(212, 144, 130, 0.10);
+    border: 2.5px solid var(--color-outline);
+    box-shadow: 3px 3px 0 var(--color-outline);
   }
 
   .comic-border-lg {
-    border: 2px solid rgba(212, 144, 130, 0.24);
-    box-shadow:
-      0 8px 34px rgba(240, 190, 90, 0.14),
-      0 2px 10px rgba(212, 144, 130, 0.12);
+    border: 3px solid var(--color-outline);
+    box-shadow: 6px 6px 0 var(--color-outline);
   }
 
-  /* Section ambrée — miel chaud */
+  /* Contour d'encre sans ombre — badges fins, puces */
+  .comic-outline {
+    border: 2px solid var(--color-outline);
+  }
+
+  /* Bouton BD — s'enfonce vers son ombre au clic */
+  .comic-pop {
+    border: 2.5px solid var(--color-outline);
+    box-shadow: 4px 4px 0 var(--color-outline);
+    transition:
+      transform 0.12s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.12s cubic-bezier(0.22, 1, 0.36, 1),
+      background-color 0.15s ease;
+  }
+  .comic-pop:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 5px 5px 0 var(--color-outline);
+  }
+  .comic-pop:active {
+    transform: translate(3px, 3px);
+    box-shadow: 1px 1px 0 var(--color-outline);
+  }
+
+  /* Section ambrée — miel chaud, plus saturée pour trancher sur la crème */
   .section-amber {
-    background: linear-gradient(155deg, #fef3dc 0%, #fef8ec 55%, #fff9f0 100%);
+    background: linear-gradient(155deg, #fde9c4 0%, #fef1d8 55%, #fff6e6 100%);
   }
 
-  /* Section blush — rose doux */
+  /* Section blush — rose doux, plus dense */
   .section-blush {
-    background: linear-gradient(155deg, #fdf0ec 0%, #fdf6f3 55%, #fef9f7 100%);
+    background: linear-gradient(155deg, #fbe0d6 0%, #fbeae2 55%, #fdf2ee 100%);
   }
 
   /* Ancienne classe conservée pour compatibilité */
   .warm-section {
-    background: linear-gradient(155deg, #fef3dc 0%, #fef8ec 55%, #fff9f0 100%);
+    background: linear-gradient(155deg, #fde9c4 0%, #fef1d8 55%, #fff6e6 100%);
   }
 
   .halftone {
-    background-image: radial-gradient(circle, rgba(74, 63, 71, 0.04) 1px, transparent 1px);
-    background-size: 10px 10px;
+    background-image: radial-gradient(circle, rgba(42, 32, 40, 0.09) 1.1px, transparent 1.1px);
+    background-size: 11px 11px;
   }
 
   .energy-glow {
@@ -157,7 +199,7 @@
 
   /* Halftone BD plus visible pour les sections sombres */
   .halftone-gold {
-    background-image: radial-gradient(circle, rgba(212, 172, 52, 0.10) 1px, transparent 1px);
+    background-image: radial-gradient(circle, rgba(212, 172, 52, 0.18) 1.2px, transparent 1.2px);
     background-size: 12px 12px;
   }
 

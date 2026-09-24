@@ -18,7 +18,7 @@ export function CitationStrip() {
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
         <motion.span
-          className="block font-[family-name:var(--font-display)] text-8xl leading-none text-aura-300/50 select-none"
+          className="block font-[family-name:var(--font-display)] text-8xl leading-none text-gold-400 select-none"
           aria-hidden
           initial={{ opacity: 0, y: -10 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -28,13 +28,13 @@ export function CitationStrip() {
           «
         </motion.span>
 
-        <p className="mt-1 font-[family-name:var(--font-hand)] text-2xl leading-relaxed text-ink/80 md:text-3xl">
+        <p className="mt-1 font-[family-name:var(--font-hand)] text-2xl leading-relaxed text-ink md:text-3xl">
           Chaque séance est un espace d&apos;accueil où le corps peut progressivement retrouver
           davantage de sécurité, de détente, de guérison.
         </p>
 
         <motion.span
-          className="block font-[family-name:var(--font-display)] text-8xl leading-none text-aura-300/50 select-none"
+          className="block font-[family-name:var(--font-display)] text-8xl leading-none text-gold-400 select-none"
           aria-hidden
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}

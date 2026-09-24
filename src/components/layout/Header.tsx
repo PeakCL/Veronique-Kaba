@@ -21,7 +21,7 @@ export function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-gold-200/50 bg-cream/92 backdrop-blur-md" style={{ boxShadow: "0 1px 20px rgba(240,190,90,0.08)" }}>
+    <header className="sticky top-0 z-50 border-b-[2.5px] border-outline bg-cream/92 backdrop-blur-md" style={{ boxShadow: "0 3px 0 rgba(42,32,40,0.08)" }}>
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 md:px-6">
         <Link href="/" className="group flex items-center gap-2">
           <span className="flex h-10 w-10 items-center justify-center rounded-full brand-gradient comic-border transition-transform group-hover:scale-105">

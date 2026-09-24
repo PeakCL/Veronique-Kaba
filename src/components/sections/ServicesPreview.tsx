@@ -85,11 +85,11 @@ export function ServicesPreview() {
               key={item.href}
               variants={cardVariants}
               whileHover={{
-                y: -10,
-                scale: 1.02,
-                boxShadow: `0 20px 50px ${item.glow}, 0 4px 12px rgba(0,0,0,0.06)`,
+                y: -6,
+                x: -2,
+                boxShadow: "10px 12px 0 #2a2028",
               }}
-              transition={{ type: "spring", stiffness: 280, damping: 22 }}
+              transition={{ type: "spring", stiffness: 320, damping: 24 }}
               className="flex"
               style={{ borderRadius: "2rem" }}
             >
@@ -109,7 +109,7 @@ export function ServicesPreview() {
                 <h3 className="mt-3 font-[family-name:var(--font-display)] text-2xl">{item.title}</h3>
                 <p className="mt-2 flex-1 text-sm text-ink/75">{item.description}</p>
                 <span
-                  className={`mt-4 inline-block w-fit rounded-full px-3 py-1 text-xs font-bold comic-border ${
+                  className={`mt-4 inline-block w-fit rounded-full px-3 py-1 text-xs font-bold comic-outline ${
                     item.variant === "gold" ? "bg-gold-100 text-gold-700" : "bg-white/80"
                   }`}
                 >

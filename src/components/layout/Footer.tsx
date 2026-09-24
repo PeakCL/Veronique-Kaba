@@ -5,7 +5,7 @@ import { site } from "@/lib/content";
 export function Footer() {
   return (
     <footer
-      className="mt-20 border-t-4 border-gold-600/30 text-cream"
+      className="mt-20 border-t-4 border-gold-400 text-cream"
       style={{
         background:
           "radial-gradient(ellipse at 50% 0%, rgba(240,190,90,0.10) 0%, transparent 55%), linear-gradient(160deg, #2a1f2e 0%, #1e1530 50%, #160d22 100%)",
