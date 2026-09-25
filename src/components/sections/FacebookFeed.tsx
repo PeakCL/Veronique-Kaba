@@ -1,35 +1,15 @@
 "use client";
 
+import Script from "next/script";
 import { motion } from "framer-motion";
 import { Facebook } from "lucide-react";
-import { site } from "@/lib/content";
 
 /**
- * Feed Facebook — affiche les dernières publications de la page via le
- * « Page Plugin » officiel de Facebook (iframe, aucun script tiers). C'est
- * l'équivalent gratuit d'un widget type Elfsight.
- *
- * ⚠️ Le Page Plugin ne fonctionne qu'avec une **Page** Facebook, pas un profil
- * personnel. La page est lue depuis `NEXT_PUBLIC_FACEBOOK_PAGE_URL` si définie,
- * sinon depuis `site.social.facebook`.
+ * Feed Facebook — affiche les dernières publications de Véronique via le
+ * widget Elfsight « Facebook Feed » (configuré depuis le tableau de bord
+ * Elfsight, fonctionne aussi avec un profil personnel).
  */
 export function FacebookFeed() {
-  const pageUrl =
-    process.env.NEXT_PUBLIC_FACEBOOK_PAGE_URL?.trim() || site.social.facebook;
-
-  const src =
-    "https://www.facebook.com/plugins/page.php?" +
-    new URLSearchParams({
-      href: pageUrl,
-      tabs: "timeline",
-      width: "500",
-      height: "600",
-      small_header: "false",
-      adapt_container_width: "true",
-      hide_cover: "false",
-      show_facepile: "true",
-    }).toString();
-
   return (
     <motion.section
       className="mx-4 mb-16 md:mx-6"
@@ -53,18 +33,14 @@ export function FacebookFeed() {
           </div>
         </div>
 
-        <div className="flex justify-center">
-          <iframe
-            src={src}
-            title="Publications Facebook de Véronique Kaba"
-            loading="lazy"
-            scrolling="no"
-            className="w-full max-w-[500px] rounded-2xl border-0"
-            style={{ height: 600 }}
-            allow="encrypted-media"
-          />
-        </div>
+        {/* Elfsight Facebook Feed */}
+        <div
+          className="elfsight-app-331ca975-e045-45f6-9d20-9d12d403703f"
+          data-elfsight-app-lazy
+        />
       </div>
+
+      <Script src="https://elfsightcdn.com/platform.js" strategy="lazyOnload" />
     </motion.section>
   );
 }
