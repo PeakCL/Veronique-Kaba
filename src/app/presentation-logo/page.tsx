@@ -66,39 +66,87 @@ const glyphs = {
   ),
 };
 
+/** Pourquoi ce logo correspond au métier de Véronique. */
+const reasons = [
+  {
+    title: "Rassurant, sans ésotérisme",
+    text: "Mains, lotus, chakras aux couleurs vives : la plupart des logos de praticiens se ressemblent et peuvent intimider les personnes qui découvrent le magnétisme. Le vôtre parle d'énergie avec la sobriété d'un cabinet de soin. Il met à l'aise les habitués comme les plus sceptiques.",
+  },
+  {
+    title: "Le geste de votre métier",
+    text: "La diagonale de lumière traduit ce que vous faites : l'énergie qui passe par vos mains et traverse le corps. Pour une coupeuse de feu, elle évoque aussi le geste net qui coupe la brûlure.",
+  },
+  {
+    title: "Votre nom, pas un symbole anonyme",
+    text: "On vient vous voir, vous, souvent sur recommandation. Un monogramme à vos initiales devient votre signature et ancre le bouche-à-oreille autour de votre nom.",
+  },
+  {
+    title: "Accueillir, de près comme à distance",
+    text: "Le cercle ouvert entoure sans enfermer, comme le cadre bienveillant de vos séances. Ses pointillés, qui s'éloignent puis reviennent, rappellent l'énergie qui voyage : vos soins en visio y ont leur place.",
+  },
+  {
+    title: "Dans la continuité de votre univers",
+    text: "L'or prolonge l'énergie dorée déjà présente sur votre site. D'un support à l'autre, carte, site, réseaux, vos clients retrouvent la même lumière.",
+  },
+  {
+    title: "Fait pour durer",
+    text: "Un monogramme classique ne se démode pas : pas besoin de le refaire dans trois ans. Il fonctionne en or ou en noir, en grand sur une plaque comme en tout petit en photo de profil.",
+  },
+];
+
 const meanings = [
   {
     glyph: glyphs.letters,
     title: "Vos initiales",
-    text: "Un V et un K à fins empattements, classiques et lisibles, aussi bien en grand sur une plaque qu'en tout petit sur une carte.",
+    text: "Un V et un K à fins empattements, dessinés comme ceux des maisons de tradition : ils inspirent le sérieux et la confiance, et restent lisibles en grand comme en tout petit.",
   },
   {
     glyph: glyphs.line,
     title: "Le trait de lumière",
-    text: "La diagonale dorée traverse les lettres comme l'énergie traverse le corps pendant un soin : c'est le passage de la main.",
+    text: "La diagonale dorée traverse les lettres comme l'énergie traverse le corps pendant un soin : c'est le passage de la main, un mouvement vers le haut, vers le mieux-être.",
   },
   {
     glyph: glyphs.spark,
     title: "L'éclat",
-    text: "Au croisement du trait et des lettres, un point s'illumine. C'est l'instant où le soin agit.",
+    text: "Au croisement du trait et des lettres, un point s'illumine, là où vos initiales se rejoignent. C'est l'instant où le soin agit, et c'est vous qui en êtes le centre.",
   },
   {
     glyph: glyphs.arc,
     title: "Le cercle ouvert",
-    text: "Il enveloppe sans enfermer : une présence qui protège tout en laissant l'énergie circuler.",
+    text: "Il enveloppe sans enfermer : une présence qui protège tout en laissant l'énergie circuler. Sa porte ouverte dit aussi que chacun est le bienvenu.",
   },
   {
     glyph: glyphs.dots,
     title: "Les pointillés",
-    text: "L'énergie qui circule par petites touches et revient vers vous, comme un souffle.",
+    text: "L'énergie qui circule par petites touches, de plus en plus présente, puis revient vers vous : comme les bienfaits d'une séance, qui s'installent dans les jours qui suivent.",
   },
 ];
 
 const palette = [
-  { name: "Noir velours", hex: "#0F0D0B", use: "Fonds sombres, verso de carte, lettres du logo" },
-  { name: "Or", hex: "#C9A15B", use: "Trait de lumière, cercle, filets et pictogrammes" },
-  { name: "Crème", hex: "#F3ECE1", use: "Papier, fonds clairs, recto de carte" },
-  { name: "Taupe", hex: "#A89F8A", use: "Déclinaison douce, supports discrets" },
+  {
+    name: "Noir velours",
+    hex: "#0F0D0B",
+    meaning: "Le calme, la profondeur, l'ancrage.",
+    use: "Fonds sombres, verso de carte, lettres du logo",
+  },
+  {
+    name: "Or",
+    hex: "#C9A15B",
+    meaning: "La lumière, la chaleur, l'énergie qui circule.",
+    use: "Trait de lumière, cercle, filets et pictogrammes",
+  },
+  {
+    name: "Crème",
+    hex: "#F3ECE1",
+    meaning: "La douceur, le naturel, l'accueil.",
+    use: "Papier, fonds clairs, recto de carte",
+  },
+  {
+    name: "Taupe",
+    hex: "#A89F8A",
+    meaning: "La discrétion, la sérénité.",
+    use: "Déclinaison douce, supports discrets",
+  },
 ];
 
 const materials = [
@@ -136,7 +184,29 @@ export default function PresentationLogoPage() {
         <span className={styles.scrollHint} aria-hidden />
       </header>
 
-      {/* ── I. Le sens ── */}
+      {/* ── I. Pensé pour votre métier ── */}
+      <section className={styles.chapter}>
+        <div className={styles.inner}>
+          <p className={styles.chapterNum}>I.</p>
+          <h2 className={styles.h2}>Pensé pour votre métier</h2>
+          <p className={styles.lead}>
+            Les personnes qui vous contactent arrivent souvent avec une douleur, une grande fatigue
+            ou un moment difficile, et parfois quelques doutes sur le magnétisme. Avant même le
+            premier échange, votre logo doit leur donner envie de vous faire confiance.
+          </p>
+          <div className="mt-14 grid gap-x-12 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
+            {reasons.map((r) => (
+              <div key={r.title}>
+                <span className={styles.goldRule} style={{ marginBlock: "0 1.25rem" }} aria-hidden />
+                <h3 className={`${styles.serif} text-2xl leading-tight`}>{r.title}</h3>
+                <p className="mt-3 opacity-75">{r.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── II. Le sens ── */}
       <section className={`${styles.chapter} ${styles.cream}`}>
         <div className={`${styles.inner} grid gap-14 lg:grid-cols-[1fr_1.1fr]`}>
           <Image
@@ -147,7 +217,7 @@ export default function PresentationLogoPage() {
             className="mx-auto h-auto w-full max-w-md lg:sticky lg:top-[20vh] lg:self-start"
           />
           <div>
-            <p className={styles.chapterNum}>I.</p>
+            <p className={styles.chapterNum}>II.</p>
             <h2 className={styles.h2}>Ce que raconte votre logo</h2>
             <p className={styles.lead}>
               Chaque élément a été pensé pour parler de votre métier sans avoir besoin de mots.
@@ -167,14 +237,15 @@ export default function PresentationLogoPage() {
         </div>
       </section>
 
-      {/* ── II. Deux versions ── */}
+      {/* ── III. Deux versions ── */}
       <section className={styles.chapter}>
         <div className={styles.inner}>
-          <p className={styles.chapterNum}>II.</p>
+          <p className={styles.chapterNum}>III.</p>
           <h2 className={styles.h2}>Deux versions, un même geste</h2>
           <p className={styles.lead}>
             Le logo existe en version or sur fond sombre et en version noir et or sur fond clair.
-            Vous choisissez selon le support : il reste reconnaissable dans les deux cas.
+            Vous choisissez selon le support, sans jamais perdre en lisibilité : la forme reste la
+            même, on la reconnaît d&apos;un coup d&apos;œil.
           </p>
         </div>
         <div className={`${styles.versions} mx-auto max-w-6xl`}>
@@ -209,12 +280,58 @@ export default function PresentationLogoPage() {
             </figcaption>
           </figure>
         </div>
+
+        {/* En tout petit : photo de profil et onglet du navigateur */}
+        <div className={`${styles.inner} mt-16 grid items-center gap-10 md:grid-cols-[auto_1fr]`}>
+          <div className="flex flex-wrap items-center justify-center gap-6">
+            {/* Photo de profil */}
+            <div className="h-24 w-24 overflow-hidden rounded-full bg-black ring-1 ring-white/15">
+              <Image
+                src="/presentation-logo/logo-or-transparent.webp"
+                alt="Le logo en photo de profil"
+                width={1067}
+                height={1066}
+                className="h-full w-full scale-110 object-contain"
+              />
+            </div>
+            {/* Onglet de navigateur, en taille réelle (16 px) */}
+            <div className="w-60 rounded-t-xl bg-[#e9e6e1] px-3 pb-2 pt-2.5 text-[#2b2724]">
+              <div className="flex items-center gap-2 rounded-lg bg-white px-2.5 py-1.5 shadow-sm">
+                <Image
+                  src="/presentation-logo/apercu-icone.png"
+                  alt="Le monogramme en icône d'onglet"
+                  width={16}
+                  height={16}
+                  style={{ width: 16, height: 16 }}
+                />
+                <span className="truncate text-xs">Véronique Kaba — Magnétiseuse</span>
+              </div>
+            </div>
+            {/* Icône d'écran d'accueil */}
+            <Image
+              src="/presentation-logo/apercu-icone.png"
+              alt="Le monogramme en icône sur un téléphone"
+              width={56}
+              height={56}
+              className="ring-1 ring-white/15"
+              style={{ width: 56, height: 56, borderRadius: 13 }}
+            />
+          </div>
+          <div>
+            <h3 className={`${styles.serif} text-2xl`}>Lisible en tout petit</h3>
+            <p className="mt-2 max-w-xl opacity-75">
+              Photo de profil sur Facebook, Instagram, WhatsApp ou votre fiche Google, icône dans
+              l&apos;onglet du navigateur : c&apos;est souvent là qu&apos;on vous découvre. Pour
+              les très petites tailles, on garde seulement vos initiales dorées sur fond noir.
+            </p>
+          </div>
+        </div>
       </section>
 
-      {/* ── III. Couleurs et lettres ── */}
+      {/* ── IV. Couleurs et lettres ── */}
       <section className={`${styles.chapter} ${styles.cream}`}>
         <div className={styles.inner}>
-          <p className={styles.chapterNum}>III.</p>
+          <p className={styles.chapterNum}>IV.</p>
           <h2 className={styles.h2}>Couleurs et lettres</h2>
 
           <ul className="mt-12 grid grid-cols-2 gap-x-8 gap-y-10 md:grid-cols-4">
@@ -223,7 +340,8 @@ export default function PresentationLogoPage() {
                 <div className={`${styles.swatch} w-full max-w-40`} style={{ background: c.hex }} />
                 <p className={`${styles.serif} mt-4 text-2xl`}>{c.name}</p>
                 <p className="text-sm tabular-nums opacity-60">{c.hex}</p>
-                <p className="mt-2 text-sm opacity-75">{c.use}</p>
+                <p className="mt-2">{c.meaning}</p>
+                <p className="mt-1 text-sm opacity-65">{c.use}</p>
               </li>
             ))}
           </ul>
@@ -235,26 +353,26 @@ export default function PresentationLogoPage() {
               <p className={`${styles.serif} text-6xl leading-none md:text-7xl`}>Aa</p>
               <p className={`${styles.serif} mt-4 text-2xl`}>Cormorant Garamond</p>
               <p className="mt-1 opacity-75">
-                Pour votre nom et les titres. Un caractère à fort contraste, de la même famille
-                d&apos;esprit que les lettres du logo.
+                Pour votre nom et les titres. Un caractère classique à fort contraste, de la même
+                famille d&apos;esprit que les lettres du logo : élégant, posé, digne de confiance.
               </p>
             </div>
             <div>
               <p className="text-6xl font-light leading-none md:text-7xl">Aa</p>
               <p className="mt-4 text-2xl font-normal">Jost</p>
               <p className="mt-1 opacity-75">
-                Pour les coordonnées et les textes courants. Simple et net, il laisse la vedette au
-                logo.
+                Pour les coordonnées et les textes courants. Simple, net et très lisible, même en
+                petit sur une carte : il laisse la vedette au logo.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── IV. La carte de visite ── */}
+      {/* ── V. La carte de visite ── */}
       <section className={styles.chapter}>
         <div className={styles.inner}>
-          <p className={styles.chapterNum}>IV.</p>
+          <p className={styles.chapterNum}>V.</p>
           <h2 className={styles.h2}>Votre carte de visite</h2>
           <p className={styles.lead}>
             Format classique 85 × 55 mm. Au recto, vos coordonnées sur papier crème ; au verso, le
@@ -278,10 +396,10 @@ export default function PresentationLogoPage() {
         </div>
       </section>
 
-      {/* ── V. Les matières ── */}
+      {/* ── VI. Les matières ── */}
       <section className={`${styles.chapter} ${styles.cream}`}>
         <div className={styles.inner}>
-          <p className={styles.chapterNum}>V.</p>
+          <p className={styles.chapterNum}>VI.</p>
           <h2 className={styles.h2}>À imprimer, à toucher</h2>
           <p className={styles.lead}>
             Le logo prend toute sa valeur sur un beau papier : l&apos;or en relief accroche la
@@ -306,10 +424,10 @@ export default function PresentationLogoPage() {
         </div>
       </section>
 
-      {/* ── VI. Déclinaisons ── */}
+      {/* ── VII. Déclinaisons ── */}
       <section className={styles.chapter}>
         <div className={styles.inner}>
-          <p className={styles.chapterNum}>VI.</p>
+          <p className={styles.chapterNum}>VII.</p>
           <h2 className={styles.h2}>Toutes les déclinaisons</h2>
           <p className={styles.lead}>
             Version or, version blanche, construction du tracé et six variantes du cercle, du plus
