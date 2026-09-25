@@ -1,6 +1,6 @@
 import { redirect, notFound } from "next/navigation";
 import Link from "next/link";
-import { getFormationSession } from "@/lib/auth";
+import { requireStudent } from "@/lib/auth";
 import { formations } from "@/lib/content";
 import { Bubble } from "@/components/ui/Bubble";
 import { FormationPlayer } from "@/components/formation/FormationPlayer";
@@ -15,15 +15,15 @@ export default async function LevelPage({
 }: {
   params: Promise<{ levelId: string }>;
 }) {
-  const session = await getFormationSession();
-  if (!session) redirect("/formation");
-
   const { levelId } = await params;
+  const student = await requireStudent(`/formation/espace/${levelId}`);
+  if (student.mustChangePassword) redirect("/formation/espace/mot-de-passe");
+
   const level = formations.find((f) => f.id === levelId);
   if (!level) notFound();
 
-  // Accès réservé au niveau acheté (mot de passe correspondant).
-  if (!session.levels.includes(level.id)) redirect("/formation/espace");
+  // Accès réservé aux niveaux attribués par Véronique (l'admin voit tout).
+  if (!student.isAdmin && !student.levels.includes(level.id)) redirect("/formation/espace");
 
   return (
     <div className="px-4 py-12 md:px-6">

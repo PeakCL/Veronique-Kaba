@@ -21,7 +21,23 @@ Ouvrir [http://localhost:3000](http://localhost:3000)
 | `PAYPAL_CLIENT_SECRET` | Secret PayPal (serveur uniquement) |
 | `NEXT_PUBLIC_PAYPAL_CLIENT_ID` | Client ID public (boutons PayPal) |
 | `NEXT_PUBLIC_SITE_URL` | URL du site (prod : `https://veronique-kaba.fr`) |
-| `FORMATION_ACCESS_PASSWORD` | Mot de passe espace formation élèves |
+| `NEXT_PUBLIC_SUPABASE_URL` | URL du projet Supabase (espace élèves) |
+| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Clé publique Supabase |
+| `SUPABASE_SECRET_KEY` | Clé secrète Supabase (serveur uniquement) |
+
+## Espace élèves — comptes Supabase
+
+- Les élèves se connectent sur `/connexion` (lien « Mon espace » dans l'en-tête).
+- Véronique (compte admin) gère les élèves sur `/formation/admin` : création
+  du compte avec mot de passe provisoire, niveaux débloqués, réinitialisation.
+- À la première connexion, l'élève choisit son propre mot de passe.
+- Niveaux et rôle admin sont stockés dans `app_metadata` (modifiable seulement
+  avec la clé secrète).
+- Créer / promouvoir le compte admin :
+  `node --env-file=.env.local scripts/create-admin.mjs <email> <mot-de-passe>`
+- Le projet Supabase gratuit se met en pause après 7 jours sans activité : la
+  fonction planifiée `netlify/functions/supabase-keepalive.mjs` l'interroge
+  chaque jour.
 
 ## Formulaire de contact — Netlify Forms
 

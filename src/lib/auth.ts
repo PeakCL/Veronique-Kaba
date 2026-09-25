@@ -1,53 +1,70 @@
-import { cookies } from "next/headers";
-
-export const FORMATION_COOKIE = "formation_access";
+import { redirect } from "next/navigation";
+import type { User } from "@supabase/supabase-js";
+import { createClient, supabaseConfigured } from "@/lib/supabase/server";
+import { formations } from "@/lib/content";
 
 /**
- * Session d'un·e élève de formation.
- * Stockée dans un cookie httpOnly (base64 JSON), lue côté serveur uniquement.
- * `levels` : identifiants des niveaux débloqués (ex ["niveau-1"]).
- * L'identité est déclarée par l'élève à la connexion (pas de base de données) —
- * le mot de passe du niveau reste la vraie barrière d'accès.
+ * Élève connecté·e (compte Supabase individuel).
+ * - `levels` et `isAdmin` viennent de `app_metadata`, modifiable uniquement
+ *   côté serveur avec la clé secrète : un·e élève ne peut pas s'attribuer un niveau.
+ * - `mustChangePassword` : vrai tant que l'élève utilise le mot de passe
+ *   provisoire donné par Véronique.
  */
-export type FormationSession = {
+export type Student = {
+  id: string;
+  email: string;
   firstName: string;
   lastName: string;
-  email: string;
   levels: string[];
+  isAdmin: boolean;
+  mustChangePassword: boolean;
 };
 
-/** Encode une session en valeur de cookie. */
-export function encodeSession(session: FormationSession): string {
-  return Buffer.from(JSON.stringify(session), "utf8").toString("base64");
+const levelIds = new Set<string>(formations.map((f) => f.id));
+
+export function toStudent(user: User): Student {
+  const app = user.app_metadata ?? {};
+  const meta = user.user_metadata ?? {};
+  const levels: string[] = Array.isArray(app.levels)
+    ? app.levels.map(String).filter((l: string) => levelIds.has(l))
+    : [];
+  return {
+    id: user.id,
+    email: user.email ?? "",
+    firstName: String(meta.first_name ?? ""),
+    lastName: String(meta.last_name ?? ""),
+    levels,
+    isAdmin: app.role === "admin",
+    mustChangePassword: app.must_change_password === true,
+  };
 }
 
-/** Décode une valeur de cookie en session (null si invalide). */
-export function decodeSession(raw: string | undefined): FormationSession | null {
-  if (!raw) return null;
-  try {
-    const s = JSON.parse(Buffer.from(raw, "base64").toString("utf8"));
-    if (s && typeof s.email === "string" && Array.isArray(s.levels)) {
-      return {
-        firstName: String(s.firstName ?? ""),
-        lastName: String(s.lastName ?? ""),
-        email: String(s.email),
-        levels: s.levels.map(String),
-      };
-    }
-  } catch {
-    // cookie corrompu → session absente
-  }
-  return null;
+/** N'accepte qu'un chemin interne (évite les redirections vers un autre site). */
+export function safeNext(raw: unknown): string {
+  const next = typeof raw === "string" ? raw : "";
+  return /^\/(?![\/\\])/.test(next) ? next : "/formation/espace";
 }
 
-/** Session courante (côté serveur), ou null. */
-export async function getFormationSession(): Promise<FormationSession | null> {
-  const cookieStore = await cookies();
-  return decodeSession(cookieStore.get(FORMATION_COOKIE)?.value);
+/** Élève courant·e, ou null. `getUser()` revalide le jeton auprès de Supabase. */
+export async function getStudent(): Promise<Student | null> {
+  if (!supabaseConfigured) return null;
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  return user ? toStudent(user) : null;
 }
 
-/** L'élève a-t-il accès à ce niveau ? */
-export async function hasLevelAccess(levelId: string): Promise<boolean> {
-  const session = await getFormationSession();
-  return Boolean(session?.levels.includes(levelId));
+/** Exige une connexion ; renvoie vers /connexion sinon. */
+export async function requireStudent(next = "/formation/espace"): Promise<Student> {
+  const student = await getStudent();
+  if (!student) redirect(`/connexion?next=${encodeURIComponent(next)}`);
+  return student;
+}
+
+/** Exige le rôle admin (Véronique). */
+export async function requireAdmin(): Promise<Student> {
+  const student = await requireStudent("/formation/admin");
+  if (!student.isAdmin) redirect("/formation/espace");
+  return student;
 }

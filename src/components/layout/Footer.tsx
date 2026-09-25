@@ -43,6 +43,7 @@ export function Footer() {
               ["/apropos", "À propos"],
               ["/rendez-vous", "Prendre rendez-vous"],
               ["/contact", "Contact"],
+              ["/formation/espace", "Espace élèves"],
             ].map(([href, label]) => (
               <li key={href}>
                 <Link href={href} className="hover:text-sky-200">

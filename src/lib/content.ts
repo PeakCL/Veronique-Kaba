@@ -244,8 +244,9 @@ export const formationShared = {
 } as const;
 
 /**
- * Deux niveaux de formation. Chaque niveau a son propre mot de passe d'accès
- * (variable d'env `passwordEnv`) et sa propre liste de leçons vidéo.
+ * Deux niveaux de formation, chacun avec sa liste de leçons vidéo. L'accès se
+ * fait par compte élève individuel (Supabase) : Véronique attribue les niveaux
+ * depuis /formation/admin.
  *
  * Les leçons sont de courtes vidéos qui s'enchaînent : `video: null` affiche un
  * état « bientôt disponible » tant que Véronique n'a pas fourni la vidéo.
@@ -267,7 +268,6 @@ export const formations = [
     duration: "2 h",
     format: "En visio ou en présentiel (15 km autour de Longwy)",
     tagline: "Réveiller et ressentir son magnétisme",
-    passwordEnv: "FORMATION_N1_PASSWORD",
     serviceId: "formation-niveau-1",
     stripePriceEnv: "STRIPE_PRICE_FORMATION_N1",
     promise:
@@ -329,7 +329,6 @@ export const formations = [
     duration: "Format long — durée à définir",
     format: "En visio ou en présentiel",
     tagline: "Approfondir sa pratique et gagner en autonomie",
-    passwordEnv: "FORMATION_N2_PASSWORD",
     serviceId: "formation-niveau-2",
     stripePriceEnv: "STRIPE_PRICE_FORMATION_N2",
     promise:

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Menu, X, Sparkles } from "lucide-react";
+import { Menu, X, Sparkles, UserRound } from "lucide-react";
 import { site } from "@/lib/content";
 import { ComicButton } from "@/components/ui/ComicButton";
 import { cn } from "@/lib/utils";
@@ -49,7 +49,14 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="hidden lg:block">
+        <div className="hidden items-center gap-2 lg:flex">
+          <Link
+            href="/formation/espace"
+            className="inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-2 text-sm font-bold text-ink comic-border transition hover:bg-aura-50"
+          >
+            <UserRound className="h-4 w-4 text-aura-600" />
+            Mon espace
+          </Link>
           <ComicButton href="/rendez-vous" size="sm">
             Réserver
           </ComicButton>
@@ -88,6 +95,14 @@ export function Header() {
               {item.label}
             </Link>
           ))}
+          <Link
+            href="/formation/espace"
+            className="flex items-center gap-2 rounded-xl px-4 py-3 font-medium hover:bg-rose-50"
+            onClick={() => setOpen(false)}
+          >
+            <UserRound className="h-4 w-4 text-aura-600" />
+            Mon espace élève
+          </Link>
           <ComicButton href="/rendez-vous" className="mt-2 w-full">
             Réserver maintenant
           </ComicButton>
