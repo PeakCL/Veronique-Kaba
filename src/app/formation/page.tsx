@@ -32,7 +32,7 @@ function OffreCard({ level, highlight = false }: { level: Formation; highlight?:
   return (
     <Bubble
       variant="gold"
-      className={highlight ? "ring-2 ring-gold-300/50" : ""}
+      className={`flex h-full flex-col${highlight ? " ring-2 ring-gold-300/50" : ""}`}
       tail="bottom-left"
     >
       <p className="text-sm font-bold text-aura-700">
@@ -67,7 +67,7 @@ function OffreCard({ level, highlight = false }: { level: Formation; highlight?:
 
       <p className="mt-4 text-sm text-ink/70">{level.format}</p>
 
-      <div className="mt-6 flex flex-col gap-2 sm:flex-row">
+      <div className="mt-auto flex flex-col gap-2 pt-6 sm:flex-row">
         {bookable ? (
           <>
             <PayPalPay serviceId={level.serviceId} amount={level.price} />
@@ -114,26 +114,25 @@ export default function FormationPage() {
       />
 
       <div className="mx-auto max-w-6xl px-4 md:px-6">
-        {/* ── Intro + les deux offres ── */}
-        <div className="grid gap-10 lg:grid-cols-2">
-          <div>
-            <p className="text-lg leading-relaxed text-ink/80">{niveau1.promise}</p>
-            <p className="mt-4 leading-relaxed text-ink/75">{niveau1.description}</p>
+        {/* ── Intro centrée ── */}
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="text-lg leading-relaxed text-ink/80">{niveau1.promise}</p>
+          <p className="mt-4 leading-relaxed text-ink/75">{niveau1.description}</p>
 
-            <Bubble variant="aura" className="mt-6" tail="bottom-left">
-              <p className="text-sm leading-relaxed text-ink/80">
-                <strong>La formation existe en deux niveaux.</strong> Le{" "}
-                <strong>Niveau 1</strong> est un format court de 2 h pour poser les bases ; le{" "}
-                <strong>Niveau 2</strong>, plus complet, approfondit la pratique (ouverture à
-                venir).
-              </p>
-            </Bubble>
-          </div>
+          <Bubble variant="aura" className="mt-6" tail="none">
+            <p className="text-sm leading-relaxed text-ink/80">
+              <strong>La formation existe en deux niveaux.</strong> Le{" "}
+              <strong>Niveau 1</strong> est un format court de 2 h pour poser les bases ; le{" "}
+              <strong>Niveau 2</strong>, plus complet, approfondit la pratique (ouverture à
+              venir).
+            </p>
+          </Bubble>
+        </div>
 
-          <div className="grid gap-6">
-            <OffreCard level={formations[0]} highlight />
-            <OffreCard level={formations[1]} />
-          </div>
+        {/* ── Les deux offres côte à côte ── */}
+        <div className="mt-10 grid gap-6 md:grid-cols-2">
+          <OffreCard level={formations[0]} highlight />
+          <OffreCard level={formations[1]} />
         </div>
 
         {/* ── À qui ça s'adresse ── */}
