@@ -445,7 +445,7 @@ export const services = [
 
 /**
  * Témoignages réels uniquement.
- * - Les 2 premiers : retours authentiques transmis par les clientes (par SMS).
+ * - Les 3 premiers : retours authentiques transmis par les clientes (par SMS).
  * - Avis Google : reliés via `googleReviewsUrl` plutôt que recopiés (voir page Témoignages/Accueil).
  */
 export const testimonials = [
@@ -459,6 +459,13 @@ export const testimonials = [
     name: "Kadya",
     context: "Soin à distance (Sénégal)",
     text: "Je fais appel à Véronique pour des soins à distance car je vis au Sénégal. J'avais mal à l'épaule et j'ai été agréablement surprise par l'efficacité du traitement et la qualité d'écoute de Véro. Grâce à son suivi j'ai pu observer de réels changements malgré la distance. Je recommande vivement.",
+    stars: 5,
+  },
+  {
+    // Reçu par SMS en août 2026 — la cliente préfère rester anonyme.
+    name: "Une cliente",
+    context: "Soin de magnétisme",
+    text: "J'ai fait appel à Véronique pour un premier soin de magnétisme. Son approche est globale, douce et bienveillante. Les bénéfices dans mon corps ont, dans mon expérience, été immédiats avec un déblocage des zones sensibles et verrouillées. Je la recommande vivement et son écoute sincère est très appréciable !",
     stars: 5,
   },
 ] as const;
