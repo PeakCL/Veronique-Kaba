@@ -1,0 +1,369 @@
+/* ── Présentation du logo — univers propre, indépendant du style BD du site ── */
+
+.page {
+  --noir: #0f0d0b;
+  --noir-2: #1a1714;
+  --or: #c9a15b;
+  --or-clair: #e6c88a;
+  --creme: #f3ece1;
+  --taupe: #a89f8a;
+  --encre: #231f1b;
+
+  background: var(--noir);
+  color: var(--creme);
+  font-family: var(--font-pres-sans), system-ui, sans-serif;
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+.serif {
+  font-family: var(--font-pres-serif), Georgia, serif;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+.cream {
+  background: var(--creme);
+  color: var(--encre);
+}
+
+/* ── Ouverture : un trait de lumière traverse l'écran, puis le logo apparaît ── */
+
+.hero {
+  position: relative;
+  display: grid;
+  min-height: 100svh;
+  place-items: center;
+  overflow: hidden;
+  padding: 4rem 1rem;
+  text-align: center;
+  background: radial-gradient(ellipse 60% 50% at 50% 45%, #2a2118 0%, var(--noir) 70%);
+}
+
+.sweep {
+  position: absolute;
+  left: -20%;
+  top: 50%;
+  width: 140%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--or-clair) 45%, #fff8e6 50%, var(--or-clair) 55%, transparent);
+  box-shadow: 0 0 24px 2px rgba(230, 200, 138, 0.55);
+  transform: rotate(-42deg) scaleX(0);
+  transform-origin: 0 50%;
+  animation: sweep 1.6s cubic-bezier(0.7, 0, 0.2, 1) 0.2s forwards;
+}
+
+.heroLogo {
+  opacity: 0;
+  animation: reveal 1.8s ease-out 1.1s forwards;
+}
+
+.heroText {
+  opacity: 0;
+  animation: reveal 1.4s ease-out 2s forwards;
+}
+
+@keyframes sweep {
+  0% {
+    transform: rotate(-42deg) scaleX(0);
+    opacity: 1;
+  }
+  70% {
+    transform: rotate(-42deg) scaleX(1);
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(-42deg) scaleX(1);
+    opacity: 0;
+  }
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    filter: blur(6px);
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: none;
+  }
+}
+
+.scrollHint {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  width: 1px;
+  height: 3rem;
+  background: linear-gradient(var(--or), transparent);
+  opacity: 0;
+  animation: reveal 1s ease-out 2.8s forwards;
+}
+
+/* ── Chapitres ── */
+
+.chapter {
+  padding: clamp(5rem, 10vw, 9rem) 1.25rem;
+}
+
+.inner {
+  margin-inline: auto;
+  max-width: 72rem;
+}
+
+.chapterNum {
+  font-family: var(--font-pres-serif), Georgia, serif;
+  font-style: italic;
+  font-size: 1.125rem;
+  color: var(--or);
+}
+
+.h2 {
+  font-family: var(--font-pres-serif), Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(2.4rem, 5vw, 3.75rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  margin-top: 0.5rem;
+}
+
+.lead {
+  max-width: 38rem;
+  margin-top: 1.25rem;
+  font-size: 1.0625rem;
+  opacity: 0.8;
+}
+
+.goldRule {
+  display: block;
+  width: 3rem;
+  height: 1px;
+  margin-block: 1.75rem;
+  background: var(--or);
+}
+
+/* Sens du logo : pictogramme + explication */
+.meaning {
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  gap: 1.25rem;
+  padding-block: 1.5rem;
+  border-top: 1px solid rgba(35, 31, 27, 0.12);
+}
+
+.meaning:last-child {
+  border-bottom: 1px solid rgba(35, 31, 27, 0.12);
+}
+
+.meaning svg {
+  width: 3rem;
+  height: 3rem;
+}
+
+.meaningTitle {
+  font-family: var(--font-pres-serif), Georgia, serif;
+  font-size: 1.5rem;
+  line-height: 1.2;
+}
+
+/* Deux versions côte à côte, bord à bord */
+.versions {
+  display: grid;
+  margin-top: 3.5rem;
+}
+
+@media (min-width: 768px) {
+  .versions {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.version {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 2rem 2.5rem;
+}
+
+.versionDark {
+  background: #000;
+}
+
+.versionLight {
+  background: #fff;
+  color: var(--encre);
+}
+
+/* Palette */
+.swatch {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  /* Contour fin : la pastille crème reste visible sur le fond crème */
+  box-shadow: inset 0 0 0 1px rgba(35, 31, 27, 0.14);
+}
+
+/* ── Cartes de visite ── */
+
+.card {
+  container-type: inline-size;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 85 / 55;
+  overflow: hidden;
+  border-radius: 1.2cqw;
+  text-align: left;
+  box-shadow:
+    0 1px 1px rgba(0, 0, 0, 0.2),
+    0 24px 48px -16px rgba(0, 0, 0, 0.55);
+}
+
+.cardCream {
+  background:
+    radial-gradient(circle at 20% 10%, rgba(255, 255, 255, 0.6), transparent 60%),
+    #f1ebe0;
+  color: #1b1815;
+}
+
+.cardBlack {
+  background: radial-gradient(ellipse at 50% 40%, #1d1813, #070605 75%);
+  color: var(--or);
+}
+
+.cardWaves {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.cardRule {
+  align-self: stretch;
+  width: 1px;
+  margin-inline: 5cqw;
+  background: var(--or);
+  opacity: 0.8;
+}
+
+.cardName {
+  font-family: var(--font-pres-serif), Georgia, serif;
+  font-size: 4.2cqw;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.cardRole {
+  margin-top: 1cqw;
+  font-size: 2.9cqw;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.cardDash {
+  display: block;
+  width: 6cqw;
+  height: 1px;
+  margin-block: 3cqw;
+  background: var(--or);
+}
+
+.cardLines {
+  display: grid;
+  gap: 1.6cqw;
+  font-size: 2.55cqw;
+}
+
+.cardLines li {
+  display: flex;
+  align-items: center;
+  gap: 2.4cqw;
+  white-space: nowrap;
+}
+
+.cardLines svg {
+  width: 3cqw;
+  height: 3cqw;
+  flex-shrink: 0;
+  color: #b8893f;
+  stroke-width: 1.6;
+}
+
+.cardMotto {
+  margin-top: 3cqw;
+  font-size: 2.7cqw;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--or);
+}
+
+/* Carte retournable */
+.flip {
+  display: block;
+  width: 100%;
+  perspective: 1600px;
+  cursor: pointer;
+  border-radius: 1.2cqw;
+}
+
+.flip:focus-visible {
+  outline: 2px solid var(--or);
+  outline-offset: 6px;
+}
+
+.flipInner {
+  position: relative;
+  display: block;
+  transform-style: preserve-3d;
+  transition: transform 0.9s cubic-bezier(0.3, 0.7, 0.2, 1);
+}
+
+.isFlipped {
+  transform: rotateY(180deg);
+}
+
+.flipFace {
+  display: block;
+  backface-visibility: hidden;
+}
+
+.flipBack {
+  position: absolute;
+  inset: 0;
+  transform: rotateY(180deg);
+}
+
+/* Matières */
+.material {
+  overflow: hidden;
+}
+
+.material img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.caption {
+  margin-top: 0.75rem;
+  font-size: 0.9375rem;
+  opacity: 0.75;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sweep {
+    display: none;
+  }
+  .heroLogo,
+  .heroText,
+  .scrollHint {
+    animation: none;
+    opacity: 1;
+  }
+  .flipInner {
+    transition: none;
+  }
+}

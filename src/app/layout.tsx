@@ -4,6 +4,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { MobileCTABar } from "@/components/layout/MobileCTABar";
 import { MotionProvider } from "@/components/layout/MotionProvider";
+import { SiteChrome } from "@/components/layout/SiteChrome";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { localBusinessJsonLd, personJsonLd, websiteJsonLd } from "@/lib/seo";
 import { site } from "@/lib/content";
@@ -88,12 +89,16 @@ export default function RootLayout({
       >
         <JsonLd data={[localBusinessJsonLd(), personJsonLd(), websiteJsonLd()]} />
         <MotionProvider>
-          <Header />
+          <SiteChrome>
+            <Header />
+          </SiteChrome>
           <main className="flex-1">{children}</main>
-          <Footer />
-          {/* Réserve la hauteur de la barre CTA fixe (mobile) pour ne rien masquer */}
-          <div className="h-24 lg:hidden" aria-hidden />
-          <MobileCTABar />
+          <SiteChrome>
+            <Footer />
+            {/* Réserve la hauteur de la barre CTA fixe (mobile) pour ne rien masquer */}
+            <div className="h-24 lg:hidden" aria-hidden />
+            <MobileCTABar />
+          </SiteChrome>
         </MotionProvider>
       </body>
     </html>
