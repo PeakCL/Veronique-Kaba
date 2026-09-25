@@ -244,9 +244,9 @@ export const formationShared = {
 } as const;
 
 /**
- * Deux niveaux de formation, chacun avec sa liste de leçons vidéo. L'accès se
- * fait par compte élève individuel (Supabase) : Véronique attribue les niveaux
- * depuis /formation/admin.
+ * Deux niveaux de formation, chacun avec sa liste de leçons vidéo. L'accès à
+ * l'espace élève se fait avec un mot de passe commun par niveau (voir
+ * src/lib/auth.ts et les variables FORMATION_*_PASSWORD).
  *
  * Les leçons sont de courtes vidéos qui s'enchaînent : `video: null` affiche un
  * état « bientôt disponible » tant que Véronique n'a pas fourni la vidéo.

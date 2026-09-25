@@ -19,8 +19,8 @@ export default function MotDePasseOubliePage() {
 
         <Bubble variant="aura" tail="none" className="mt-8">
           <p className="leading-relaxed text-ink/80">
-            Pas d&apos;inquiétude : contactez Véronique, elle vous transmet un nouveau mot de
-            passe provisoire. Vous le personnaliserez ensuite depuis votre espace.
+            Pas d&apos;inquiétude : contactez Véronique, elle vous redonne le mot de passe de
+            votre formation.
           </p>
           <div className="mt-5 flex flex-col gap-3">
             <a

@@ -7,7 +7,7 @@ import { Bubble } from "@/components/ui/Bubble";
 import { ComicButton } from "@/components/ui/ComicButton";
 import { signIn, type FormState } from "@/app/connexion/actions";
 
-export const CHAMP =
+const CHAMP =
   "mt-1 w-full rounded-xl border-3 border-ink bg-cream px-4 py-3 focus:outline-none focus:ring-2 focus:ring-aura-400";
 
 export function LoginForm({ next }: { next?: string }) {
@@ -23,22 +23,20 @@ export function LoginForm({ next }: { next?: string }) {
       <form action={action} className="mt-5 space-y-4">
         <input type="hidden" name="next" value={next ?? ""} />
         <div>
-          <label htmlFor="login-email" className="block text-sm font-bold">
-            Adresse e-mail
+          <label htmlFor="login-firstName" className="block text-sm font-bold">
+            Votre prénom
           </label>
           <input
-            id="login-email"
-            name="email"
-            type="email"
-            autoComplete="email"
-            defaultValue={state.email}
-            required
+            id="login-firstName"
+            name="firstName"
+            autoComplete="given-name"
+            defaultValue={state.firstName}
             className={CHAMP}
           />
         </div>
         <div>
           <label htmlFor="login-password" className="block text-sm font-bold">
-            Mot de passe
+            Mot de passe de votre formation
           </label>
           <input
             id="login-password"
@@ -57,7 +55,7 @@ export function LoginForm({ next }: { next?: string }) {
         )}
 
         <ComicButton type="submit" disabled={pending} className="w-full">
-          {pending ? "Connexion…" : "Me connecter"}
+          {pending ? "Connexion…" : "Accéder à mes vidéos"}
         </ComicButton>
       </form>
 

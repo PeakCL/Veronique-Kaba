@@ -1,61 +1,48 @@
 "use server";
 
+import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import { createClient, supabaseConfigured } from "@/lib/supabase/server";
-import { createAdminClient } from "@/lib/supabase/admin";
-import { getStudent, safeNext } from "@/lib/auth";
+import {
+  FORMATION_COOKIE,
+  decodeSession,
+  encodeSession,
+  levelsForPassword,
+  safeNext,
+} from "@/lib/auth";
 
-export type FormState = { error?: string; email?: string };
+export type FormState = { error?: string; firstName?: string };
 
 export async function signIn(_prev: FormState, formData: FormData): Promise<FormState> {
-  const email = String(formData.get("email") ?? "").trim();
-  const password = String(formData.get("password") ?? "");
-  if (!email || !password) {
-    return { error: "Merci d'indiquer votre e-mail et votre mot de passe.", email };
-  }
+  const firstName = String(formData.get("firstName") ?? "").trim().slice(0, 80);
+  const password = String(formData.get("password") ?? "").trim();
+  if (!password) return { error: "Merci d'indiquer le mot de passe de votre formation.", firstName };
 
-  if (!supabaseConfigured) {
-    return { error: "L'espace élève est en cours de mise en place, réessayez bientôt.", email };
-  }
-  const supabase = await createClient();
-  const { error } = await supabase.auth.signInWithPassword({ email, password });
-  if (error) return { error: "E-mail ou mot de passe incorrect.", email };
+  const { levels, isAdmin } = levelsForPassword(password);
+  if (levels.length === 0) return { error: "Mot de passe incorrect.", firstName };
+
+  // On garde les niveaux déjà débloqués (ex. Niveau 1 puis Niveau 2).
+  const cookieStore = await cookies();
+  const existing = decodeSession(cookieStore.get(FORMATION_COOKIE)?.value);
+  cookieStore.set(
+    FORMATION_COOKIE,
+    encodeSession({
+      firstName: firstName || existing?.firstName || "",
+      levels: Array.from(new Set([...(existing?.levels ?? []), ...levels])),
+      isAdmin: isAdmin || existing?.isAdmin === true,
+    }),
+    {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      maxAge: 60 * 60 * 24 * 30,
+      path: "/",
+    },
+  );
 
   redirect(safeNext(formData.get("next")));
 }
 
 export async function signOut() {
-  const supabase = await createClient();
-  await supabase.auth.signOut();
+  (await cookies()).delete(FORMATION_COOKIE);
   redirect("/connexion");
-}
-
-export async function changePassword(_prev: FormState, formData: FormData): Promise<FormState> {
-  const student = await getStudent();
-  if (!student) redirect("/connexion");
-
-  const password = String(formData.get("password") ?? "");
-  const confirm = String(formData.get("confirm") ?? "");
-  if (password.length < 8) return { error: "Le mot de passe doit faire au moins 8 caractères." };
-  if (password !== confirm) return { error: "Les deux mots de passe ne correspondent pas." };
-
-  const supabase = await createClient();
-  const { error } = await supabase.auth.updateUser({ password });
-  if (error) {
-    return {
-      error:
-        error.code === "same_password"
-          ? "Choisissez un mot de passe différent de l'actuel."
-          : "Impossible de changer le mot de passe, réessayez.",
-    };
-  }
-
-  // Le mot de passe provisoire n'est plus utilisé : on lève l'obligation.
-  if (student.mustChangePassword) {
-    await createAdminClient().auth.admin.updateUserById(student.id, {
-      app_metadata: { must_change_password: false },
-    });
-  }
-
-  redirect("/formation/espace?motdepasse=ok");
 }

@@ -21,23 +21,20 @@ Ouvrir [http://localhost:3000](http://localhost:3000)
 | `PAYPAL_CLIENT_SECRET` | Secret PayPal (serveur uniquement) |
 | `NEXT_PUBLIC_PAYPAL_CLIENT_ID` | Client ID public (boutons PayPal) |
 | `NEXT_PUBLIC_SITE_URL` | URL du site (prod : `https://veronique-kaba.fr`) |
-| `NEXT_PUBLIC_SUPABASE_URL` | URL du projet Supabase (espace élèves) |
-| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Clé publique Supabase |
-| `SUPABASE_SECRET_KEY` | Clé secrète Supabase (serveur uniquement) |
+| `FORMATION_N1_PASSWORD` | Mot de passe commun des élèves du Niveau 1 |
+| `FORMATION_N2_PASSWORD` | Mot de passe commun des élèves du Niveau 2 |
+| `FORMATION_ADMIN_PASSWORD` | Mot de passe admin : ouvre tous les niveaux |
 
-## Espace élèves — comptes Supabase
+## Espace élèves
 
-- Les élèves se connectent sur `/connexion` (lien « Mon espace » dans l'en-tête).
-- Véronique (compte admin) gère les élèves sur `/formation/admin` : création
-  du compte avec mot de passe provisoire, niveaux débloqués, réinitialisation.
-- À la première connexion, l'élève choisit son propre mot de passe.
-- Niveaux et rôle admin sont stockés dans `app_metadata` (modifiable seulement
-  avec la clé secrète).
-- Créer / promouvoir le compte admin :
-  `node --env-file=.env.local scripts/create-admin.mjs <email> <mot-de-passe>`
-- Le projet Supabase gratuit se met en pause après 7 jours sans activité : la
-  fonction planifiée `netlify/functions/supabase-keepalive.mjs` l'interroge
-  chaque jour.
+- Les élèves se connectent sur `/connexion` (bouton « Mon espace » dans
+  l'en-tête) avec leur prénom et le mot de passe de leur niveau.
+- Le niveau est reconnu d'après le mot de passe ; saisir le second mot de passe
+  ajoute le Niveau 2 à l'espace.
+- La session est un cookie signé (HMAC) dont la clé dérive des mots de passe :
+  changer un mot de passe dans Netlify déconnecte tout le monde.
+- En production, un niveau sans variable définie est fermé (pas de mot de passe
+  par défaut).
 
 ## Formulaire de contact — Netlify Forms
 

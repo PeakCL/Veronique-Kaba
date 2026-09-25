@@ -352,7 +352,7 @@ export default function FormationPage() {
           <div>
             <p className="font-bold">Déjà inscrit·e&nbsp;?</p>
             <p className="text-sm text-ink/70">
-              Retrouvez vos vidéos avec l&apos;e-mail et le mot de passe transmis par Véronique.
+              Retrouvez vos vidéos avec le mot de passe transmis par Véronique à l&apos;inscription.
             </p>
           </div>
           <ComicButton href="/formation/espace" className="shrink-0">

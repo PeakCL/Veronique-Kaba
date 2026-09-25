@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { redirect } from "next/navigation";
-import { getStudent, safeNext } from "@/lib/auth";
+import { getFormationSession } from "@/lib/auth";
 import { LoginForm } from "@/components/formation/LoginForm";
 
 export const metadata: Metadata = {
@@ -15,7 +14,9 @@ export default async function ConnexionPage({
   searchParams: Promise<{ next?: string }>;
 }) {
   const { next } = await searchParams;
-  if (await getStudent()) redirect(safeNext(next));
+  // Déjà connecté·e : on affiche quand même le formulaire, pour pouvoir
+  // ajouter le mot de passe d'un autre niveau.
+  const session = await getFormationSession();
 
   return (
     <div className="px-4 py-12 md:px-6 md:py-16">
@@ -24,9 +25,19 @@ export default async function ConnexionPage({
           Mon espace élève 🎓
         </h1>
         <p className="mt-3 text-center text-ink/70">
-          Connectez-vous avec l&apos;e-mail et le mot de passe transmis par Véronique lors de
-          votre inscription.
+          Entrez le mot de passe de votre formation, transmis par Véronique lors de votre
+          inscription.
         </p>
+
+        {session && (
+          <p className="mt-6 rounded-xl bg-aura-50 px-4 py-3 text-center text-sm comic-border">
+            Vous êtes déjà connecté·e.{" "}
+            <Link href="/formation/espace" className="font-semibold text-aura-700 underline">
+              Aller à mon espace
+            </Link>
+            , ou saisissez ci-dessous le mot de passe d&apos;un autre niveau.
+          </p>
+        )}
 
         <div className="mt-8">
           <LoginForm next={next} />
