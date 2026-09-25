@@ -112,93 +112,98 @@ export function Hero() {
 
         {/* ── Colonne avatar BD — illustration flottante ── */}
         <motion.div
-          className="relative flex justify-center lg:justify-end"
+          className="relative flex justify-center lg:justify-start"
           variants={avatarAnim}
           initial="hidden"
           animate="show"
         >
-          {/* Halo doré derrière l'illustration — énergie rayonnante */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 flex items-center justify-center"
-          >
-            {/* Cercle d'aura principal */}
-            <div className="h-[420px] w-[420px] rounded-full bg-[radial-gradient(ellipse,rgba(240,190,90,0.35)_0%,rgba(240,190,90,0.12)_50%,transparent_75%)]" />
-          </div>
-
-          {/* Points halftone BD dans le halo */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 flex items-center justify-center"
-          >
-            <div className="h-[380px] w-[380px] rounded-full halftone opacity-60" />
-          </div>
-
-          {/* Rayons dorés SVG — effet énergie */}
-          <svg
-            aria-hidden
-            className="pointer-events-none absolute inset-0 h-full w-full opacity-30"
-            viewBox="0 0 500 600"
-            fill="none"
-          >
-            {Array.from({ length: 16 }).map((_, i) => {
-              const angle = (i * 360) / 16;
-              const rad = (angle * Math.PI) / 180;
-              const cx = 250, cy = 280;
-              return (
-                <line
-                  key={i}
-                  x1={cx + Math.cos(rad) * 110}
-                  y1={cy + Math.sin(rad) * 110}
-                  x2={cx + Math.cos(rad) * 360}
-                  y2={cy + Math.sin(rad) * 360}
-                  stroke="rgba(240,190,60,0.6)"
-                  strokeWidth="1.5"
-                />
-              );
-            })}
-            {/* Cercles concentriques */}
-            {[130, 190, 250, 310].map((r) => (
-              <circle
-                key={r}
-                cx={250}
-                cy={280}
-                r={r}
-                stroke="rgba(240,190,60,0.15)"
-                strokeWidth="1"
-                fill="none"
-              />
-            ))}
-          </svg>
-
-          {/* ── L'illustration BD de Véronique — pose salut (main levée) ── */}
-          <div className="relative z-10">
-            {/* Bulle dialogue */}
-            <div className="absolute -right-4 -top-8 z-20 rotate-2 md:-right-8">
-              <Bubble variant="warm" tail="bottom-right" className="max-w-[200px] !p-3 text-center">
-                <p className="font-[family-name:var(--font-hand)] text-xl text-ink/85">
-                  Bienvenue, je suis Véronique ✨
-                </p>
-              </Bubble>
+          {/* Conteneur calé sur l'illustration : halos et rayons restent centrés sur elle */}
+          <div className="relative">
+            {/* Halo doré derrière l'illustration — énergie rayonnante */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 flex items-center justify-center"
+            >
+              {/* Cercle d'aura principal */}
+              <div className="h-[420px] w-[420px] rounded-full bg-[radial-gradient(ellipse,rgba(240,190,90,0.35)_0%,rgba(240,190,90,0.12)_50%,transparent_75%)]" />
             </div>
 
-            {/* L'illustration principale — sans cadre, fond transparent */}
-            <Image
-              src={veroAvatars.salut}
-              alt="Véronique Kaba — magnétiseuse et énergéticienne"
-              width={480}
-              height={620}
-              priority
-              className="relative z-10 max-h-[580px] w-auto object-contain drop-shadow-[0_8px_40px_rgba(240,190,90,0.25)]"
-            />
+            {/* Points halftone BD dans le halo */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 flex items-center justify-center"
+            >
+              <div className="h-[380px] w-[380px] rounded-full halftone opacity-60" />
+            </div>
 
-            {/* Bulle gold bas-gauche */}
-            <div className="absolute -bottom-4 -left-6 z-20 -rotate-2">
-              <Bubble variant="gold" tail="top-left" className="!p-3">
-                <p className="text-sm font-medium text-ink/80">
-                  Depuis {site.practiceSince} avec bienveillance
-                </p>
-              </Bubble>
+            {/* Rayons dorés SVG — effet énergie */}
+            <svg
+              aria-hidden
+              className="pointer-events-none absolute inset-0 h-full w-full opacity-30"
+              viewBox="0 0 500 600"
+              fill="none"
+            >
+              {Array.from({ length: 16 }).map((_, i) => {
+                const angle = (i * 360) / 16;
+                const rad = (angle * Math.PI) / 180;
+                const cx = 250, cy = 280;
+                return (
+                  <line
+                    key={i}
+                    x1={cx + Math.cos(rad) * 110}
+                    y1={cy + Math.sin(rad) * 110}
+                    x2={cx + Math.cos(rad) * 360}
+                    y2={cy + Math.sin(rad) * 360}
+                    stroke="rgba(240,190,60,0.6)"
+                    strokeWidth="1.5"
+                  />
+                );
+              })}
+              {/* Cercles concentriques */}
+              {[130, 190, 250, 310].map((r) => (
+                <circle
+                  key={r}
+                  cx={250}
+                  cy={280}
+                  r={r}
+                  stroke="rgba(240,190,60,0.15)"
+                  strokeWidth="1"
+                  fill="none"
+                />
+              ))}
+            </svg>
+
+            {/* ── L'illustration BD de Véronique — pose salut (main levée) ── */}
+            <div className="relative z-10">
+              {/* Bulle dialogue — dans l'espace libre au-dessus de la main, jamais sur le visage */}
+              <div className="absolute -left-6 top-0 z-20 -rotate-2 md:-left-10">
+                <Bubble variant="warm" tail="bottom-right" className="max-w-[190px] !p-3 text-center">
+                  <p className="font-[family-name:var(--font-hand)] text-xl text-ink/85">
+                    Bienvenue, je suis Véronique ✨
+                  </p>
+                </Bubble>
+              </div>
+
+              {/* L'illustration principale — sans cadre, fond transparent */}
+              <Image
+                src={veroAvatars.salut}
+                alt="Véronique Kaba — magnétiseuse et énergéticienne"
+                width={465}
+                height={537}
+                priority
+                // Hauteur explicite : avec `w-auto` seul, l'image 2x servie aux écrans Retina
+                // s'affichait à moitié taille.
+                className="relative z-10 h-[400px] w-auto object-contain drop-shadow-[0_8px_40px_rgba(240,190,90,0.25)] md:h-[500px] xl:h-[560px]"
+              />
+
+              {/* Bulle gold bas-gauche */}
+              <div className="absolute -bottom-4 -left-6 z-20 -rotate-2">
+                <Bubble variant="gold" tail="top-left" className="!p-3">
+                  <p className="text-sm font-medium text-ink/80">
+                    Depuis {site.practiceSince} avec bienveillance
+                  </p>
+                </Bubble>
+              </div>
             </div>
           </div>
         </motion.div>
