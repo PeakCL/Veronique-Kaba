@@ -28,7 +28,7 @@ Ouvrir [http://localhost:3000](http://localhost:3000)
 ## Espace élèves
 
 - Les élèves se connectent sur `/connexion` (bouton « Mon espace » dans
-  l'en-tête) avec leur prénom et le mot de passe de leur niveau.
+  l'en-tête) avec le seul mot de passe de leur niveau.
 - Le niveau est reconnu d'après le mot de passe ; saisir le second mot de passe
   ajoute le Niveau 2 à l'espace.
 - La session est un cookie signé (HMAC) dont la clé dérive des mots de passe :

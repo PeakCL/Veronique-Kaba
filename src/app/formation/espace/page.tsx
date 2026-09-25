@@ -19,7 +19,7 @@ export default async function FormationEspacePage() {
       <div className="mx-auto max-w-4xl">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <h1 className="font-[family-name:var(--font-display)] text-4xl">
-            {session.firstName ? `Bonjour ${session.firstName} 🎓` : "Mon espace élève 🎓"}
+            Mon espace élève 🎓
           </h1>
           <LogoutButton />
         </div>

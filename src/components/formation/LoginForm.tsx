@@ -23,18 +23,6 @@ export function LoginForm({ next }: { next?: string }) {
       <form action={action} className="mt-5 space-y-4">
         <input type="hidden" name="next" value={next ?? ""} />
         <div>
-          <label htmlFor="login-firstName" className="block text-sm font-bold">
-            Votre prénom
-          </label>
-          <input
-            id="login-firstName"
-            name="firstName"
-            autoComplete="given-name"
-            defaultValue={state.firstName}
-            className={CHAMP}
-          />
-        </div>
-        <div>
           <label htmlFor="login-password" className="block text-sm font-bold">
             Mot de passe de votre formation
           </label>
@@ -43,6 +31,7 @@ export function LoginForm({ next }: { next?: string }) {
             name="password"
             type="password"
             autoComplete="current-password"
+            autoFocus
             required
             className={CHAMP}
           />

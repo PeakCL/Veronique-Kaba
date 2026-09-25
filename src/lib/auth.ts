@@ -53,7 +53,6 @@ export function levelsForPassword(password: string): { levels: string[]; isAdmin
 }
 
 export type FormationSession = {
-  firstName: string;
   levels: string[];
   isAdmin: boolean;
 };
@@ -86,7 +85,6 @@ export function decodeSession(raw: string | undefined): FormationSession | null 
     const s = JSON.parse(Buffer.from(payload, "base64url").toString("utf8"));
     if (!Array.isArray(s?.levels)) return null;
     return {
-      firstName: String(s.firstName ?? ""),
       levels: s.levels.map(String),
       isAdmin: s.isAdmin === true,
     };

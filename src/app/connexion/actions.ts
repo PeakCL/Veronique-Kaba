@@ -10,15 +10,14 @@ import {
   safeNext,
 } from "@/lib/auth";
 
-export type FormState = { error?: string; firstName?: string };
+export type FormState = { error?: string };
 
 export async function signIn(_prev: FormState, formData: FormData): Promise<FormState> {
-  const firstName = String(formData.get("firstName") ?? "").trim().slice(0, 80);
   const password = String(formData.get("password") ?? "").trim();
-  if (!password) return { error: "Merci d'indiquer le mot de passe de votre formation.", firstName };
+  if (!password) return { error: "Merci d'indiquer le mot de passe de votre formation." };
 
   const { levels, isAdmin } = levelsForPassword(password);
-  if (levels.length === 0) return { error: "Mot de passe incorrect.", firstName };
+  if (levels.length === 0) return { error: "Mot de passe incorrect." };
 
   // On garde les niveaux déjà débloqués (ex. Niveau 1 puis Niveau 2).
   const cookieStore = await cookies();
@@ -26,7 +25,6 @@ export async function signIn(_prev: FormState, formData: FormData): Promise<Form
   cookieStore.set(
     FORMATION_COOKIE,
     encodeSession({
-      firstName: firstName || existing?.firstName || "",
       levels: Array.from(new Set([...(existing?.levels ?? []), ...levels])),
       isAdmin: isAdmin || existing?.isAdmin === true,
     }),
