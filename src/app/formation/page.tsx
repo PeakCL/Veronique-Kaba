@@ -67,11 +67,11 @@ function OffreCard({ level, highlight = false }: { level: Formation; highlight?:
 
       <p className="mt-4 text-sm text-ink/70">{level.format}</p>
 
-      <div className="mt-auto flex flex-col gap-2 pt-6 sm:flex-row">
+      <div className="mt-auto flex flex-col gap-3 pt-6">
         {bookable ? (
           <>
             <PayPalPay serviceId={level.serviceId} amount={level.price} />
-            <ComicButton href="/rendez-vous" variant="outline">
+            <ComicButton href="/rendez-vous" variant="outline" className="w-full">
               <span className="whitespace-nowrap">Réserver une date</span>
             </ComicButton>
           </>
