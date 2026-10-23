@@ -22,6 +22,8 @@ export const veroAvatars = {
 } as const;
 
 export const images = {
+  /** Véronique bras ouverts, recadrée sans le fondu blanc des bords (case BD de WarmCTA) */
+  veroOuvertureCadre: "/images/vero-ouverture-cadre.webp",
   /** Fond hero — texture décorative allégée (rendue à 14 % d'opacité) */
   heroFond: "/images/texture-arbres.jpg",
   /** Illustration principale hero — rayons soleil à travers bouleaux (portrait) */

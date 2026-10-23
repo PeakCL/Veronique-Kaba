@@ -1,39 +1,53 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { River } from "@/components/decor/Nature";
 
-/** La citation de Véronique, au bord de la rivière. */
 export function CitationStrip() {
   return (
-    <section className="relative mt-10 overflow-hidden">
-      <div className="bg-gradient-to-b from-transparent via-sky-50 to-sky-100 px-4 pb-10 pt-6 md:px-6">
-        <motion.blockquote
-          className="relative mx-auto max-w-3xl"
-          initial={{ opacity: 0, scale: 0.6, rotate: -4 }}
-          whileInView={{ opacity: 1, scale: 1, rotate: -1 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ type: "spring", stiffness: 200, damping: 14 }}
-        >
-          <div className="relative rounded-[2.5rem] bg-white px-8 py-10 text-center comic-border-lg md:px-14">
-            <p className="font-[family-name:var(--font-hand)] text-3xl leading-snug text-ink md:text-4xl">
-              Chaque séance est un espace d&apos;accueil où le corps peut progressivement
-              retrouver davantage de sécurité, de détente, de guérison.
-            </p>
-            <footer className="mt-4 font-bold text-aura-700">Véronique Kaba</footer>
-            {/* Queue de la bulle, dessinée pour garder le contour d'encre */}
-            <svg
-              aria-hidden
-              viewBox="0 0 60 50"
-              className="absolute -bottom-[42px] left-[18%] h-[46px] w-[56px]"
-            >
-              <path d="M4 0 L56 0 L10 46 Z" fill="#fff" stroke="#18231d" strokeWidth="4" strokeLinejoin="round" />
-              <rect x="0" y="-6" width="60" height="8" fill="#fff" />
-            </svg>
-          </div>
-        </motion.blockquote>
+    <section className="relative overflow-hidden px-4 py-16 md:px-6">
+      <div className="pointer-events-none absolute inset-0" aria-hidden>
+        <div className="absolute inset-0 bg-gradient-to-br from-aura-50/80 via-cream to-gold-50/60" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_80%_at_50%_50%,rgba(181,154,212,0.14)_0%,transparent_70%)]" />
       </div>
-      <River className="-mt-1" deep="#2e8e98" />
+
+      <motion.blockquote
+        className="relative mx-auto max-w-3xl text-center"
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-60px" }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
+        <motion.span
+          className="block font-[family-name:var(--font-display)] text-8xl leading-none text-gold-400 select-none"
+          aria-hidden
+          initial={{ opacity: 0, y: -10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          «
+        </motion.span>
+
+        <p className="mt-1 font-[family-name:var(--font-hand)] text-2xl leading-relaxed text-ink md:text-3xl">
+          Chaque séance est un espace d&apos;accueil où le corps peut progressivement retrouver
+          davantage de sécurité, de détente, de guérison.
+        </p>
+
+        <motion.span
+          className="block font-[family-name:var(--font-display)] text-8xl leading-none text-gold-400 select-none"
+          aria-hidden
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
+          »
+        </motion.span>
+
+        <footer className="mt-2 font-[family-name:var(--font-hand)] text-xl text-aura-600">
+          — Véronique Kaba
+        </footer>
+      </motion.blockquote>
     </section>
   );
 }

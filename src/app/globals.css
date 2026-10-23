@@ -255,7 +255,7 @@
   }
 }
 
-/* ── Motion : l'eau et le vent ────────────────────────────────────── */
+/* ── Motion : le vent ────────────────────────────────────────────── */
 
 /* Feuille portée par le vent */
 @keyframes bd-leaf {
@@ -275,13 +275,6 @@
   100% {
     transform: translate3d(calc(var(--leaf-sway, 60px) * -0.4), 100vh, 0) rotate(320deg);
     opacity: 0;
-  }
-}
-
-/* La rivière : vague qui glisse vers la droite */
-@keyframes bd-wave {
-  to {
-    transform: translateX(-50%);
   }
 }
 
@@ -314,16 +307,12 @@
   animation: bd-leaf var(--leaf-duration, 14s) linear infinite;
   animation-delay: var(--leaf-delay, 0s);
 }
-.anim-wave {
-  animation: bd-wave var(--wave-duration, 18s) linear infinite;
-}
 .anim-shake {
   animation: bd-shake 1.6s ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .anim-leaf,
-  .anim-wave,
   .anim-shake,
   .anim-reveal {
     animation: none !important;

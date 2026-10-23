@@ -4,7 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Heart } from "lucide-react";
 import { ComicButton } from "@/components/ui/ComicButton";
-import { images, veroAvatars } from "@/lib/images";
+import { images } from "@/lib/images";
 
 export function WarmCTA() {
   return (
@@ -32,14 +32,14 @@ export function WarmCTA() {
         transition={{ duration: 0.75, ease: "easeOut" }}
       >
         {/* Pose « ouverture » : bras ouverts face à la vallée, dans une case de BD.
-            Le léger zoom masque le fondu blanc des bords de l'illustration. */}
-        <div className="relative mx-auto mb-8 aspect-[1008/700] max-w-md -rotate-1 overflow-hidden rounded-md comic-border-lg">
+            Image recadrée en amont (sans le fondu blanc des bords) : la tête reste entière. */}
+        <div className="relative mx-auto mb-8 aspect-[880/680] max-w-md -rotate-1 overflow-hidden rounded-md comic-border-lg">
           <Image
-            src={veroAvatars.ouverture}
+            src={images.veroOuvertureCadre}
             alt="Véronique, bras ouverts face à la vallée au coucher du soleil"
             fill
             sizes="448px"
-            className="scale-[1.18] object-cover object-[50%_40%]"
+            className="object-cover"
           />
           <span aria-hidden className="sfx anim-shake absolute right-3 top-3 text-3xl">
             Ahhh !
