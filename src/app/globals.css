@@ -255,26 +255,7 @@
   }
 }
 
-/* ── Motion : l'eau, le vent et la lumière ─────────────────────────────── */
-
-/* La chute d'eau : bandes d'écume qui descendent en continu */
-@keyframes bd-flow {
-  to {
-    transform: translateY(var(--flow-distance, 64px));
-  }
-}
-
-/* Ronds dans l'eau au pied de la cascade */
-@keyframes bd-ripple {
-  0% {
-    transform: scale(0.4);
-    opacity: 0.9;
-  }
-  100% {
-    transform: scale(1.6);
-    opacity: 0;
-  }
-}
+/* ── Motion : l'eau et le vent ────────────────────────────────────── */
 
 /* Feuille portée par le vent */
 @keyframes bd-leaf {
@@ -294,13 +275,6 @@
   100% {
     transform: translate3d(calc(var(--leaf-sway, 60px) * -0.4), 100vh, 0) rotate(320deg);
     opacity: 0;
-  }
-}
-
-/* Rayons du soleil qui tournent lentement */
-@keyframes bd-spin {
-  to {
-    transform: rotate(360deg);
   }
 }
 
@@ -336,22 +310,9 @@
   animation: bd-reveal 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-.anim-flow {
-  animation: bd-flow 1.1s linear infinite;
-}
-.anim-ripple {
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: bd-ripple 2.4s ease-out infinite;
-}
 .anim-leaf {
   animation: bd-leaf var(--leaf-duration, 14s) linear infinite;
   animation-delay: var(--leaf-delay, 0s);
-}
-.anim-spin {
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: bd-spin 60s linear infinite;
 }
 .anim-wave {
   animation: bd-wave var(--wave-duration, 18s) linear infinite;
@@ -361,10 +322,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .anim-flow,
-  .anim-ripple,
   .anim-leaf,
-  .anim-spin,
   .anim-wave,
   .anim-shake,
   .anim-reveal {

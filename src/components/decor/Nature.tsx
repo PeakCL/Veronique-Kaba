@@ -1,30 +1,12 @@
 /**
- * Décor nature dessiné à l'encre BD : rivière, feuilles au vent et cascade.
- * Tout est en SVG inline (aucune image à charger) et les
- * animations sont en CSS, sur `transform` uniquement (voir globals.css,
+ * Décor nature dessiné à l'encre BD : rivière et feuilles au vent. Tout est
+ * en SVG inline (aucune image à charger) et les animations sont en CSS, sur `transform` uniquement (voir globals.css,
  * section « Motion »). Elles s'arrêtent si l'utilisateur réduit les animations.
  */
 
 import { cn } from "@/lib/utils";
 
 const INK = "#18231d";
-
-/** Arrondi : mêmes chaînes de coordonnées côté serveur et côté navigateur. */
-const r1 = (v: number) => Math.round(v * 10) / 10;
-
-/** Sapin en trois étages, pointe en (x, base - h). */
-function pinePath(x: number, base: number, h: number) {
-  const w = h * 0.42;
-  const tiers = [0, 0.32, 0.6];
-  return tiers
-    .map((t, i) => {
-      const top = base - h + h * t * 0.85;
-      const bottom = base - h * (0.62 - t * 0.9) + (i === 2 ? h * 0.1 : 0);
-      const half = w * (0.55 + t * 0.75) * 0.5;
-      return `M${r1(x)} ${r1(top)} L${r1(x + half)} ${r1(bottom)} L${r1(x - half)} ${r1(bottom)} Z`;
-    })
-    .join(" ");
-}
 
 /* ── Rivière ──────────────────────────────────────────────────────────── */
 
@@ -105,100 +87,5 @@ export function FallingLeaves({ className }: { className?: string }) {
         </span>
       ))}
     </div>
-  );
-}
-
-/* ── La cascade ───────────────────────────────────────────────────────── */
-
-/**
- * Paysage de la case principale : soleil, collines, falaises moussues et chute
- * d'eau animée qui se jette dans un bassin. La chute est placée à gauche pour
- * laisser la droite au personnage. Remplit sa case (`xMidYMid slice`).
- */
-export function WaterfallScene({ className }: { className?: string }) {
-  // Bandes d'écume de la chute : x, largeur, décalage vertical
-  const streaks = [
-    [96, 4, 0], [108, 3, 22], [119, 5, 8], [131, 3, 34], [142, 4, 14], [152, 3, 40],
-  ] as const;
-  const fall = "M88 196 Q120 186 162 196 L168 470 L82 470 Z";
-
-  return (
-    <svg
-      viewBox="0 0 400 560"
-      preserveAspectRatio="xMidYMid slice"
-      aria-hidden
-      className={cn("h-full w-full", className)}
-    >
-      <defs>
-        <linearGradient id="wf-sky" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#ffe08f" />
-          <stop offset="0.55" stopColor="#fff0c7" />
-          <stop offset="1" stopColor="#d4efee" />
-        </linearGradient>
-        <linearGradient id="wf-water" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#aadfde" />
-          <stop offset="1" stopColor="#46a9b0" />
-        </linearGradient>
-        <clipPath id="wf-fall">
-          <path d={fall} />
-        </clipPath>
-      </defs>
-
-      {/* Ciel et soleil */}
-      <rect width="400" height="560" fill="url(#wf-sky)" />
-      <g className="anim-spin">
-        {Array.from({ length: 14 }).map((_, i) => {
-          const a = (i / 14) * Math.PI * 2;
-          const pt = (rad: number, d: number) => `${r1(300 + Math.cos(rad) * d)} ${r1(92 + Math.sin(rad) * d)}`;
-          return <path key={i} d={`M${pt(a, 52)} L${pt(a + 0.12, 120)} L${pt(a - 0.12, 120)} Z`} fill="#fcc95a" opacity={0.45} />;
-        })}
-      </g>
-      <circle cx="300" cy="92" r="40" fill="#f2b53a" stroke={INK} strokeWidth="3" />
-
-      {/* Collines lointaines */}
-      <path d="M0 250 Q70 190 140 230 T280 215 T400 225 V330 H0 Z" fill="#c6dcaa" stroke={INK} strokeWidth="3" />
-      <path d="M0 290 Q90 245 180 280 T400 265 V360 H0 Z" fill="#a1c47c" stroke={INK} strokeWidth="3" />
-
-      {/* Falaises */}
-      <path d="M0 200 L40 184 L90 192 L82 470 L0 480 Z" fill="#9b8a72" stroke={INK} strokeWidth="3" strokeLinejoin="round" />
-      <path d="M162 194 L230 184 L300 204 L360 192 L400 200 V480 L168 470 Z" fill="#8a7a64" stroke={INK} strokeWidth="3" strokeLinejoin="round" />
-      {/* Fissures de la roche */}
-      <path d="M20 260 l30 20 m-20 60 l40 -10 m-50 80 l35 15 M200 270 l40 25 m40 30 l50 -15 m-150 80 l35 10 m60 -40 l40 20" stroke={INK} strokeWidth="2.5" strokeLinecap="round" fill="none" />
-      {/* Mousse sur le haut des falaises */}
-      <path d="M0 200 L40 184 L90 192 L88 210 Q60 214 40 206 Q20 216 0 214 Z" fill="#7ba856" stroke={INK} strokeWidth="3" strokeLinejoin="round" />
-      <path d="M162 194 L230 184 L300 204 L360 192 L400 200 V214 Q350 222 310 212 Q260 222 220 208 Q190 214 164 210 Z" fill="#7ba856" stroke={INK} strokeWidth="3" strokeLinejoin="round" />
-
-      {/* Sapins sur les falaises */}
-      {[
-        [22, 196, 80], [60, 190, 62], [200, 196, 74], [246, 192, 96], [290, 204, 64], [338, 198, 90], [384, 202, 70],
-      ].map(([x, base, h], i) => (
-        <path key={i} d={pinePath(x, base, h)} fill={i % 2 ? "#355a28" : "#437031"} stroke={INK} strokeWidth="3" strokeLinejoin="round" />
-      ))}
-
-      {/* La chute d'eau */}
-      <path d={fall} fill="url(#wf-water)" stroke={INK} strokeWidth="3" />
-      <g clipPath="url(#wf-fall)">
-        <g className="anim-flow" style={{ "--flow-distance": "64px" } as React.CSSProperties}>
-          {streaks.map(([x, w, off], i) =>
-            Array.from({ length: 6 }).map((_, j) => (
-              <rect key={`${i}-${j}`} x={x} y={130 + off + j * 64} width={w} height={30} rx={w / 2} fill="#fff" opacity={0.85} />
-            )),
-          )}
-        </g>
-      </g>
-
-      {/* Bassin, écume et ronds dans l'eau */}
-      <path d="M0 470 Q200 440 400 470 V560 H0 Z" fill="#46a9b0" stroke={INK} strokeWidth="3" />
-      <path d="M0 500 Q200 480 400 500 V560 H0 Z" fill="#2e8e98" />
-      {[0, 0.8, 1.6].map((d) => (
-        <ellipse key={d} className="anim-ripple" style={{ animationDelay: `${d}s` }} cx="125" cy="482" rx="70" ry="12" fill="none" stroke="#fff" strokeWidth="2.5" />
-      ))}
-      {[[92, 466, 13], [112, 460, 16], [134, 462, 15], [156, 467, 12]].map(([cx, cy, r], i) => (
-        <circle key={i} cx={cx} cy={cy} r={r} fill="#fff" stroke={INK} strokeWidth="2.5" />
-      ))}
-      {/* Rochers au bord du bassin */}
-      <path d="M8 524 q20 -30 55 -12 q12 14 -6 26 H12 Z" fill="#9b8a72" stroke={INK} strokeWidth="3" />
-      <path d="M330 530 q18 -34 52 -16 q14 16 -4 30 h-46 Z" fill="#8a7a64" stroke={INK} strokeWidth="3" />
-    </svg>
   );
 }
