@@ -24,7 +24,7 @@ const sans = Jost({
 });
 
 export const metadata: Metadata = {
-  title: "Votre identité visuelle",
+  title: "Ton identité visuelle",
   robots: { index: false, follow: false },
 };
 
@@ -70,23 +70,23 @@ const glyphs = {
 const reasons = [
   {
     title: "Rassurant, sans ésotérisme",
-    text: "Mains, lotus, chakras aux couleurs vives : la plupart des logos de praticiens se ressemblent et peuvent intimider les personnes qui découvrent le magnétisme. Le vôtre parle d'énergie avec la sobriété d'un cabinet de soin. Il met à l'aise les habitués comme les plus sceptiques.",
+    text: "Mains, lotus, chakras aux couleurs vives : la plupart des logos de praticiens se ressemblent et peuvent intimider les personnes qui découvrent le magnétisme. Le tien parle d'énergie avec la sobriété d'un cabinet de soin. Il met à l'aise les habitués comme les plus sceptiques.",
   },
   {
-    title: "Le geste de votre métier",
-    text: "La diagonale de lumière traduit ce que vous faites : l'énergie qui passe par vos mains et traverse le corps. Pour une coupeuse de feu, elle évoque aussi le geste net qui coupe la brûlure.",
+    title: "Le geste de ton métier",
+    text: "La diagonale de lumière traduit ce que tu fais : l'énergie qui passe par tes mains et traverse le corps. Pour une coupeuse de feu, elle évoque aussi le geste net qui coupe la brûlure.",
   },
   {
-    title: "Votre nom, pas un symbole anonyme",
-    text: "On vient vous voir, vous, souvent sur recommandation. Un monogramme à vos initiales devient votre signature et ancre le bouche-à-oreille autour de votre nom.",
+    title: "Ton nom, pas un symbole anonyme",
+    text: "On vient te voir, toi, souvent sur recommandation. Un monogramme à tes initiales devient ta signature et ancre le bouche-à-oreille autour de ton nom.",
   },
   {
     title: "Accueillir, de près comme à distance",
-    text: "Le cercle ouvert entoure sans enfermer, comme le cadre bienveillant de vos séances. Ses pointillés, qui s'éloignent puis reviennent, rappellent l'énergie qui voyage : vos soins en visio y ont leur place.",
+    text: "Le cercle ouvert entoure sans enfermer, comme le cadre bienveillant de tes séances. Ses pointillés, qui s'éloignent puis reviennent, rappellent l'énergie qui voyage : tes soins en visio y ont leur place.",
   },
   {
-    title: "Dans la continuité de votre univers",
-    text: "L'or prolonge l'énergie dorée déjà présente sur votre site. D'un support à l'autre, carte, site, réseaux, vos clients retrouvent la même lumière.",
+    title: "Dans la continuité de ton univers",
+    text: "L'or prolonge l'énergie dorée déjà présente sur ton site. D'un support à l'autre, carte, site, réseaux, tes clients retrouvent la même lumière.",
   },
   {
     title: "Fait pour durer",
@@ -97,7 +97,7 @@ const reasons = [
 const meanings = [
   {
     glyph: glyphs.letters,
-    title: "Vos initiales",
+    title: "Tes initiales",
     text: "Un V et un K à fins empattements, dessinés comme ceux des maisons de tradition : ils inspirent le sérieux et la confiance, et restent lisibles en grand comme en tout petit.",
   },
   {
@@ -108,7 +108,7 @@ const meanings = [
   {
     glyph: glyphs.spark,
     title: "L'éclat",
-    text: "Au croisement du trait et des lettres, un point s'illumine, là où vos initiales se rejoignent. C'est l'instant où le soin agit, et c'est vous qui en êtes le centre.",
+    text: "Au croisement du trait et des lettres, un point s'illumine, là où tes initiales se rejoignent. C'est l'instant où le soin agit, et c'est toi qui en es le centre.",
   },
   {
     glyph: glyphs.arc,
@@ -118,7 +118,7 @@ const meanings = [
   {
     glyph: glyphs.dots,
     title: "Les pointillés",
-    text: "L'énergie qui circule par petites touches, de plus en plus présente, puis revient vers vous : comme les bienfaits d'une séance, qui s'installent dans les jours qui suivent.",
+    text: "L'énergie qui circule par petites touches, de plus en plus présente, puis revient vers toi : comme les bienfaits d'une séance, qui s'installent dans les jours qui suivent.",
   },
 ];
 
@@ -177,22 +177,22 @@ export default function PresentationLogoPage() {
               VÉRONIQUE KABA
             </h1>
             <p className="mt-3 text-sm tracking-[0.08em] text-[#e6c88a]/80">
-              Votre identité visuelle
+              Ton identité visuelle
             </p>
           </div>
         </div>
         <span className={styles.scrollHint} aria-hidden />
       </header>
 
-      {/* ── I. Pensé pour votre métier ── */}
+      {/* ── I. Pensé pour ton métier ── */}
       <section className={styles.chapter}>
         <div className={styles.inner}>
           <p className={styles.chapterNum}>I.</p>
-          <h2 className={styles.h2}>Pensé pour votre métier</h2>
+          <h2 className={styles.h2}>Pensé pour ton métier</h2>
           <p className={styles.lead}>
-            Les personnes qui vous contactent arrivent souvent avec une douleur, une grande fatigue
+            Les personnes qui te contactent arrivent souvent avec une douleur, une grande fatigue
             ou un moment difficile, et parfois quelques doutes sur le magnétisme. Avant même le
-            premier échange, votre logo doit leur donner envie de vous faire confiance.
+            premier échange, ton logo doit leur donner envie de te faire confiance.
           </p>
           <div className="mt-14 grid gap-x-12 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
             {reasons.map((r) => (
@@ -218,9 +218,9 @@ export default function PresentationLogoPage() {
           />
           <div>
             <p className={styles.chapterNum}>II.</p>
-            <h2 className={styles.h2}>Ce que raconte votre logo</h2>
+            <h2 className={styles.h2}>Ce que raconte ton logo</h2>
             <p className={styles.lead}>
-              Chaque élément a été pensé pour parler de votre métier sans avoir besoin de mots.
+              Chaque élément a été pensé pour parler de ton métier sans avoir besoin de mots.
             </p>
             <div className="mt-10">
               {meanings.map((m) => (
@@ -244,7 +244,7 @@ export default function PresentationLogoPage() {
           <h2 className={styles.h2}>Deux versions, un même geste</h2>
           <p className={styles.lead}>
             Le logo existe en version or sur fond sombre et en version noir et or sur fond clair.
-            Vous choisissez selon le support, sans jamais perdre en lisibilité : la forme reste la
+            Tu choisis selon le support, sans jamais perdre en lisibilité : la forme reste la
             même, on la reconnaît d&apos;un coup d&apos;œil.
           </p>
         </div>
@@ -320,9 +320,9 @@ export default function PresentationLogoPage() {
           <div>
             <h3 className={`${styles.serif} text-2xl`}>Lisible en tout petit</h3>
             <p className="mt-2 max-w-xl opacity-75">
-              Photo de profil sur Facebook, Instagram, WhatsApp ou votre fiche Google, icône dans
-              l&apos;onglet du navigateur : c&apos;est souvent là qu&apos;on vous découvre. Pour
-              les très petites tailles, on garde seulement vos initiales dorées sur fond noir.
+              Photo de profil sur Facebook, Instagram, WhatsApp ou ta fiche Google, icône dans
+              l&apos;onglet du navigateur : c&apos;est souvent là qu&apos;on te découvre. Pour
+              les très petites tailles, on garde seulement tes initiales dorées sur fond noir.
             </p>
           </div>
         </div>
@@ -353,7 +353,7 @@ export default function PresentationLogoPage() {
               <p className={`${styles.serif} text-6xl leading-none md:text-7xl`}>Aa</p>
               <p className={`${styles.serif} mt-4 text-2xl`}>Cormorant Garamond</p>
               <p className="mt-1 opacity-75">
-                Pour votre nom et les titres. Un caractère classique à fort contraste, de la même
+                Pour ton nom et les titres. Un caractère classique à fort contraste, de la même
                 famille d&apos;esprit que les lettres du logo : élégant, posé, digne de confiance.
               </p>
             </div>
@@ -373,10 +373,10 @@ export default function PresentationLogoPage() {
       <section className={styles.chapter}>
         <div className={styles.inner}>
           <p className={styles.chapterNum}>V.</p>
-          <h2 className={styles.h2}>Votre carte de visite</h2>
+          <h2 className={styles.h2}>Ta carte de visite</h2>
           <p className={styles.lead}>
-            Format classique 85 × 55 mm. Au recto, vos coordonnées sur papier crème ; au verso, le
-            logo doré sur fond noir. Touchez la carte pour la retourner.
+            Format classique 85 × 55 mm. Au recto, tes coordonnées sur papier crème ; au verso, le
+            logo doré sur fond noir. Touche la carte pour la retourner.
           </p>
 
           <div className="mx-auto mt-14 max-w-2xl">
@@ -431,7 +431,7 @@ export default function PresentationLogoPage() {
           <h2 className={styles.h2}>Toutes les déclinaisons</h2>
           <p className={styles.lead}>
             Version or, version blanche, construction du tracé et six variantes du cercle, du plus
-            plein au plus minimaliste. De quoi choisir ensemble celle qui vous ressemble le plus.
+            plein au plus minimaliste. De quoi choisir ensemble celle qui te ressemble le plus.
           </p>
           <Image
             src="/presentation-logo/declinaisons.webp"
