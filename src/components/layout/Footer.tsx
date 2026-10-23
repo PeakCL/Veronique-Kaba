@@ -1,14 +1,12 @@
 import Link from "next/link";
 import { Facebook, Instagram, Phone, MapPin, MessageCircle } from "lucide-react";
 import { site } from "@/lib/content";
-import { TreeLine } from "@/components/decor/Nature";
 
 export function Footer() {
   return (
     <footer className="mt-20 text-cream">
-      {/* La forêt au crépuscule : la lisière ferme la page */}
-      <TreeLine className="h-[clamp(4.5rem,10vw,8rem)]" back="#355a28" front="#1d3317" seed={23} />
       <div
+        className="border-t-4 border-outline"
         style={{
           background:
             "radial-gradient(ellipse at 50% 0%, rgba(242,181,58,0.12) 0%, transparent 55%), linear-gradient(170deg, #1d3317 0%, #16281a 50%, #0f1d13 100%)",

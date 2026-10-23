@@ -1,7 +1,6 @@
-import Image from "next/image";
+import { preload } from "react-dom";
 import { cn } from "@/lib/utils";
 import { getBlur } from "@/lib/blur";
-import { TreeLine } from "@/components/decor/Nature";
 
 type PageBannerProps = {
   title: string;
@@ -9,6 +8,15 @@ type PageBannerProps = {
   imageSrc: string;
   imageAlt: string;
   className?: string;
+};
+
+/** Largeurs pré-générées par scripts/banners.mjs dans /images/banners. */
+const BANNER_WIDTHS = [800, 1200, 1600];
+const SIZES = "(min-width: 1280px) 1216px, 100vw";
+
+const bannerSrcSet = (src: string) => {
+  const name = src.split("/").pop()!.replace(/\.\w+$/, "");
+  return BANNER_WIDTHS.map((w) => `/images/banners/${name}-${w}.webp ${w}w`).join(", ");
 };
 
 export function PageBanner({
@@ -19,6 +27,15 @@ export function PageBanner({
   className,
 }: PageBannerProps) {
   const blurDataURL = getBlur(imageSrc);
+  const srcSet = bannerSrcSet(imageSrc);
+  // Fichiers statiques servis directement par le CDN (pas d'optimiseur à la
+  // volée) et préchargés en priorité : la photo arrive avec la page.
+  preload(srcSet.split(" ")[0], {
+    as: "image",
+    imageSrcSet: srcSet,
+    imageSizes: SIZES,
+    fetchPriority: "high",
+  });
 
   return (
     <div
@@ -28,23 +45,24 @@ export function PageBanner({
       )}
     >
       <div
-        className="relative h-[220px] w-full md:h-[300px] lg:h-[340px]"
-        style={{ background: "linear-gradient(135deg, #29461f 0%, #163c42 100%)" }}
+        className="relative h-[320px] w-full bg-cover bg-center md:h-[440px] lg:h-[520px]"
+        style={{
+          backgroundColor: "#29461f",
+          ...(blurDataURL && { backgroundImage: `url(${blurDataURL})` }),
+        }}
       >
-        <Image
-          src={imageSrc}
+        {/* eslint-disable-next-line @next/next/no-img-element -- variantes statiques pré-générées */}
+        <img
+          src={srcSet.split(" ")[0]}
+          srcSet={srcSet}
+          sizes={SIZES}
           alt={imageAlt}
-          fill
-          className="bd-photo object-cover"
-          sizes="(min-width: 1280px) 1216px, 100vw"
-          quality={70}
-          priority
-          {...(blurDataURL ? { placeholder: "blur" as const, blurDataURL } : {})}
+          fetchPriority="high"
+          decoding="async"
+          className="bd-photo absolute inset-0 h-full w-full object-cover"
         />
         <div className="bd-trame absolute inset-0" aria-hidden />
         <div className="absolute inset-0 bg-gradient-to-t from-aura-900/70 via-aura-900/25 to-transparent" />
-        {/* Lisière de forêt au pied de la case */}
-        <TreeLine className="absolute inset-x-0 bottom-0 h-[clamp(3rem,9vw,7rem)]" back="#437031" front="#1d3317" seed={5} />
         <div className="absolute inset-0 flex flex-col items-center justify-center px-6 pb-8 text-center text-white">
           <h1 className="font-[family-name:var(--font-display)] text-4xl font-bold [text-shadow:3px_3px_0_#18231d] md:text-6xl">
             {title}

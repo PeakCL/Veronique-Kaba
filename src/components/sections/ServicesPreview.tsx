@@ -6,7 +6,6 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { formation, sessionInfo, soulRetrieval } from "@/lib/content";
 import { ComicButton } from "@/components/ui/ComicButton";
-import { TreeLine } from "@/components/decor/Nature";
 import { images } from "@/lib/images";
 
 /** Chaque accompagnement est une case de BD, avec sa scène de nature. */
@@ -41,8 +40,6 @@ const highlights = [
 export function ServicesPreview() {
   return (
     <section className="relative mt-6">
-      {/* Lisière : on entre dans la clairière */}
-      <TreeLine className="h-[clamp(4rem,10vw,8rem)]" seed={11} />
       <div className="section-amber border-t-4 border-outline px-4 pb-20 pt-12 md:px-6">
         <div className="mx-auto max-w-6xl">
           <div className="text-center">

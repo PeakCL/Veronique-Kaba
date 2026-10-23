@@ -1,6 +1,6 @@
 /**
- * Décor nature dessiné à l'encre BD : lisière de forêt, rivière, feuilles au
- * vent et cascade. Tout est en SVG inline (aucune image à charger) et les
+ * Décor nature dessiné à l'encre BD : rivière, feuilles au vent et cascade.
+ * Tout est en SVG inline (aucune image à charger) et les
  * animations sont en CSS, sur `transform` uniquement (voir globals.css,
  * section « Motion »). Elles s'arrêtent si l'utilisateur réduit les animations.
  */
@@ -11,17 +11,6 @@ const INK = "#18231d";
 
 /** Arrondi : mêmes chaînes de coordonnées côté serveur et côté navigateur. */
 const r1 = (v: number) => Math.round(v * 10) / 10;
-
-/* ── Lisière de forêt ─────────────────────────────────────────────────── */
-
-/** Générateur pseudo-aléatoire déterministe : même rendu serveur et client. */
-function rand(seed: number) {
-  let s = seed;
-  return () => {
-    s = (s * 16807) % 2147483647;
-    return (s - 1) / 2147483646;
-  };
-}
 
 /** Sapin en trois étages, pointe en (x, base - h). */
 function pinePath(x: number, base: number, h: number) {
@@ -35,82 +24,6 @@ function pinePath(x: number, base: number, h: number) {
       return `M${r1(x)} ${r1(top)} L${r1(x + half)} ${r1(bottom)} L${r1(x - half)} ${r1(bottom)} Z`;
     })
     .join(" ");
-}
-
-type TreeLineProps = {
-  className?: string;
-  /** Couleur du rang du fond et du rang de devant */
-  back?: string;
-  front?: string;
-  /** Couleur du sol sous les arbres (raccord avec la section suivante) */
-  ground?: string;
-  seed?: number;
-  flip?: boolean;
-};
-
-/**
- * Silhouette de forêt, à poser en bord de section. Les arbres gardent leurs
- * proportions : le dessin est recadré sur les côtés quand l'écran est étroit.
- * Hauteur conseillée proportionnelle à la largeur (ex. `h-[clamp(4rem,10vw,9rem)]`).
- */
-export function TreeLine({
-  className,
-  back = "#7ba856",
-  front = "#355a28",
-  ground,
-  seed = 7,
-  flip = false,
-}: TreeLineProps) {
-  const r = rand(seed);
-  const rows = [
-    { color: back, base: 112, min: 46, max: 86, step: [26, 44] },
-    { color: front, base: 120, min: 34, max: 74, step: [30, 58] },
-  ];
-
-  return (
-    <svg
-      viewBox="0 0 1200 120"
-      preserveAspectRatio="xMidYMax slice"
-      aria-hidden
-      className={cn("block w-full", flip && "rotate-180", className)}
-    >
-      {rows.map((row, ri) => {
-        const trees: React.ReactNode[] = [];
-        let x = -20 + ri * 14;
-        let k = 0;
-        while (x < 1230) {
-          const h = row.min + r() * (row.max - row.min);
-          // Un arbre rond de temps en temps, pour casser la rangée de sapins
-          if (r() < 0.22) {
-            const rr = h * 0.3;
-            trees.push(
-              <g key={`${ri}-${k}`}>
-                <rect x={x - 3} y={row.base - h * 0.45} width={6} height={h * 0.45} fill={INK} />
-                <circle cx={x} cy={row.base - h * 0.62} r={rr} fill={row.color} stroke={INK} strokeWidth={3} />
-                <circle cx={x - rr * 0.6} cy={row.base - h * 0.48} r={rr * 0.7} fill={row.color} stroke={INK} strokeWidth={3} />
-                <circle cx={x + rr * 0.6} cy={row.base - h * 0.5} r={rr * 0.72} fill={row.color} stroke={INK} strokeWidth={3} />
-              </g>,
-            );
-          } else {
-            trees.push(
-              <path
-                key={`${ri}-${k}`}
-                d={pinePath(x, row.base, h)}
-                fill={row.color}
-                stroke={INK}
-                strokeWidth={3}
-                strokeLinejoin="round"
-              />,
-            );
-          }
-          x += row.step[0] + r() * (row.step[1] - row.step[0]);
-          k++;
-        }
-        return <g key={ri}>{trees}</g>;
-      })}
-      {ground && <rect x={0} y={112} width={1200} height={10} fill={ground} />}
-    </svg>
-  );
 }
 
 /* ── Rivière ──────────────────────────────────────────────────────────── */

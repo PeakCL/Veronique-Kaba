@@ -43,7 +43,7 @@ export default function ContactPage() {
       <PageBanner
         title="Contact"
         subtitle="Une question, une prise de rendez-vous ? Écrivez-moi avec bienveillance ✨"
-        imageSrc={images.meditationPapillons}
+        imageSrc={images.mainsEnergie}
         imageAlt="Nature et sérénité — contacter Véronique, magnétiseuse à Longwy"
       />
 
