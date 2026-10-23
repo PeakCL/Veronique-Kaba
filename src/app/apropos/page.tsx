@@ -86,7 +86,7 @@ export default function AproposPage() {
 
         <AboutCards cards={cards} />
 
-        <p className="mt-6 text-center text-xs italic text-ink/50">{about.notMedium}</p>
+        <p className="mx-auto mt-8 max-w-2xl text-center text-base italic text-ink/70 md:text-lg">{about.notMedium}</p>
 
         {/* Citation — philosophie d'accompagnement */}
         <blockquote className="mt-10 rounded-3xl bg-gradient-to-br from-aura-50 to-gold-50/60 px-8 py-8 comic-border-lg text-center">
