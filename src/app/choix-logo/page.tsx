@@ -23,7 +23,7 @@ const sans = Jost({
 });
 
 export const metadata: Metadata = {
-  title: "Choisir votre logo",
+  title: "Choisir ton logo",
   robots: { index: false, follow: false },
 };
 
@@ -41,11 +41,11 @@ const lumiere: Direction = {
   letter: "A",
   name: "La Lumière",
   tagline: "Un monogramme doré, sobre et élégant",
-  idea: "Vos initiales, traversées par un trait de lumière. Cette direction parle d'énergie sans montrer de symbole : elle mise sur la confiance, le sérieux et votre nom.",
+  idea: "Tes initiales, traversées par un trait de lumière. Cette direction parle d'énergie sans montrer de symbole : elle mise sur la confiance, le sérieux et ton nom.",
   meanings: [
     {
-      title: "Vos initiales en majuscules",
-      text: "Un V et un K classiques, à fins empattements, comme une signature. On retient votre nom, pas un dessin.",
+      title: "Tes initiales en majuscules",
+      text: "Un V et un K classiques, à fins empattements, comme une signature. On retient ton nom, pas un dessin.",
     },
     {
       title: "Le trait de lumière",
@@ -59,13 +59,13 @@ const lumiere: Direction = {
   strengths: [
     "Se distingue des logos habituels du bien-être : on ne le confond avec personne.",
     "Inspire le sérieux, rassure les personnes qui doutent du magnétisme.",
-    "Prolonge l'or déjà présent sur votre site.",
+    "Prolonge l'or déjà présent sur ton site.",
     "Deux couleurs seulement : impression simple, dorure à chaud possible.",
     "Déjà décliné : carte de visite et fichiers du site sont prêts.",
   ],
   notes: [
     "Plus élégant que chaleureux : certaines personnes peuvent le trouver un peu « haut de gamme ».",
-    "Il ne dit pas tout de suite « soin » : c'est votre nom et votre métier, écrits à côté, qui le complètent.",
+    "Il ne dit pas tout de suite « soin » : c'est ton nom et ton métier, écrits à côté, qui le complètent.",
   ],
 };
 
@@ -73,7 +73,7 @@ const vegetal: Direction = {
   letter: "B",
   name: "Le Soin",
   tagline: "Un emblème végétal, chaleureux et lumineux",
-  idea: "Deux mains qui entourent un soleil, au cœur d'une couronne de feuillage. Cette direction montre directement ce que vous faites : prendre soin, avec douceur et naturel.",
+  idea: "Deux mains qui entourent un soleil, au cœur d'une couronne de feuillage. Cette direction montre directement ce que tu fais : prendre soin, avec douceur et naturel.",
   meanings: [
     {
       title: "Les mains",
@@ -85,7 +85,7 @@ const vegetal: Direction = {
     },
     {
       title: "Les feuilles et l'écriture manuscrite",
-      text: "La nature, la croissance, le mieux-être qui revient. Vos initiales en lettres liées rendent l'ensemble proche et personnel.",
+      text: "La nature, la croissance, le mieux-être qui revient. Tes initiales en lettres liées rendent l'ensemble proche et personnel.",
     },
   ],
   strengths: [
@@ -97,7 +97,7 @@ const vegetal: Direction = {
     "Mains et feuillages sont très fréquents chez les praticiens : il se démarque moins.",
     "Trois couleurs et des dégradés : il faut une version simplifiée pour l'impression, le tampon ou la broderie.",
     "Riche en détails : en tout petit (photo de profil, onglet), les mains et les feuilles se perdent.",
-    "Ses couleurs vertes sont nouvelles par rapport à votre site actuel : il faudrait les y intégrer.",
+    "Ses couleurs vertes sont nouvelles par rapport à ton site actuel : il faudrait les y intégrer.",
   ],
 };
 
@@ -128,7 +128,7 @@ const comparison = [
     b: "À simplifier : dégradés, trois couleurs",
   },
   {
-    criterion: "Avec votre site",
+    criterion: "Avec ton site",
     a: "Dans la continuité de l'or existant",
     b: "Introduit le vert, à harmoniser",
   },
@@ -207,10 +207,10 @@ export default function ChoixLogoPage() {
       {/* ── Ouverture ── */}
       <header className={styles.hero}>
         <p className="text-sm uppercase tracking-[0.3em] opacity-60">Véronique Kaba</p>
-        <h1 className={`${styles.h1} mt-4`}>Deux directions pour votre logo</h1>
+        <h1 className={`${styles.h1} mt-4`}>Deux directions pour ton logo</h1>
         <p className={`${styles.lead} mx-auto`}>
-          Deux façons différentes de raconter votre métier. Prenez le temps de les regarder, de
-          lire ce que chacune exprime, puis dites-moi laquelle vous ressemble.
+          Deux façons différentes de raconter ton métier. Prends le temps de les regarder, de
+          lire ce que chacune exprime, puis dis-moi laquelle te ressemble.
         </p>
 
         <div className={styles.duo}>
@@ -315,10 +315,10 @@ export default function ChoixLogoPage() {
       <section className={`${styles.chapter} ${styles.white}`}>
         <div className={styles.inner}>
           <p className={styles.kicker}>En situation</p>
-          <h2 className={styles.h2}>Là où on vous découvre</h2>
+          <h2 className={styles.h2}>Là où on te découvre</h2>
           <p className={styles.lead}>
             Photo de profil sur Facebook, WhatsApp ou Google, petite icône dans l&apos;onglet du
-            navigateur : c&apos;est souvent en tout petit que l&apos;on voit votre logo en
+            navigateur : c&apos;est souvent en tout petit que l&apos;on voit ton logo en
             premier. Voici les deux à leur taille réelle.
           </p>
 
@@ -359,29 +359,29 @@ export default function ChoixLogoPage() {
         </div>
       </section>
 
-      {/* ── Votre choix ── */}
+      {/* ── Ton choix ── */}
       <section className={`${styles.chapter} ${styles.sage}`}>
         <div className={styles.inner}>
-          <p className={styles.kicker}>Pour vous aider</p>
-          <h2 className={styles.h2}>Laquelle vous ressemble ?</h2>
+          <p className={styles.kicker}>Pour t&apos;aider</p>
+          <h2 className={styles.h2}>Laquelle te ressemble ?</h2>
           <p className={styles.lead}>
-            Imaginez une personne qui ne vous connaît pas encore et qui tombe sur votre carte.
-            Que voulez-vous qu&apos;elle ressente en premier ?
+            Imagine une personne qui ne te connaît pas encore et qui tombe sur ta carte.
+            Que veux-tu qu&apos;elle ressente en premier ?
           </p>
 
           <div className={styles.choice}>
             <div className={styles.choiceCard}>
-              <p className={styles.letter}>Choisissez A si…</p>
+              <p className={styles.letter}>Choisis A si…</p>
               <p className="mt-2">
-                vous voulez d&apos;abord inspirer confiance et sérieux, être reconnue par votre
-                nom, et garder l&apos;univers noir et or de votre site.
+                tu veux d&apos;abord inspirer confiance et sérieux, être reconnue par ton
+                nom, et garder l&apos;univers noir et or de ton site.
               </p>
             </div>
             <div className={styles.choiceCard}>
-              <p className={styles.letter}>Choisissez B si…</p>
+              <p className={styles.letter}>Choisis B si…</p>
               <p className="mt-2">
-                vous voulez d&apos;abord montrer la douceur et le soin, que l&apos;on comprenne
-                votre métier au premier regard, quitte à faire évoluer les couleurs du site.
+                tu veux d&apos;abord montrer la douceur et le soin, que l&apos;on comprenne
+                ton métier au premier regard, quitte à faire évoluer les couleurs du site.
               </p>
             </div>
           </div>
@@ -389,10 +389,10 @@ export default function ChoixLogoPage() {
           <span className={`${styles.rule} mt-14`} aria-hidden />
           <h3 className={`${styles.serif} text-3xl`}>Et ensuite ?</h3>
           <p className="mt-3 max-w-2xl opacity-80">
-            Répondez-moi simplement par <strong className="font-normal">A</strong> ou{" "}
-            <strong className="font-normal">B</strong>. Une fois la direction choisie, nous
-            affinerons ensemble les détails (couleurs, finesse du trait, lettres), puis je
-            préparerai les fichiers pour votre site, vos cartes et vos réseaux.
+            Réponds-moi simplement par <strong className="font-normal">A</strong> ou{" "}
+            <strong className="font-normal">B</strong>. Une fois la direction choisie, on
+            affinera ensemble les détails (couleurs, finesse du trait, lettres), puis je
+            préparerai les fichiers pour ton site, tes cartes et tes réseaux.
           </p>
         </div>
       </section>
