@@ -200,7 +200,7 @@
     border: 0;
   }
   .table td::before {
-    content: attr(data-label) " — ";
+    content: attr(data-label) " : ";
     font-family: var(--font-choix-serif), Georgia, serif;
     font-style: italic;
   }

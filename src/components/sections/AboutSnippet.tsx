@@ -15,7 +15,7 @@ export function AboutSnippet() {
           <p className="mt-4 leading-relaxed text-ink/80">{about.journey}</p>
           <p className="mt-4 leading-relaxed text-ink/80">{about.professionalTone}</p>
           <p className="mt-4 font-[family-name:var(--font-hand)] text-2xl text-aura-600">
-            — Véronique ✍️
+            Véronique ✍️
           </p>
           <ComicButton href="/apropos" className="mt-6" variant="outline">
             En savoir plus
@@ -39,7 +39,7 @@ export function AboutSnippet() {
             {/* Illustration sans cadre, fond transparent */}
             <Image
               src={veroAvatars.confiante}
-              alt="Véronique Kaba — énergéticienne et magnétiseuse"
+              alt="Véronique Kaba, énergéticienne et magnétiseuse"
               width={360}
               height={420}
               className="relative z-10 max-h-[400px] w-auto object-contain

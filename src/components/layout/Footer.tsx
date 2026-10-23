@@ -17,7 +17,7 @@ export function Footer() {
           Prendre soin de vous, c&apos;est ma mission. ✨
         </p>
         <p className="mt-2 text-sm text-cream/60">
-          N&apos;hésitez pas à me contacter — toujours avec bienveillance.
+          N&apos;hésitez pas à me contacter, toujours avec bienveillance.
         </p>
       </div>
 
@@ -98,7 +98,7 @@ export function Footer() {
 
       <div className="border-t border-aura-700/30 py-4 text-center text-xs text-cream/40">
         <p>
-          © {new Date().getFullYear()} {site.name} — Magnétiseuse & énergéticienne · Longwy
+          © {new Date().getFullYear()} {site.name} · Magnétiseuse & énergéticienne · Longwy
         </p>
         <p className="mt-1">
           <Link href="/mentions-legales" className="hover:text-gold-200">

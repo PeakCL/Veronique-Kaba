@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
     default:
-      "Magnétiseuse à Longwy — Magnétisme & soins énergétiques | Véronique Kaba",
+      "Magnétiseuse à Longwy, magnétisme & soins énergétiques | Véronique Kaba",
     template: "%s | Véronique Kaba",
   },
   description:
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "Magnétiseuse à Longwy — Magnétisme & soins énergétiques",
+    title: "Magnétiseuse à Longwy, magnétisme & soins énergétiques",
     description:
       "Soins énergétiques, magnétisme, coupe de feu et recouvrement d'âme à Longwy et à distance. Depuis 2015, avec bienveillance et écoute.",
     url: siteUrl,
@@ -66,13 +66,13 @@ export const metadata: Metadata = {
         url: "/images/og-partage.webp",
         width: 1200,
         height: 630,
-        alt: "Véronique Kaba — magnétiseuse à Longwy",
+        alt: "Véronique Kaba, magnétiseuse à Longwy",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Magnétiseuse à Longwy — Magnétisme & soins énergétiques",
+    title: "Magnétiseuse à Longwy, magnétisme & soins énergétiques",
     description:
       "Soins énergétiques, magnétisme, coupe de feu et recouvrement d'âme à Longwy et à distance.",
     images: ["/images/og-partage.webp"],

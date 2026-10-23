@@ -77,7 +77,7 @@ export function BookingForm() {
         Demander un rendez-vous
       </h2>
       <p className="mt-2 text-sm text-ink/70">
-        Dites-moi ce dont vous avez besoin et quand vous êtes disponible — je vous réponds
+        Dites-moi ce dont vous avez besoin et quand vous êtes disponible, je vous réponds
         sous 24 h.
       </p>
 
@@ -175,7 +175,7 @@ export function BookingForm() {
         <div aria-live="polite" role="status">
           {status === "error" && (
             <p className="text-center text-sm font-bold text-red-600">
-              Erreur d&apos;envoi — appelez le {site.phone}
+              Erreur d&apos;envoi : appelez le {site.phone}
             </p>
           )}
         </div>

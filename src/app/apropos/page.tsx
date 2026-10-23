@@ -10,7 +10,7 @@ import { AboutCards } from "@/components/sections/AboutCards";
 import { VeroAvatar } from "@/components/ui/VeroAvatar";
 
 export const metadata: Metadata = {
-  title: "À propos de Véronique — Magnétiseuse à Longwy",
+  title: "À propos de Véronique | Magnétiseuse à Longwy",
   description: `Parcours de Véronique, ${site.profession.toLowerCase()} à Longwy depuis ${site.practiceSince}. Une approche bienveillante, professionnelle, en dialogue avec la médecine conventionnelle.`,
   alternates: { canonical: "/apropos" },
 };
@@ -65,9 +65,9 @@ export default function AproposPage() {
       />
       <PageBanner
         title="À propos de Véronique"
-        subtitle={`${site.profession} — depuis ${site.practiceSince}`}
+        subtitle={`${site.profession} depuis ${site.practiceSince}`}
         imageSrc={images.about}
-        imageAlt="Deux arbres anciens sous le soleil — force et enracinement"
+        imageAlt="Deux arbres anciens sous le soleil, force et enracinement"
       />
 
       <div className="mx-auto max-w-4xl px-4 md:px-6">
@@ -103,7 +103,7 @@ export default function AproposPage() {
             <br />Ce qui a été figé.
           </p>
           <footer className="mt-5 font-[family-name:var(--font-hand)] text-lg text-aura-600">
-            — Véronique ✨
+            Véronique ✨
           </footer>
         </blockquote>
 

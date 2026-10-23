@@ -25,9 +25,9 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { courseJsonLd, formationFaqPageJsonLd, breadcrumbJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Formations magnétisme à Longwy & à distance — Niveau 1 & 2",
+  title: "Formations magnétisme à Longwy & à distance | Niveau 1 & 2",
   description:
-    "Apprenez à ressentir votre magnétisme et à dérouler un soin énergétique. Formation Niveau 1 (format court de 2 h) et Niveau 2 à venir — en présentiel à Longwy ou à distance en visio.",
+    "Apprenez à ressentir votre magnétisme et à dérouler un soin énergétique. Formation Niveau 1 (format court de 2 h) et Niveau 2 à venir, en présentiel à Longwy ou à distance en visio.",
   alternates: { canonical: "/formation" },
 };
 
@@ -126,9 +126,9 @@ export default function FormationPage() {
 
       <PageBanner
         title="Formations magnétisme"
-        subtitle="Deux niveaux pour apprendre à magnétiser — sans prérequis"
+        subtitle="Deux niveaux pour apprendre à magnétiser, sans prérequis"
         imageSrc={images.energieNature}
-        imageAlt="Énergie en pleine nature — formation magnétisme à Longwy"
+        imageAlt="Énergie en pleine nature, formation magnétisme à Longwy"
       />
 
       <div className="mx-auto max-w-6xl px-4 md:px-6">

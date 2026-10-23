@@ -9,7 +9,7 @@ import { ContactForm } from "@/components/contact/ContactForm";
 import { Clock, Facebook, Instagram, Mail, MapPin, Phone, MessageCircle } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Contact — Magnétiseuse à Longwy",
+  title: "Contact | Magnétiseuse à Longwy",
   description:
     "Contactez Véronique, magnétiseuse et énergéticienne à Longwy. Séances en présentiel (15 km autour de Longwy) ou à distance en visio. Téléphone : 07 71 17 67 27.",
   alternates: { canonical: "/contact" },
@@ -44,7 +44,7 @@ export default function ContactPage() {
         title="Contact"
         subtitle="Une question, une prise de rendez-vous ? Écrivez-moi avec bienveillance ✨"
         imageSrc={images.mainsEnergie}
-        imageAlt="Nature et sérénité — contacter Véronique, magnétiseuse à Longwy"
+        imageAlt="Nature et sérénité : contacter Véronique, magnétiseuse à Longwy"
       />
 
       <div className="mx-auto max-w-6xl px-4 md:px-6">

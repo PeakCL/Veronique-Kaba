@@ -28,7 +28,7 @@ export default function NotFound() {
           </h1>
 
           <p className="mt-4 leading-relaxed text-ink/75">
-            L&apos;adresse demandée n&apos;existe pas ou plus. Rien de grave — voici par où
+            L&apos;adresse demandée n&apos;existe pas ou plus. Rien de grave, voici par où
             reprendre&nbsp;:
           </p>
 

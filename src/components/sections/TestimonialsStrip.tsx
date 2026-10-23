@@ -43,7 +43,7 @@ export function TestimonialsStrip() {
                     {"★".repeat(t.stars)}
                   </span>
                   <span className="text-sm font-semibold text-aura-600">
-                    — {t.name}
+                    {t.name}
                     {"context" in t && t.context ? (
                       <span className="font-normal text-ink/55"> · {t.context}</span>
                     ) : null}

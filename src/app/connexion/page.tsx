@@ -4,7 +4,7 @@ import { getFormationSession } from "@/lib/auth";
 import { LoginForm } from "@/components/formation/LoginForm";
 
 export const metadata: Metadata = {
-  title: "Mon espace élève — connexion",
+  title: "Mon espace élève | Connexion",
   robots: { index: false, follow: false },
 };
 

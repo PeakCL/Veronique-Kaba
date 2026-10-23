@@ -112,7 +112,7 @@ export function ContactForm() {
           )}
           {status === "error" && (
             <p className="text-center text-sm font-bold text-red-600">
-              Erreur d&apos;envoi — appelez le 07 71 17 67 27
+              Erreur d&apos;envoi : appelez le 07 71 17 67 27
             </p>
           )}
         </div>

@@ -195,7 +195,7 @@ function BrowserTab({ icon, size }: { icon: string; size: 16 | 32 }) {
     <div className="w-60 rounded-t-xl bg-[#e9e6e1] px-3 pb-2 pt-2.5 text-[#2b2724]">
       <div className="flex items-center gap-2 rounded-lg bg-white px-2.5 py-1.5 shadow-sm">
         <Image src={icon} alt="" width={size} height={size} style={{ width: size, height: size }} />
-        <span className="truncate text-xs">Véronique Kaba — Magnétiseuse</span>
+        <span className="truncate text-xs">Véronique Kaba, magnétiseuse</span>
       </div>
     </div>
   );

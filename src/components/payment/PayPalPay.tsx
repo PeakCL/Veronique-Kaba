@@ -26,7 +26,7 @@ function PayPalFallback({ reason }: { reason?: string }) {
   return (
     <div className="rounded-xl border-2 border-dashed border-aura-300 bg-aura-50 p-4 text-center">
       <p className="text-sm font-semibold text-ink/70">
-        {reason ?? "Paiement en ligne bientôt disponible — en attendant :"}
+        {reason ?? "Paiement en ligne bientôt disponible. En attendant :"}
       </p>
       <ComicButton href={site.phoneHref} size="sm" className="mt-3 w-full">
         <Phone className="h-4 w-4" />
@@ -81,7 +81,7 @@ function PayPalButtonsSafe({
           alert(result.error ?? "Le paiement n'a pas pu être finalisé.");
         }
       } catch {
-        alert("Erreur de connexion — contactez Véronique par téléphone.");
+        alert("Erreur de connexion : contactez Véronique par téléphone.");
       }
     },
     [router, serviceId],
@@ -99,7 +99,7 @@ function PayPalButtonsSafe({
 
   if (isRejected) {
     return (
-      <PayPalFallback reason="PayPal indisponible — vérifiez la configuration dans .env.local" />
+      <PayPalFallback reason="PayPal indisponible : vérifiez la configuration dans .env.local" />
     );
   }
 

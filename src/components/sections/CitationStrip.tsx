@@ -45,7 +45,7 @@ export function CitationStrip() {
         </motion.span>
 
         <footer className="mt-2 font-[family-name:var(--font-hand)] text-xl text-aura-600">
-          — Véronique Kaba
+          Véronique Kaba
         </footer>
       </motion.blockquote>
     </section>

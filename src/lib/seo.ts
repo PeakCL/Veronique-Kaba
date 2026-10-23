@@ -30,9 +30,9 @@ export function localBusinessJsonLd() {
     "@type": ["HealthAndBeautyBusiness", "LocalBusiness"],
     "@id": ORG_ID,
     name: site.name,
-    alternateName: "Véronique Kaba — Magnétiseuse",
+    alternateName: "Véronique Kaba, magnétiseuse",
     description:
-      "Magnétiseuse et énergéticienne à Longwy depuis 2015. Soins personnalisés, coupe de feu, recouvrement d'âme et formation — en présentiel (15 km autour de Longwy) ou à distance en visio.",
+      "Magnétiseuse et énergéticienne à Longwy depuis 2015. Soins personnalisés, coupe de feu, recouvrement d'âme et formation, en présentiel (15 km autour de Longwy) ou à distance en visio.",
     url: siteUrl,
     image: primaryImage,
     logo: primaryImage,

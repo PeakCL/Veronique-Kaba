@@ -24,7 +24,7 @@ export async function POST(req: NextRequest) {
     const order = await createPayPalOrder({
       amountEur: service.price,
       title: service.title,
-      description: `${service.duration} — ${service.mode}`,
+      description: `${service.duration}, ${service.mode}`,
       serviceId: service.id,
     });
 

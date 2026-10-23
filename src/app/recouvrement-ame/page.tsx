@@ -9,7 +9,7 @@ import { VeroAvatar } from "@/components/ui/VeroAvatar";
 import { PageBanner } from "@/components/sections/PageBanner";
 
 export const metadata: Metadata = {
-  title: "Recouvrement d'âme au tambour — Longwy & à distance",
+  title: "Recouvrement d'âme au tambour | Longwy & à distance",
   description:
     "Soin de recouvrement d'âme accompagné au tambour : un accompagnement profond et apaisant après un choc, une fatigue intense ou une période de tension. Présentiel ou à distance.",
   alternates: { canonical: "/recouvrement-ame" },
@@ -28,7 +28,7 @@ export default function RecouvrementAmePage() {
         title={soulRetrieval.title}
         subtitle={soulRetrieval.subtitle}
         imageSrc={images.meditationFlamme}
-        imageAlt="Méditation et énergie intérieure — recouvrement d'âme"
+        imageAlt="Méditation et énergie intérieure, recouvrement d'âme"
       />
 
       <div className="mx-auto max-w-4xl px-4 md:px-6">
@@ -119,7 +119,7 @@ export default function RecouvrementAmePage() {
             <p className="text-sm leading-relaxed text-ink/75">
               Cette pratique s&apos;inscrit dans mon parcours de « chercheuse »&nbsp;: je me forme
               régulièrement à de nouvelles techniques bénéfiques, que je propose ensuite
-              lorsqu&apos;elles peuvent vous accompagner — toujours avec des mots simples et
+              lorsqu&apos;elles peuvent vous accompagner, toujours avec des mots simples et
               rassurants, loin de la voyance ou du tirage de cartes.
             </p>
             <p className="mt-4 text-sm italic leading-relaxed text-ink/60">

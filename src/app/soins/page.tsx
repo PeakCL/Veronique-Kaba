@@ -21,7 +21,7 @@ import { serviceJsonLd, faqPageJsonLd, breadcrumbJsonLd } from "@/lib/seo";
 export const metadata: Metadata = {
   title: "Soins de magnétisme à Longwy & à distance",
   description:
-    "Séances personnalisées de magnétisme, soin énergétique et coupe de feu à Longwy ou en visio. Soulager douleurs, stress et fatigue — 40 min, 60 €.",
+    "Séances personnalisées de magnétisme, soin énergétique et coupe de feu à Longwy ou en visio. Soulager douleurs, stress et fatigue. 40 min, 60 €.",
   alternates: { canonical: "/soins" },
 };
 
@@ -42,9 +42,9 @@ export default function SoinsPage() {
       />
       <PageBanner
         title="Mes soins"
-        subtitle={`Magnétisme · Soin énergétique · Coupe de feu — ${sessionInfo.duration}`}
+        subtitle={`Magnétisme · Soin énergétique · Coupe de feu · ${sessionInfo.duration}`}
         imageSrc={images.mainsSoin}
-        imageAlt="Soin énergétique — mains posées avec bienveillance"
+        imageAlt="Soin énergétique, mains posées avec bienveillance"
       />
 
       <div className="mx-auto max-w-6xl px-4 md:px-6">
@@ -71,7 +71,7 @@ export default function SoinsPage() {
         <div className="relative mb-10 overflow-hidden rounded-3xl comic-border-lg aspect-[21/9] min-h-[180px]">
           <Image
             src={images.soinEnergie}
-            alt="Séance de soin énergétique — personne allongée recevant un soin avec chakras activés"
+            alt="Séance de soin énergétique : personne allongée recevant un soin avec chakras activés"
             fill
             className="object-cover object-center"
             sizes="(min-width: 1280px) 1216px, 100vw"

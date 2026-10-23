@@ -100,7 +100,7 @@ export const sessionInfo = {
     "Le soin en position assise ou allongée, dans un moment de détente",
   ],
   disclaimer:
-    "Les soins énergétiques complètent un suivi médical — ils ne remplacent jamais un avis professionnel de santé.",
+    "Les soins énergétiques complètent un suivi médical : ils ne remplacent jamais un avis professionnel de santé.",
 } as const;
 
 export const about = {
@@ -110,7 +110,7 @@ export const about = {
   values: [
     {
       title: "Écoute attentive",
-      text: "Comprendre vos besoins avant d'agir — chaque séance est personnalisée selon mon ressenti et ce dont vous avez besoin.",
+      text: "Comprendre vos besoins avant d'agir : chaque séance est personnalisée selon mon ressenti et ce dont vous avez besoin.",
     },
     {
       title: "Bienveillance",
@@ -122,11 +122,11 @@ export const about = {
     },
   ],
   professionalTone:
-    "Dans une démarche holistique, je veille à ce que vous ressentiez du professionnalisme et une approche qui dialogue avec la médecine conventionnelle — pour que vous vous sentiez à l'aise en parlant de votre santé.",
+    "Dans une démarche holistique, je veille à ce que vous ressentiez du professionnalisme et une approche qui dialogue avec la médecine conventionnelle, pour que vous vous sentiez à l'aise en parlant de votre santé.",
   searcher:
     "Je suis d'une nature « chercheuse » : j'écoute des conférences de guérisseurs et chamans, je me forme à de nouvelles techniques qui m'apportent du bien-être, puis je les propose lorsqu'elles peuvent vous servir.",
   formerEducator:
-    "Éducatrice de métier, j'accompagne aussi les enfants — pour des ennuis physiques ou un soutien émotionnel léger (accompagnement bienveillant, pas de psychiatrie).",
+    "Éducatrice de métier, j'accompagne aussi les enfants, pour des ennuis physiques ou un soutien émotionnel léger (accompagnement bienveillant, pas de psychiatrie).",
   notMedium:
     "Je ne tire pas les cartes et ne suis pas médium : ce sont d'autres métiers. Mon accompagnement repose sur le magnétisme, les soins énergétiques et des pratiques que je maîtrise et forme.",
 } as const;
@@ -179,7 +179,7 @@ export const careMetaphors = [
 ] as const;
 
 export const clientele = {
-  summary: "Enfants, adultes, seniors — sportifs, personnes en surcharge émotionnelle, familles.",
+  summary: "Enfants, adultes, seniors, sportifs, personnes en surcharge émotionnelle, familles.",
   sportifs:
     "Beaucoup de sportifs me consultent : j'ai développé un accompagnement type coaching énergétique (blessures, appréhension de reprendre le sport, blocages liés à l'échec ou à la performance).",
   repartition: "Environ 60 % de demandes pour des douleurs physiques, 40 % pour l'émotionnel.",
@@ -188,7 +188,7 @@ export const clientele = {
 export const soulRetrieval = {
   title: "Recouvrement d'âme",
   emoji: "🥁",
-  subtitle: "Soin au tambour — une pratique récemment intégrée à mon accompagnement",
+  subtitle: "Soin au tambour, une pratique récemment intégrée à mon accompagnement",
   description:
     "Le recouvrement d'âme est un soin profond, accompagné au tambour, qui vise à retrouver des parts de vous-même laissées en chemin après des chocs, fatigue intense ou périodes de grande tension. C'est une démarche douce, respectueuse, loin de toute voyance.",
   points: [
@@ -196,7 +196,7 @@ export const soulRetrieval = {
     "Accompagnement au tambour pour favoriser un ancrage et un apaisement profonds",
     "Idéal si vous vous sentez « incomplet·e », épuisé·e ou déconnecté·e de vous-même",
   ],
-  note: "Tarif et durée selon votre besoin — échangeons lors d'un premier contact.",
+  note: "Tarif et durée selon votre besoin : échangeons lors d'un premier contact.",
   /** Déroulé d'une séance — structure la page en sections H2 (SEO + lisibilité) */
   flow: [
     "Un premier échange, par téléphone ou en visio, pour comprendre votre situation et répondre à vos questions. Rien ne commence avant que vous vous sentiez à l'aise.",
@@ -216,7 +216,7 @@ export const soulRetrieval = {
  * Éléments communs aux deux niveaux de formation (affichés une fois sur la page).
  */
 export const formationShared = {
-  quote: "Tout le monde peut magnétiser — il suffit d'apprendre à ressentir !",
+  quote: "Tout le monde peut magnétiser, il suffit d'apprendre à ressentir !",
 
   /** Déroulé — rassure sur le format */
   flow: [
@@ -226,7 +226,7 @@ export const formationShared = {
     },
     {
       title: "La formation, en visio ou en présentiel",
-      text: "Théorie courte, pratique longue. Vous manipulez dès les premières minutes — le ressenti s'apprend par l'expérience, pas par les diapositives.",
+      text: "Théorie courte, pratique longue. Vous manipulez dès les premières minutes : le ressenti s'apprend par l'expérience, pas par les diapositives.",
     },
     {
       title: "L'espace membre, ensuite",
@@ -236,7 +236,7 @@ export const formationShared = {
 
   /** Pourquoi avec Véronique — signaux E-E-A-T */
   why: [
-    "Formée en 2012, en exercice depuis 2015 — la formation sort d'une pratique quotidienne, pas d'un manuel",
+    "Formée en 2012, en exercice depuis 2015 : la formation sort d'une pratique quotidienne, pas d'un manuel",
     "Éducatrice de métier : transmettre est mon premier savoir-faire",
     "Des mots simples, jamais de jargon mystérieux ni de promesses magiques",
     "Une pratique qui dialogue avec la médecine conventionnelle et connaît ses limites",
@@ -261,7 +261,7 @@ export const formations = [
   {
     id: "niveau-1",
     level: 1,
-    title: "Magnétisme — Niveau 1",
+    title: "Magnétisme, niveau 1",
     shortTitle: "Niveau 1",
     emoji: "🌱",
     price: 70, // À CONFIRMER — ancien tarif ½ journée, désormais format 2 h
@@ -273,12 +273,12 @@ export const formations = [
     promise:
       "En 2 heures, repartez avec un ressenti concret entre vos mains et les bases d'un soin que vous saurez dérouler seul·e.",
     description:
-      "Découvrez votre capacité à magnétiser et à pratiquer un soin énergétique. Apprenez à ressentir votre magnétisme et vos centres bio-énergétiques, avec des explications claires et accessibles — pas de jargon mystérieux.",
+      "Découvrez votre capacité à magnétiser et à pratiquer un soin énergétique. Apprenez à ressentir votre magnétisme et vos centres bio-énergétiques, avec des explications claires et accessibles, sans jargon mystérieux.",
     details: [
       "Techniques énergétiques & magnétisme moderne, ancré dans le quotidien",
       "Confiance pour démarrer un soin en solo",
       "Accès à l'espace membre (vidéos) après inscription",
-      "Format court de 2 h — en visio ou en présentiel",
+      "Format court de 2 h, en visio ou en présentiel",
     ],
     prerequisites: "Aucun prérequis. Ni diplôme, ni expérience, ni « don » préalable.",
     forWhom: [
@@ -300,14 +300,14 @@ export const formations = [
       {
         emoji: "🏡",
         title: "Vous voulez soulager vos proches",
-        text: "Apprendre pour votre entourage — un enfant, un conjoint, un parent — sans viser une activité professionnelle.",
+        text: "Apprendre pour votre entourage (un enfant, un conjoint, un parent), sans viser une activité professionnelle.",
       },
     ],
     outcomes: [
       "Percevoir votre magnétisme dans vos mains et savoir le relancer quand il s'estompe",
       "Repérer les centres bio-énergétiques et faire un scan avant d'intervenir",
       "Dérouler une séance complète du début à la fin, avec une fermeture énergétique propre",
-      "Vous protéger et vous nettoyer après un soin — l'hygiène de pratique qu'on oublie souvent d'enseigner",
+      "Vous protéger et vous nettoyer après un soin : l'hygiène de pratique qu'on oublie souvent d'enseigner",
       "Savoir ce que vous ne devez pas faire : les limites, les cas à renvoyer vers un médecin",
     ],
     /** Leçons vidéo — remplies par Véronique (video: null = à venir) */
@@ -322,11 +322,11 @@ export const formations = [
   {
     id: "niveau-2",
     level: 2,
-    title: "Magnétisme — Niveau 2",
+    title: "Magnétisme, niveau 2",
     shortTitle: "Niveau 2",
     emoji: "🔥",
     price: 0, // À DÉFINIR par Véronique
-    duration: "Format long — durée à définir",
+    duration: "Format long, durée à définir",
     format: "En visio ou en présentiel",
     tagline: "Approfondir sa pratique et gagner en autonomie",
     serviceId: "formation-niveau-2",
@@ -396,7 +396,7 @@ export const formationFaqs = [
   {
     question: "Le magnétisme remplace-t-il un traitement médical ?",
     answer:
-      "Non, jamais — et c'est un point que la formation aborde explicitement. Le magnétisme est une approche complémentaire : savoir reconnaître les situations qui relèvent d'un médecin fait partie de ce qui est enseigné.",
+      "Non, jamais, et c'est un point que la formation aborde explicitement. Le magnétisme est une approche complémentaire : savoir reconnaître les situations qui relèvent d'un médecin fait partie de ce qui est enseigné.",
   },
 ] as const;
 
@@ -410,7 +410,7 @@ export const services = [
     duration: sessionInfo.duration,
     mode: sessionInfo.modes,
     description:
-      "Magnétisme, soin énergétique ou coupe de feu — séance personnalisée selon vos besoins du moment.",
+      "Magnétisme, soin énergétique ou coupe de feu : séance personnalisée selon vos besoins du moment.",
     details: [
       "Échange préalable sur votre problématique",
       "Soin assis ou allongé, en détente",

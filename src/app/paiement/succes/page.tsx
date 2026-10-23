@@ -25,7 +25,7 @@ export default async function PaiementSuccesPage({
           Paiement confirmé !
         </h1>
         <p className="mt-3 text-ink/70">
-          Merci pour votre confiance{viaPayPal ? " — paiement PayPal reçu" : ""}. Véronique vous
+          Merci pour votre confiance{viaPayPal ? ", paiement PayPal reçu" : ""}. Véronique vous
           contactera pour confirmer les détails.
         </p>
         {isFormation && (

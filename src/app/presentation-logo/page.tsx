@@ -304,7 +304,7 @@ export default function PresentationLogoPage() {
                   height={16}
                   style={{ width: 16, height: 16 }}
                 />
-                <span className="truncate text-xs">Véronique Kaba — Magnétiseuse</span>
+                <span className="truncate text-xs">Véronique Kaba, magnétiseuse</span>
               </div>
             </div>
             {/* Icône d'écran d'accueil */}

@@ -51,12 +51,12 @@ export function WarmCTA() {
         </h2>
 
         <p className="mx-auto mt-6 max-w-lg text-lg leading-relaxed text-ink/70">
-          Chaque séance commence par une écoute. Pas de jugement, pas de jargon — juste votre bien-être,
+          Chaque séance commence par une écoute. Pas de jugement, pas de jargon. Juste votre bien-être,
           au rythme qui vous convient.
         </p>
 
         <p className="mt-5 font-[family-name:var(--font-hand)] text-2xl text-aura-600">
-          — Véronique ✨
+          Véronique ✨
         </p>
 
         <div className="mt-8 flex flex-wrap justify-center gap-4">

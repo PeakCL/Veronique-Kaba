@@ -8,7 +8,7 @@ import { BookingForm } from "@/components/booking/BookingForm";
 import { OnlineScheduler } from "@/components/booking/OnlineScheduler";
 
 export const metadata: Metadata = {
-  title: "Prendre rendez-vous — Soin de magnétisme à Longwy ou en visio",
+  title: "Prendre rendez-vous | Soin de magnétisme à Longwy ou en visio",
   description:
     "Réservez votre séance de magnétisme ou de soin énergétique avec Véronique : par téléphone, WhatsApp ou formulaire. En présentiel autour de Longwy ou à distance en visio. 40 min, 60 €.",
   alternates: { canonical: "/rendez-vous" },
@@ -45,7 +45,7 @@ export default function RendezVousPage() {
             Prendre rendez-vous
           </h1>
           <p className="mt-3 text-ink/70">
-            Séance de soin · {sessionInfo.duration} · {sessionInfo.price} € — présentiel
+            Séance de soin · {sessionInfo.duration} · {sessionInfo.price} €, présentiel
             (15 km autour de Longwy) ou visio
           </p>
           <p className="mt-2 text-sm text-ink/60">
@@ -67,7 +67,7 @@ export default function RendezVousPage() {
               {site.phone}
             </a>
             <p className="mt-3 text-sm text-ink/70">
-              Si je ne réponds pas, je suis en séance — laissez un message, je vous rappelle.
+              Si je ne réponds pas, je suis en séance : laissez un message, je vous rappelle.
             </p>
           </Bubble>
 
@@ -129,7 +129,7 @@ export default function RendezVousPage() {
               <p className="mt-3 flex items-start gap-2 text-sm">
                 <Video className="mt-0.5 h-4 w-4 shrink-0 text-aura-600" />
                 <span className="text-ink/75">
-                  Le soin à distance repose sur les mêmes principes qu&apos;en présentiel —
+                  Le soin à distance repose sur les mêmes principes qu&apos;en présentiel :
                   l&apos;énergie n&apos;est pas limitée par la distance.
                 </span>
               </p>
