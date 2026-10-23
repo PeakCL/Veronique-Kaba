@@ -9,8 +9,8 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
       // Espace formation privé : inutile à indexer
-      // Présentation du logo : réservée à Véronique
-      disallow: ["/formation/espace", "/paiement", "/presentation-logo"],
+      // Présentation et choix du logo : réservés à Véronique
+      disallow: ["/formation/espace", "/paiement", "/presentation-logo", "/choix-logo"],
     },
     sitemap: new URL("/sitemap.xml", base).toString(),
     host: base,
