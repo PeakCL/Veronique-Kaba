@@ -10,7 +10,7 @@ export function AboutSnippet() {
       <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-2">
 
         {/* ── Colonne texte ── */}
-        <Bubble variant="aura" tail="bottom-right">
+        <Bubble variant="aura" tail="bottom-right" lift>
           <h2 className="font-[family-name:var(--font-display)] text-4xl">Qui suis-je ?</h2>
           <p className="mt-4 leading-relaxed text-ink/80">{about.journey}</p>
           <p className="mt-4 leading-relaxed text-ink/80">{about.professionalTone}</p>
@@ -57,7 +57,7 @@ export function AboutSnippet() {
             ].map((stat) => (
               <div
                 key={stat.label}
-                className="rounded-2xl bg-rose-50/70 p-5 text-center comic-border-lg transition-all hover:-translate-y-1 hover:bg-gold-50"
+                className="bd-lift rounded-2xl bg-rose-50/70 p-5 text-center comic-border-lg hover:bg-gold-50"
               >
                 <p className="font-[family-name:var(--font-display)] text-3xl text-gold-600">
                   {stat.n}

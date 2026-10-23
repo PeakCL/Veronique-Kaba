@@ -32,6 +32,7 @@ export function TestimonialsStrip() {
                 variant={bubbleVariants[i % 3]}
                 tail="none"
                 animate={false}
+                lift
                 className="flex flex-1 flex-col"
               >
                 <Quote className="mb-3 h-6 w-6 text-aura-300" aria-hidden />

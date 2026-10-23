@@ -129,6 +129,27 @@
       box-shadow 0.12s cubic-bezier(0.22, 1, 0.36, 1),
       background-color 0.15s ease;
   }
+  /* Bloc qui se soulève et penche au survol : l'ombre d'encre s'allonge */
+  .bd-lift {
+    transition:
+      transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
+      box-shadow 0.2s ease,
+      background-color 0.2s ease;
+  }
+  .bd-lift:hover {
+    transform: translate(-3px, -5px) rotate(-1deg);
+    box-shadow: 10px 12px 0 var(--color-outline);
+  }
+  .bd-lift:nth-child(even):hover {
+    transform: translate(-3px, -5px) rotate(1deg);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .bd-lift:hover,
+    .bd-lift:nth-child(even):hover {
+      transform: none;
+    }
+  }
+
   .comic-pop:hover {
     transform: translate(-2px, -2px) rotate(-1deg);
     box-shadow: 6px 6px 0 var(--color-outline);

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 type BubbleProps = {
@@ -9,6 +9,8 @@ type BubbleProps = {
   tail?: "bottom-left" | "bottom-right" | "top-left" | "top-right" | "none";
   variant?: "white" | "gold" | "aura" | "sky" | "warm";
   animate?: boolean;
+  /** Au survol, la bulle se soulève et penche légèrement, comme une case qu'on attrape */
+  lift?: boolean;
 };
 
 const tailClasses = {
@@ -37,17 +39,28 @@ export function Bubble({
   tail = "bottom-left",
   variant = "white",
   animate = true,
+  lift = false,
 }: BubbleProps) {
   const v = variants[variant];
-  const Wrapper = animate ? motion.div : "div";
-  const motionProps = animate
-    ? {
-        initial: { opacity: 0, scale: 0.96, y: 8 },
-        whileInView: { opacity: 1, scale: 1, y: 0 },
-        viewport: { once: true, margin: "-40px" },
-        transition: { type: "spring" as const, stiffness: 200, damping: 24 },
-      }
-    : {};
+  const reduce = useReducedMotion();
+  const hover = lift && !reduce;
+  const Wrapper = animate || hover ? motion.div : "div";
+  const motionProps = {
+    ...(animate && {
+      initial: { opacity: 0, scale: 0.96, y: 8 },
+      whileInView: { opacity: 1, scale: 1, y: 0 },
+      viewport: { once: true, margin: "-40px" },
+      transition: { type: "spring" as const, stiffness: 200, damping: 24 },
+    }),
+    ...(hover && {
+      whileHover: {
+        y: -5,
+        rotate: -0.8,
+        boxShadow: "7px 8px 0 var(--color-outline)",
+        transition: { type: "spring" as const, stiffness: 400, damping: 20 },
+      },
+    }),
+  };
 
   return (
     <Wrapper
