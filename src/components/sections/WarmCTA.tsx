@@ -4,8 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Heart } from "lucide-react";
 import { ComicButton } from "@/components/ui/ComicButton";
-import { VeroAvatar } from "@/components/ui/VeroAvatar";
-import { images } from "@/lib/images";
+import { images, veroAvatars } from "@/lib/images";
 
 export function WarmCTA() {
   return (
@@ -20,7 +19,7 @@ export function WarmCTA() {
           quality={35}
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-rose-50 via-gold-50 to-aura-50" />
+        <div className="absolute inset-0 bg-gradient-to-br from-cream via-gold-50 to-aura-50" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_70%_at_55%_40%,rgba(240,190,90,0.18)_0%,transparent_70%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_60%_at_20%_70%,rgba(181,154,212,0.15)_0%,transparent_65%)]" />
       </div>
@@ -32,11 +31,19 @@ export function WarmCTA() {
         viewport={{ once: true, margin: "-60px" }}
         transition={{ duration: 0.75, ease: "easeOut" }}
       >
-        {/* Pose "ouverture" — bras ouverts, joie face à la nature */}
-        <VeroAvatar pose="ouverture" size="md" className="mb-2" />
-
-        <div className="mb-5 inline-block">
-          <Heart className="mx-auto h-10 w-10 text-rose-300" fill="currentColor" fillOpacity={0.3} />
+        {/* Pose « ouverture » : bras ouverts face à la vallée, dans une case de BD.
+            Le léger zoom masque le fondu blanc des bords de l'illustration. */}
+        <div className="relative mx-auto mb-8 aspect-[1008/700] max-w-md -rotate-1 overflow-hidden rounded-md comic-border-lg">
+          <Image
+            src={veroAvatars.ouverture}
+            alt="Véronique, bras ouverts face à la vallée au coucher du soleil"
+            fill
+            sizes="448px"
+            className="scale-[1.18] object-cover object-[50%_40%]"
+          />
+          <span aria-hidden className="sfx anim-shake absolute right-3 top-3 text-3xl">
+            Ahhh !
+          </span>
         </div>
 
         <h2 className="font-[family-name:var(--font-hand)] text-4xl leading-snug text-ink md:text-5xl">

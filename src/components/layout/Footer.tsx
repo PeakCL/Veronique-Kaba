@@ -1,16 +1,19 @@
 import Link from "next/link";
 import { Facebook, Instagram, Phone, MapPin, MessageCircle } from "lucide-react";
 import { site } from "@/lib/content";
+import { TreeLine } from "@/components/decor/Nature";
 
 export function Footer() {
   return (
-    <footer
-      className="mt-20 border-t-4 border-gold-400 text-cream"
-      style={{
-        background:
-          "radial-gradient(ellipse at 50% 0%, rgba(240,190,90,0.10) 0%, transparent 55%), linear-gradient(160deg, #2a1f2e 0%, #1e1530 50%, #160d22 100%)",
-      }}
-    >
+    <footer className="mt-20 text-cream">
+      {/* La forêt au crépuscule : la lisière ferme la page */}
+      <TreeLine className="h-[clamp(4.5rem,10vw,8rem)]" back="#355a28" front="#1d3317" seed={23} />
+      <div
+        style={{
+          background:
+            "radial-gradient(ellipse at 50% 0%, rgba(242,181,58,0.12) 0%, transparent 55%), linear-gradient(170deg, #1d3317 0%, #16281a 50%, #0f1d13 100%)",
+        }}
+      >
       <div className="border-b border-aura-700/40 px-4 py-8 text-center">
         <p className="font-[family-name:var(--font-hand)] text-3xl text-gold-300">
           Prendre soin de vous, c&apos;est ma mission. ✨
@@ -22,19 +25,19 @@ export function Footer() {
 
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 md:grid-cols-3 md:px-6">
         <div>
-          <p className="font-[family-name:var(--font-display)] text-2xl font-medium text-aura-300">
+          <p className="font-[family-name:var(--font-display)] text-2xl font-medium text-gold-300">
             {site.name}
           </p>
           <p className="mt-2 text-sm text-cream/80">{site.tagline}</p>
           <p className="mt-4 flex items-start gap-2 text-sm">
-            <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-sky-300" />
+            <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-sky-200" />
             <span>{site.locationDetail}</span>
           </p>
           <p className="mt-1 text-xs text-cream/60">SIRET {site.siret}</p>
         </div>
 
         <div>
-          <p className="font-bold text-sky-300">Navigation</p>
+          <p className="font-bold text-sky-200">Navigation</p>
           <ul className="mt-3 space-y-2 text-sm">
             {[
               ["/soins", "Soins & tarifs"],
@@ -46,7 +49,7 @@ export function Footer() {
               ["/formation/espace", "Espace élèves"],
             ].map(([href, label]) => (
               <li key={href}>
-                <Link href={href} className="hover:text-sky-200">
+                <Link href={href} className="hover:text-gold-200">
                   {label}
                 </Link>
               </li>
@@ -55,10 +58,10 @@ export function Footer() {
         </div>
 
         <div>
-          <p className="font-bold text-sky-300">Réseaux & contact</p>
+          <p className="font-bold text-sky-200">Réseaux & contact</p>
           <a
             href={site.phoneHref}
-            className="mt-3 flex items-center gap-2 text-sm hover:text-sky-200"
+            className="mt-3 flex items-center gap-2 text-sm hover:text-gold-200"
           >
             <Phone className="h-4 w-4" />
             {site.phone}
@@ -67,7 +70,7 @@ export function Footer() {
             href={site.whatsapp}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-2 flex items-center gap-2 text-sm hover:text-sky-200"
+            className="mt-2 flex items-center gap-2 text-sm hover:text-gold-200"
           >
             <MessageCircle className="h-4 w-4" />
             WhatsApp
@@ -86,7 +89,7 @@ export function Footer() {
               href={site.social.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-10 w-10 items-center justify-center rounded-full bg-aura-400 text-white comic-border hover:bg-aura-300"
+              className="flex h-10 w-10 items-center justify-center rounded-full bg-aura-500 text-white comic-border hover:bg-aura-400"
               aria-label="Instagram"
             >
               <Instagram className="h-5 w-5" />
@@ -100,10 +103,11 @@ export function Footer() {
           © {new Date().getFullYear()} {site.name} — Magnétiseuse & énergéticienne · Longwy
         </p>
         <p className="mt-1">
-          <Link href="/mentions-legales" className="hover:text-sky-200">
+          <Link href="/mentions-legales" className="hover:text-gold-200">
             Mentions légales
           </Link>
         </p>
+      </div>
       </div>
     </footer>
   );

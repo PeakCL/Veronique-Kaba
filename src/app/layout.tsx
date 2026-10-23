@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Baloo_2, Caveat, Nunito } from "next/font/google";
+import { Baloo_2, Bangers, Caveat, Nunito } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { MobileCTABar } from "@/components/layout/MobileCTABar";
@@ -24,6 +24,13 @@ const nunito = Nunito({
 const caveat = Caveat({
   subsets: ["latin"],
   variable: "--font-hand",
+});
+
+// Lettrage des onomatopées de BD (« Fshhh… », « Plic ! »)
+const bangers = Bangers({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-sfx",
 });
 
 // URL canonique de production. La variable d'env reste prioritaire (preview, staging),
@@ -85,7 +92,7 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body
-        className={`${baloo.variable} ${nunito.variable} ${caveat.variable} min-h-screen flex flex-col`}
+        className={`${baloo.variable} ${nunito.variable} ${caveat.variable} ${bangers.variable} min-h-screen flex flex-col`}
       >
         <JsonLd data={[localBusinessJsonLd(), personJsonLd(), websiteJsonLd()]} />
         <MotionProvider>

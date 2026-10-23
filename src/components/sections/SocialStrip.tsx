@@ -17,7 +17,7 @@ export function SocialStrip() {
         className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 rounded-3xl p-8 comic-border-lg md:flex-row"
         style={{
           background:
-            "linear-gradient(130deg, #fef3dc 0%, #fdf0ec 45%, #f0eaf8 100%)",
+            "linear-gradient(130deg, #fff0c7 0%, #e1edd2 55%, #d4efee 100%)",
         }}
       >
         <div>
@@ -34,7 +34,7 @@ export function SocialStrip() {
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 rounded-full bg-white/80 px-5 py-3 font-bold comic-border"
-            whileHover={{ scale: 1.05, y: -2, backgroundColor: "rgba(240,190,90,0.15)" }}
+            whileHover={{ scale: 1.05, y: -2, backgroundColor: "rgba(242,181,58,0.18)" }}
             transition={{ type: "spring", stiffness: 350, damping: 22 }}
           >
             <Facebook className="h-5 w-5 text-sky-600" />
@@ -46,7 +46,7 @@ export function SocialStrip() {
             rel="noopener noreferrer"
             className="flex items-center gap-2 rounded-full px-5 py-3 font-bold text-white comic-border"
             style={{
-              background: "linear-gradient(135deg, #b59ad4 0%, #d49082 60%, #f0be5a 100%)",
+              background: "linear-gradient(135deg, #437031 0%, #2e8e98 60%, #f2b53a 100%)",
             }}
             whileHover={{ scale: 1.05, y: -2, opacity: 0.92 }}
             transition={{ type: "spring", stiffness: 350, damping: 22 }}
