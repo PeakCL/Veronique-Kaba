@@ -1,4 +1,4 @@
-/* ── Choix du logo — fond neutre : aucune des deux directions n'est avantagée ── */
+/* ── Choix du logo — fond neutre : aucune direction n'est avantagée ── */
 
 .page {
   --lin: #f6f2ec;
@@ -40,12 +40,12 @@
   display: grid;
   gap: 1.25rem;
   margin: clamp(2.5rem, 6vw, 4rem) auto 0;
-  max-width: 60rem;
+  max-width: 72rem;
 }
 
 @media (min-width: 640px) {
   .duo {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
 
@@ -216,7 +216,7 @@
 
 @media (min-width: 768px) {
   .choice {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
 

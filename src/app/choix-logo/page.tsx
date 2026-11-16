@@ -4,9 +4,10 @@ import { Cormorant_Garamond, Jost } from "next/font/google";
 import styles from "./choix.module.css";
 
 /**
- * Choix entre deux directions de logo, destiné à Véronique.
+ * Choix entre trois directions de logo, destiné à Véronique :
+ * A et B, puis C, une version hybride qui fusionne les deux.
  * Page autonome : sans l'habillage du site (voir SiteChrome), non indexée.
- * Fond neutre et traitement identique pour les deux propositions.
+ * Fond neutre et traitement identique pour les propositions.
  */
 
 const serif = Cormorant_Garamond({
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
 };
 
 type Direction = {
-  letter: "A" | "B";
+  letter: "A" | "B" | "C";
   name: string;
   tagline: string;
   idea: string;
@@ -101,36 +102,79 @@ const vegetal: Direction = {
   ],
 };
 
+const hybride: Direction = {
+  letter: "C",
+  name: "La Rencontre",
+  tagline: "La fusion des deux : le monogramme doré, réchauffé par le soleil",
+  idea: "Le meilleur de A et de B réunis. Tes initiales dorées gardent l'élégance et le sérieux de la Lumière ; le soleil, les courbes qui enveloppent et ton nom écrit à la main apportent la chaleur du Soin.",
+  meanings: [
+    {
+      title: "Tes initiales en majuscules",
+      text: "Le V et le K à fins empattements de la direction A : ta signature, sobre et reconnaissable.",
+    },
+    {
+      title: "Le soleil",
+      text: "Repris de la direction B : la chaleur, l'énergie, le retour à la lumière. Il se pose au creux du K comme une source d'énergie.",
+    },
+    {
+      title: "Les courbes qui enveloppent",
+      text: "Les deux grands traits qui partent des lettres entourent l'ensemble comme des bras ou des mains qui accueillent : le geste du soin, sans le dessiner.",
+    },
+    {
+      title: "Ton nom écrit à la main",
+      text: "Une écriture manuscrite et ornée, comme dans la direction B : proche, personnelle, chaleureuse.",
+    },
+  ],
+  strengths: [
+    "Réunit le sérieux de A et la douceur de B : rassurant et accueillant à la fois.",
+    "Une seule couleur, l'or : impression simple, dorure à chaud possible.",
+    "Reste dans l'univers or de ton site, sans introduire de nouvelle couleur.",
+    "Plus original que les mains et feuillages habituels du bien-être.",
+    "L'emblème seul (VK et soleil) reste lisible en petit, pour les icônes et photos de profil.",
+  ],
+  notes: [
+    "L'écriture manuscrite est très ornée : en petit, on utilise l'emblème seul, sans le nom.",
+    "Deux styles d'écriture (lettres classiques et manuscrite) : un équilibre à soigner sur chaque support.",
+    "Proposition toute récente : carte de visite et fichiers du site restent à décliner.",
+  ],
+};
+
 const comparison = [
   {
     criterion: "Première impression",
     a: "Élégant, sérieux, confiant",
     b: "Chaleureux, doux, naturel",
+    c: "Élégant et chaleureux à la fois",
   },
   {
     criterion: "Ce qu'on comprend",
     a: "Une personne, un nom, une énergie",
     b: "Le soin, les mains, la nature",
+    c: "Ton nom, la lumière et l'accueil",
   },
   {
     criterion: "Se démarquer",
     a: "Très reconnaissable",
     b: "Proche d'autres logos du bien-être",
+    c: "Très reconnaissable",
   },
   {
     criterion: "En tout petit",
     a: "Reste net",
     b: "Les détails disparaissent",
+    c: "Net avec l'emblème seul",
   },
   {
     criterion: "Impression",
     a: "Simple : or et noir",
     b: "À simplifier : dégradés, trois couleurs",
+    c: "Simple : or seul",
   },
   {
     criterion: "Avec ton site",
     a: "Dans la continuité de l'or existant",
     b: "Introduit le vert, à harmoniser",
+    c: "Dans la continuité de l'or existant",
   },
 ];
 
@@ -207,10 +251,11 @@ export default function ChoixLogoPage() {
       {/* ── Ouverture ── */}
       <header className={styles.hero}>
         <p className="text-sm uppercase tracking-[0.3em] opacity-60">Véronique Kaba</p>
-        <h1 className={`${styles.h1} mt-4`}>Deux directions pour ton logo</h1>
+        <h1 className={`${styles.h1} mt-4`}>Trois directions pour ton logo</h1>
         <p className={`${styles.lead} mx-auto`}>
-          Deux façons différentes de raconter ton métier. Prends le temps de les regarder, de
-          lire ce que chacune exprime, puis dis-moi laquelle te ressemble.
+          Deux façons différentes de raconter ton métier, et une troisième qui les réunit.
+          Prends le temps de les regarder, de lire ce que chacune exprime, puis dis-moi
+          laquelle te ressemble.
         </p>
 
         <div className={styles.duo}>
@@ -237,6 +282,18 @@ export default function ChoixLogoPage() {
             />
             <span className={`${styles.letter} mt-4`}>Direction B</span>
             <span className={`${styles.serif} text-2xl`}>{vegetal.name}</span>
+          </a>
+          <a href="#direction-c" className={`${styles.duoItem} bg-white`}>
+            <Image
+              src="/choix-logo/hybride.webp"
+              alt="Direction C : monogramme VK doré avec soleil et nom manuscrit, fusion des deux"
+              width={1275}
+              height={1019}
+              priority
+              className="my-auto h-auto w-full max-w-[17rem]"
+            />
+            <span className={`${styles.letter} mt-4`}>Direction C · la fusion</span>
+            <span className={`${styles.serif} text-2xl`}>{hybride.name}</span>
           </a>
         </div>
       </header>
@@ -278,13 +335,40 @@ export default function ChoixLogoPage() {
         </DirectionSection>
       </div>
 
+      {/* ── Direction C : hybride ── */}
+      <div id="direction-c">
+        <DirectionSection d={hybride} tone={styles.white}>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
+            <div className="bg-[#f6f2ec] p-8 shadow-[0_18px_40px_-24px_rgba(35,31,27,0.45)]">
+              <Image
+                src="/choix-logo/hybride.webp"
+                alt="Logo complet : monogramme VK, soleil et nom Véronique Kaba en écriture manuscrite, or sur fond clair"
+                width={1275}
+                height={1019}
+                className="h-auto w-full"
+              />
+            </div>
+            <div className="bg-black p-8">
+              <Image
+                src="/choix-logo/hybride-embleme.webp"
+                alt="Emblème seul : VK et soleil, or sur fond noir"
+                width={900}
+                height={900}
+                className="mx-auto h-auto w-full max-w-sm"
+              />
+            </div>
+          </div>
+        </DirectionSection>
+      </div>
+
       {/* ── Face à face ── */}
       <section className={styles.chapter}>
         <div className={styles.inner}>
           <p className={styles.kicker}>Face à face</p>
-          <h2 className={styles.h2}>Les deux, côte à côte</h2>
+          <h2 className={styles.h2}>Les trois, côte à côte</h2>
           <p className={styles.lead}>
             Aucune n&apos;est meilleure dans l&apos;absolu : elles ne promettent pas la même chose.
+            La C cherche l&apos;équilibre entre les deux autres.
           </p>
           <table className={styles.table}>
             <thead>
@@ -294,6 +378,7 @@ export default function ChoixLogoPage() {
                 </th>
                 <th scope="col">A · {lumiere.name}</th>
                 <th scope="col">B · {vegetal.name}</th>
+                <th scope="col">C · {hybride.name}</th>
               </tr>
             </thead>
             <tbody>
@@ -304,6 +389,7 @@ export default function ChoixLogoPage() {
                   </th>
                   <td data-label="A">{row.a}</td>
                   <td data-label="B">{row.b}</td>
+                  <td data-label="C">{row.c}</td>
                 </tr>
               ))}
             </tbody>
@@ -319,13 +405,14 @@ export default function ChoixLogoPage() {
           <p className={styles.lead}>
             Photo de profil sur Facebook, WhatsApp ou Google, petite icône dans l&apos;onglet du
             navigateur : c&apos;est souvent en tout petit que l&apos;on voit ton logo en
-            premier. Voici les deux à leur taille réelle.
+            premier. Voici les trois à leur taille réelle.
           </p>
 
-          <div className="mt-12 grid gap-12 md:grid-cols-2">
+          <div className="mt-12 grid gap-12 md:grid-cols-2 lg:grid-cols-3">
             {[
               { d: lumiere, profile: "/choix-logo/lumiere-noir.webp", w: 720, bg: "bg-black", icon: "/choix-logo/lumiere-noir-32.png" },
               { d: vegetal, profile: "/choix-logo/vegetal.webp", w: 900, bg: "bg-white", icon: "/choix-logo/vegetal-32.png" },
+              { d: hybride, profile: "/choix-logo/hybride-embleme.webp", w: 900, bg: "bg-black", icon: "/choix-logo/hybride-32.png" },
             ].map(({ d, profile, w, bg, icon }) => (
               <figure key={d.letter}>
                 <figcaption className={`${styles.serif} text-2xl`}>
@@ -384,13 +471,20 @@ export default function ChoixLogoPage() {
                 ton métier au premier regard, quitte à faire évoluer les couleurs du site.
               </p>
             </div>
+            <div className={styles.choiceCard}>
+              <p className={styles.letter}>Choisis C si…</p>
+              <p className="mt-2">
+                tu hésites entre les deux : tu veux le sérieux et l&apos;or de A, avec la
+                chaleur du soleil et de l&apos;écriture manuscrite de B.
+              </p>
+            </div>
           </div>
 
           <span className={`${styles.rule} mt-14`} aria-hidden />
           <h3 className={`${styles.serif} text-3xl`}>Et ensuite ?</h3>
           <p className="mt-3 max-w-2xl opacity-80">
-            Réponds-moi simplement par <strong className="font-normal">A</strong> ou{" "}
-            <strong className="font-normal">B</strong>. Une fois la direction choisie, on
+            Réponds-moi simplement par <strong className="font-normal">A</strong>,{" "}
+            <strong className="font-normal">B</strong> ou <strong className="font-normal">C</strong>. Une fois la direction choisie, on
             affinera ensemble les détails (couleurs, finesse du trait, lettres), puis je
             préparerai les fichiers pour ton site, tes cartes et tes réseaux.
           </p>
